@@ -1,1 +1,8 @@
 Descriere proiect
+
+Cerinte:
+Functionare:
+UX:
+Integrare cu alte limbaje/ sisteme:
+Limbaje folosite:
+Cum face aplicatia viata mea mmai buna:
