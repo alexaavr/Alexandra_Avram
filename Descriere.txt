@@ -1,8 +1,18 @@
 Descriere proiect
 
+Autori: Avram Stefania-Alexandra, Grecu Georgian-Catalin
+
 Cerinte:
+
 Functionare:
-UX:
+
+UX: 
+
+Workflow - autentificare - admin , user.
+
 Integrare cu alte limbaje/ sisteme:
-Limbaje folosite:
-Cum face aplicatia viata mea mmai buna:
+
+Limbaje folosite: Java, ElasticSearch, Swing/FX
+
+Cum face aplicatia viata mea mai buna: Ofera utilizatorilor posibilitatea de a verifica stocurile magazinului fara sa se mai deplaseze
+ si administratorului posibilitatea de a superviza toate operatiile care se realizeaza. 
