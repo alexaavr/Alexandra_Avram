@@ -1,11 +1,17 @@
 public class Admin extends Person{
 
-    public int CNP;
-    public String Job;
+    public String adminID;
+    public String password;
+    private String mail_adress;
 
-    public Admin(int ID, String firstName, String lastName, int CNP, String job) {
-        super(ID, firstName, lastName);
-        this.CNP = CNP;
-        Job = job;
+    public Admin(String firstName, String lastName, int age, String adminID, String password, String mail_adress) {
+        super(firstName, lastName, age);
+        this.adminID = adminID;
+        this.password = password;
+        this.mail_adress = mail_adress;
+    }
+
+    public Admin() {
+
     }
 }
