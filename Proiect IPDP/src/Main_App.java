@@ -1,8 +1,13 @@
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.bson.Document;
 
 import java.util.Scanner;
 
@@ -11,16 +16,19 @@ public class Main_App extends Application {
 
     public static void main(String[] args) {
 
-/*        String uri = "mongodb+srv://Alexa:alexa@mangodb-wcom9.mongodb.net/test";
+        String uri = "mongodb+srv://Alexa:alexa@mangodb-wcom9.mongodb.net/Login";
         MongoClientURI clientURI = new MongoClientURI(uri);
         MongoClient mongoClient = new MongoClient(clientURI);
         MongoDatabase mongoDatabase = mongoClient.getDatabase("MongoDB");
         MongoCollection collection = mongoDatabase.getCollection("Login");
-        System.out.println("Database Connected");*/
+        System.out.println("Database Connected");
+
+        Document found = (Document) collection.find(new Document("Username", "Alexa")).first();
+
         Scanner s = new Scanner(System.in);
-        Login log_principal = new Login("Alexa", "alexa");
         Login log = new Login(s.nextLine(), s.nextLine());
-        System.out.println(log.verifyLogin(log_principal));
+        boolean da = log.verifyLogin(found);
+        System.out.println(da);
 
         launch(args);
     }
@@ -41,17 +49,4 @@ public class Main_App extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-/*
-    public static boolean verifyLogin(String username, String password){
-        boolean found = false;
-        String tUsername = "Alexa";
-        String tPassword = "alexa";
-        if(username.equals(tUsername)){
-            if(password.equals(tPassword)){
-                found = true;
-            }
-        }
-
-        return found;
-    }*/
 }

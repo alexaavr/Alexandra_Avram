@@ -1,3 +1,5 @@
+import org.bson.Document;
+
 public class Login {
 
     public String username;
@@ -8,16 +10,11 @@ public class Login {
         this.password = password;
     }
 
-    public boolean verifyLogin(Login this, Login log){
-        boolean found = false;
-        String tUsername = "Alexa";
-        String tPassword = "alexa";
-        if(this.username.equals(tUsername)){
-            if(this.password.equals(tPassword)){
-                found = true;
-            }
-        }
+    public Login() {
+    }
 
-        return found;
+    public boolean verifyLogin(Document tempLogin){
+        if(tempLogin.containsValue(this.username) && tempLogin.containsValue(this.password)) { return true; }
+        else {return false;}
     }
 }
