@@ -46,6 +46,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="C:/Program Files/Java/mongo4idea/lib" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -102,6 +103,7 @@
       <workItem from="1586678218521" duration="706000" />
       <workItem from="1586692294362" duration="6829000" />
       <workItem from="1586699640692" duration="2542000" />
+      <workItem from="1586703543125" duration="3583000" />
     </task>
     <servers />
   </component>
@@ -133,30 +135,34 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="758" y="98" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1586697737565" />
-    <state width="515" height="696" key="GridCell.Tab.0.bottom" timestamp="1586702184681">
+    <state width="187" height="696" key="GridCell.Tab.0.bottom" timestamp="1586708850336">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="515" height="696" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586702184681" />
-    <state width="515" height="696" key="GridCell.Tab.0.center" timestamp="1586702184681">
+    <state width="187" height="696" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586708850336" />
+    <state width="187" height="696" key="GridCell.Tab.0.center" timestamp="1586708850336">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="515" height="696" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586702184681" />
-    <state width="515" height="696" key="GridCell.Tab.0.left" timestamp="1586702184680">
+    <state width="187" height="696" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586708850336" />
+    <state width="187" height="696" key="GridCell.Tab.0.left" timestamp="1586708850336">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="515" height="696" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586702184680" />
-    <state width="515" height="696" key="GridCell.Tab.0.right" timestamp="1586702184681">
+    <state width="187" height="696" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586708850336" />
+    <state width="187" height="696" key="GridCell.Tab.0.right" timestamp="1586708850336">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="515" height="696" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586702184681" />
+    <state width="187" height="696" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586708850336" />
     <state x="441" y="18" width="1038" height="806" key="SettingsEditor" timestamp="1586697742379">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="441" y="18" width="1038" height="806" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1586697742379" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1586699641329">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1586703559693">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586699641329" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586703559693" />
+    <state x="540" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1586703625066">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="540" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1586703625066" />
     <state x="418" y="45" key="new project wizard" timestamp="1586695380516">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
