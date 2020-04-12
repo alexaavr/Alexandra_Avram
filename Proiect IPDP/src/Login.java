@@ -1,37 +1,23 @@
-public class Login extends Person{
-    int phone;
-    char adress;
-    char password;
+public class Login {
 
-    public Login(int ID, char firstName, char lastName, int phone, char adress, char password) {
-        super(ID, firstName, lastName);
-        this.phone = phone;
-        this.adress = adress;
+    public String username;
+    public String password;
+
+    public Login(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
-    public int getPhone() {
-        return phone;
-    }
+    public boolean verifyLogin(Login this, Login log){
+        boolean found = false;
+        String tUsername = "Alexa";
+        String tPassword = "alexa";
+        if(this.username.equals(tUsername)){
+            if(this.password.equals(tPassword)){
+                found = true;
+            }
+        }
 
-    public void setPhone(int phone) {
-        this.phone = phone;
+        return found;
     }
-
-    public char getAdress() {
-        return adress;
-    }
-
-    public void setAdress(char adress) {
-        this.adress = adress;
-    }
-
-    public char getPassword() {
-        return password;
-    }
-
-    public void setPassword(char password) {
-        this.password = password;
-    }
-
 }

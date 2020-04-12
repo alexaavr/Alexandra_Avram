@@ -1,9 +1,9 @@
-public class Person {
-    int ID;
-    char firstName;
-    char lastName;
+public abstract class Person {
+    private int ID;
+    private String firstName;
+    private String lastName;
 
-    public Person(int ID, char firstName, char lastName) {
+    public Person(int ID, String firstName, String lastName) {
         this.ID = ID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -17,24 +17,21 @@ public class Person {
         this.ID = ID;
     }
 
-    public char getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(char firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public char getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(char lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public void verify_stock(){
-
-    }
 
 }
