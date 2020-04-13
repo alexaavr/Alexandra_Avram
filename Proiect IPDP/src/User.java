@@ -14,4 +14,12 @@ public class User extends Person{
     public User() {
         super();
     }
+
+    public String getMail_adress() {
+        return mail_adress;
+    }
+
+    public void setMail_adress(String mail_adress) {
+        this.mail_adress = mail_adress;
+    }
 }

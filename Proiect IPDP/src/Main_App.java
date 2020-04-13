@@ -1,6 +1,7 @@
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import javafx.application.Application;
@@ -13,33 +14,43 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import org.w3c.dom.Document;
+import org.bson.Document;
 
 
 public class Main_App extends Application {
 
     Stage window;
+    Document d;
+    String uri = "mongodb+srv://Alexa:alexa@mangodb-wcom9.mongodb.net/Login";
+    MongoClientURI clientURI = new MongoClientURI(uri);
+    MongoClient mongoClient = new MongoClient(clientURI);
+    MongoDatabase mongoDatabase = mongoClient.getDatabase("MongoDB");
+    MongoCollection collection = mongoDatabase.getCollection("Login");
 
     public static void main(String[] args) {
-
-        String uri = "mongodb+srv://Alexa:alexa@mangodb-wcom9.mongodb.net/Login";
-        MongoClientURI clientURI = new MongoClientURI(uri);
-        MongoClient mongoClient = new MongoClient(clientURI);
-        MongoDatabase mongoDatabase = mongoClient.getDatabase("MongoDB");
-        MongoCollection collection = mongoDatabase.getCollection("Login");
         System.out.println("Database Connected");
-
-        FindIterable<Document> fi = collection.find();
-
         launch(args);
     }
+////////////////////////                     DATABASE                        //////////////////////////////////////////////////////////////////////////////
 
+    private static final DBObject toDBObject(User u) {
+        return new BasicDBObject("First Name", u.getFirstName())
+                .append("Last Name", u.getLastName())
+                .append("Age", u.getAge())
+                .append("Username", u.username)
+                .append("Password", u.password)
+                .append("Mail adress", u.getMail_adress());
+    }
+
+
+    ////////////////////////                     INTERFACE                        //////////////////////////////////////////////////////////////////////////////
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
         window = primaryStage;
         window.setTitle("Login");
-        window.setMaximized(true);
+        window.setMinWidth(600);
+        //window.setMaximized(true);
 
 //////////////////////////////////////////////                         LOGIN SCENE                              ////////////////////////////////////////////////////////
 
@@ -75,6 +86,10 @@ public class Main_App extends Application {
         hor.setSpacing(10);
 
         Button loginButton = new Button("Log In");
+        loginButton.setOnAction(e -> {
+            d = new Document( "Username", usernameInput.getText().trim()).append("Password", passInput.getText().trim());
+            verifyLogin(d);
+        });
 
         Button login_adminButton = new Button("Log In As Admin");
 
@@ -88,13 +103,12 @@ public class Main_App extends Application {
         quitButton.setOnAction(e -> closeProgram(scene_LOGIN));
 
         hor.setAlignment(Pos.CENTER);
-        hor.getChildren().addAll(loginButton,login_adminButton, clearButton, quitButton);
-        GridPane.setConstraints(hor,1,2);
+        hor.getChildren().addAll(loginButton, login_adminButton, clearButton, quitButton);
+        GridPane.setConstraints(hor, 1, 2);
 
         //register
         Button registerButton = new Button("Register (only users)");
-        GridPane.setConstraints(registerButton,0, 2);
-
+        GridPane.setConstraints(registerButton, 0, 2);
 
 
         //Add everything to grid
@@ -113,8 +127,21 @@ public class Main_App extends Application {
         window.show();
     }
 
-    private void closeProgram(Scene current_scene){
-        if(ConfirmBox.display("Confirm Quit", "Are you sure you want to quit?")){ window.close(); }
-        else { window.setScene(current_scene); }
+    private void closeProgram(Scene current_scene) {
+        if (ConfirmBox.display("Confirm Quit", "Are you sure you want to quit?")) {
+            window.close();
+        } else {
+            window.setScene(current_scene);
+        }
+    }
+
+    private void verifyLogin(Document uDB) {
+        Document found = (Document) collection.find(uDB).first();
+        if (found != null) {
+            AlertBox.display("Alert", "Esti o IDIOATA, dar te-ai descurcat!!!!!");
+        } else {
+            AlertBox.display("Alert", "Username or password is wrong!");
+        }
     }
 }
+
