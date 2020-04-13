@@ -1,3 +1,4 @@
+import javafx.scene.image.Image;
 import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.layout.*;
@@ -13,6 +14,8 @@ public class AlertBox {
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
         window.setMinWidth(300);
+        Image image = new Image("/icon/alert-icon-picture-15464016804kg8n-1024x839.jpg");
+        window.getIcons().add(image);
 
         Label label = new Label();
         label.setText(message);

@@ -1,3 +1,4 @@
+import javafx.scene.image.Image;
 import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.layout.*;
@@ -12,7 +13,9 @@ public class ConfirmBox {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
-        window.setMinWidth(300);
+        window.setMinWidth(400);
+        Image image = new Image("/icon/checkbox_form_unchecked_tick-512.png");
+        window.getIcons().add(image);
 
         //grid
         GridPane layout = new GridPane();

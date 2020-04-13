@@ -197,21 +197,19 @@ public class Main_App extends Application {
 
         Button createAccount = new Button("Create account");
         createAccount.setOnAction(e ->{
-            u = new User();
-            u.setFirstName(firstNameInput_REGISTER.getText().trim());
-            System.out.println(u.getFirstName());
-            u.setLastName(lastNameInput_REGISTER.getText().trim());
             try{
-            u.setAge((Integer.parseInt(ageInput_REGISTER.getText().trim())));}
+                u = new User();
+                u.username = usernameInput_REGISTER.getText().trim();
+                u.password = passInput_REGISTER.getText().trim();
+                u.setMail_adress(mailInput_REGISTER.getText().trim());
+                u.setFirstName(firstNameInput_REGISTER.getText().trim());
+                u.setLastName(lastNameInput_REGISTER.getText().trim());
+                u.setAge((Integer.parseInt(ageInput_REGISTER.getText().trim())));
+                collection.insertOne(Main_App.toDocument(u));
+                AlertBox.display("Alerta", "IQ DIVIN CE ESTI !!!!!");}////////////////////////////////////////////////////////////to main app
             catch(NumberFormatException ex){
                 AlertBox.display("Alert", "Error: " + ageInput_REGISTER.getText().trim().toUpperCase() + " is not a number");
             }
-            u.username = usernameInput_REGISTER.getText().trim();
-            u.password = passInput_REGISTER.getText().trim();
-            u.setMail_adress(mailInput_REGISTER.getText().trim());
-            System.out.println(u);
-            collection.insertOne(Main_App.toDocument(u));
-            AlertBox.display("Alerta", "IQ DIVIN CE ESTI !!!!!");////////////////////////////////////////////////////////////to main app
         });
 
         Button back_REGISTER = new Button("Back");
