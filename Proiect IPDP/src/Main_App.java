@@ -8,9 +8,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -77,9 +75,12 @@ public class Main_App extends Application {
         GridPane.setConstraints(passLabel, 0, 1);
 
         //Password Input
-        TextField passInput = new TextField();
+        PasswordField passInput = new PasswordField();
+        TextField pass_visible = new TextField();
         passInput.setPromptText("password");
         GridPane.setConstraints(passInput, 1, 1);
+        CheckBox box_show = new CheckBox("Show");
+        GridPane.setConstraints(box_show, 2, 1);
 
         //Login
         HBox hor = new HBox();
@@ -113,7 +114,7 @@ public class Main_App extends Application {
 
         //Add everything to grid
         grid.setAlignment(Pos.CENTER);
-        grid.getChildren().addAll(nameLabel, usernameInput, passLabel, passInput, hor, registerButton);
+        grid.getChildren().addAll(nameLabel, usernameInput, passLabel, passInput, hor, registerButton,box_show);
 
         window.setOnCloseRequest(e -> {
             e.consume();
