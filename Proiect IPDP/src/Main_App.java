@@ -3,13 +3,11 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import javafx.application.Application;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -19,6 +17,11 @@ import org.bson.Document;
 
 public class Main_App extends Application {
 
+    private SimpleBooleanProperty showPassword ;
+    private CheckBox checkBox;
+    private Tooltip toolTip;
+    private PasswordField pF;
+
     Stage window;
     User u ;
     Document d;
@@ -27,6 +30,7 @@ public class Main_App extends Application {
     MongoClient mongoClient = new MongoClient(clientURI);
     MongoDatabase mongoDatabase = mongoClient.getDatabase("MongoDB");
     MongoCollection collection = mongoDatabase.getCollection("Login");
+    MongoCollection collection2 = mongoDatabase.getCollection("Admin");
 
     public static void main(String[] args) {
         System.out.println("Database Connected");
@@ -73,7 +77,17 @@ public class Main_App extends Application {
         grid_REGISTER.setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
         grid_REGISTER.setAlignment(Pos.CENTER);
 
-        // scene
+        GridPane grid_Ladmin = new GridPane();/////////////////////////////////////////////////////////////               GRID LOG ADMIN
+        grid_Ladmin.setPadding(new Insets(10, 10, 10, 10));
+        grid_Ladmin.setVgap(8);
+        grid_Ladmin.setHgap(10);
+        grid_Ladmin.setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
+        grid_Ladmin.setAlignment(Pos.CENTER);
+
+////////////////////////////////////////////////////PASSWORD HIDE/SHOW///////////////////////////////
+
+
+        //scene
         Scene scene_LOGIN = new Scene(grid, 600, 300);
 
         //Name Label - constrains use (child, column, row)
@@ -92,6 +106,24 @@ public class Main_App extends Application {
         PasswordField passInput = new PasswordField();
         passInput.setPromptText("password");
         GridPane.setConstraints(passInput, 1, 1);
+        TextField text = new TextField();
+        text.setManaged(false);
+        text.setVisible(false);
+
+        CheckBox checkBox = new CheckBox("Show/Hide password");
+        GridPane.setConstraints(checkBox, 3, 1);
+        checkBox.setOnAction(e -> {
+            if (checkBox.isSelected()){
+                passInput.setPromptText(passInput.getText());
+                passInput.setText("");
+
+            }else {
+                passInput.setText(passInput.getPromptText());
+                passInput.setPromptText("");
+            }
+        });
+
+
 
         //Login
         HBox hor = new HBox();
@@ -100,10 +132,12 @@ public class Main_App extends Application {
         Button loginButton = new Button("Log In");
         loginButton.setOnAction(e -> {
             d = new Document( "Username", usernameInput.getText().trim()).append("Password", passInput.getText().trim());
-            verifyLogin(d);
+            verifyLogin(d, collection);
         });
-
+///////////////////////////////////////////////////////////////LOGIN ADMIN
+        Scene scene_Ladmin = new Scene(grid_Ladmin, 600, 300);
         Button login_adminButton = new Button("Log In As Admin");
+        login_adminButton.setOnAction(e -> window.setScene(scene_Ladmin));
 
         Button clearButton = new Button("Clear");
         clearButton.setOnAction(e -> {
@@ -127,7 +161,7 @@ public class Main_App extends Application {
 
         //Add everything to grid
 
-        grid.getChildren().addAll(nameLabel, usernameInput, passLabel, passInput, hor, registerButton);
+        grid.getChildren().addAll(nameLabel, usernameInput, passLabel, passInput, hor, registerButton, checkBox);
 
         window.setOnCloseRequest(e -> {
             e.consume();
@@ -222,9 +256,56 @@ public class Main_App extends Application {
         grid_REGISTER.getChildren().addAll(firstNameL_REGISTER, firstNameInput_REGISTER, lastNameL_REGISTER, lastNameInput_REGISTER,
                 usernameL_REGISTER,usernameInput_REGISTER, passwordL_REGISTER, passInput_REGISTER, mailL_REGISTER, mailInput_REGISTER, ageL_REGISTER, ageInput_REGISTER,
                 hor_REGISTER);
+/////////////////////////////////////////////////////////////// SCENE LOG ADMIN ///////////////////////////////////////////
+
+        //Label Login_serial
+        Label serial_label = new Label("Login serial:");
+        GridPane.setConstraints( serial_label, 0, 0);
+
+        TextField  serial_INPUT = new TextField("Login serial");
+        GridPane.setConstraints(serial_INPUT, 1, 0);
+
+        //Name Label - constrains use (child, column, row)
+        Label adminID_label = new Label("admin ID:");
+        GridPane.setConstraints( adminID_label, 0, 1);
 
 
+        //Name Input
+        TextField  adminID_INPUT = new TextField("admin ID");
+        GridPane.setConstraints(adminID_INPUT, 1, 1);
 
+        //Password Label
+        Label passA_label= new Label("Password:");
+        GridPane.setConstraints(passA_label, 0, 2);
+
+        //Password Input
+        PasswordField passA_Input = new PasswordField();
+        passA_Input.setPromptText("password");
+        GridPane.setConstraints(passA_Input, 1, 2);
+
+        //Login
+        HBox hor_LA = new HBox();
+        hor.setSpacing(10);
+
+        ///BUTTONS
+        Button loginAdminButton = new Button("Log In");
+        loginAdminButton.setOnAction(e -> {
+            d = new Document( "Login serial", serial_INPUT.getText().trim()).append( "admin ID", adminID_INPUT.getText().trim()).append("Password", passA_Input.getText().trim());
+            verifyLogin(d, collection2);
+        });
+
+        Button clearAdminButton = new Button("Clear");
+        clearAdminButton.setOnAction(e -> {
+            adminID_INPUT.clear();
+            passA_Input.clear();
+        });
+
+        Button quitAdminButton = new Button("Quit");
+        quitAdminButton.setOnAction(e -> closeProgram(scene_Ladmin));
+        hor_LA.getChildren().addAll(loginAdminButton, clearAdminButton,quitAdminButton);
+        GridPane.setConstraints(hor_LA, 1, 3);
+
+        grid_Ladmin.getChildren().addAll(serial_label, serial_INPUT, adminID_label, adminID_INPUT, passA_label, passA_Input, hor_LA);
 
         window.show();
     }
@@ -237,8 +318,8 @@ public class Main_App extends Application {
         }
     }
 
-    private void verifyLogin(Document uDB) {
-        Document found = (Document) collection.find(uDB).first();
+    private void verifyLogin(Document uDB, MongoCollection coll) {
+        Document found = (Document) coll.find(uDB).first();
         if (found != null) {
             AlertBox.display("Alert", "Esti o IDIOATA, dar te-ai descurcat!!!!!");
         } else {
