@@ -26,4 +26,5 @@ public class Admin extends Person {
     public void setMail_adress(String mail_adress) {
         this.mail_adress = mail_adress;
     }
+
 }

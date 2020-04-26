@@ -1,5 +1,7 @@
 package sample;
 
+import Classes.Item;
+import Classes.ManagerItems;
 import Classes.User;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -50,7 +52,15 @@ public class Main_App extends Application {
 
     public static void main(String[] args) {
         System.out.println("Database Connected");
-        launch(args);
+        Item it = new Item("Something", 121124, 1314);
+        Item it_up = new Item("Da", 121124, 1213);
+        ManagerItems item = new ManagerItems();
+        //item.AddItem(it);
+        //item.DeleteItem(it);
+        item.UpdateItem(it, it_up);
+        System.out.println("cv");
+
+        //launch(args);
     }
 ////////////////////////                     DATABASE                        //////////////////////////////////////////////////////////////////////////////
 
