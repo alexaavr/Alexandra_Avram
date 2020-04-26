@@ -52,14 +52,14 @@ public class Main_App extends Application {
 
     public static void main(String[] args) {
         System.out.println("Database Connected");
-        Item it = new Item("Something", 121124, 1314);
-        Item it_up = new Item("Da", 1214, 131);
+        Item it = new Item("Something", 121124, 1314, 14);
+        Item it_up = new Item("Da", 1214, 131, 300, "");
         ManagerItems item = new ManagerItems();
-        //item.AddItem(it);
-        //item.DeleteItem(it);
-        item.UpdateItemName(it, it_up);
-        System.out.println("cv");
-
+        item.AddItem(it_up);
+        //item.DeleteItem(it_up);
+        //item.UpdateItem(it, it_up);
+        //item.VerifyItemExistance(it);
+        //item.ReserveItem(it);
         //launch(args);
     }
 ////////////////////////                     DATABASE                        //////////////////////////////////////////////////////////////////////////////
