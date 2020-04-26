@@ -53,11 +53,11 @@ public class Main_App extends Application {
     public static void main(String[] args) {
         System.out.println("Database Connected");
         Item it = new Item("Something", 121124, 1314);
-        Item it_up = new Item("Da", 121124, 1213);
+        Item it_up = new Item("Da", 1214, 131);
         ManagerItems item = new ManagerItems();
         //item.AddItem(it);
         //item.DeleteItem(it);
-        item.UpdateItem(it, it_up);
+        item.UpdateItemName(it, it_up);
         System.out.println("cv");
 
         //launch(args);

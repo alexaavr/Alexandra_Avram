@@ -5,6 +5,7 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 public class ManagerItems {
     Item items;
@@ -40,15 +41,21 @@ public class ManagerItems {
         }
     }
 
-    public void UpdateItem(Item item, Item item_up){
+    public void UpdateItemName(Item item, Item item_up){
         Document query = new Document("Name", item.name)
                 .append("Code", item.code)
                 .append("Amount", item.amount);
-        Document d = new Document("Name", item_up.name)
-                .append("Code", item_up.code)
-                .append("Amount", item_up.amount);
-        Document d_up = new Document();
-        d_up.append("$set", d);
-        collection.updateOne(query, d_up);
-    }  ///////////////////////////////////////////////////////////intreaba de asta
+        Document found = (Document) collection.find(query).first();
+
+        if(found != null){
+            System.out.println("Found User");
+
+            Bson updatedvalue = new Document("Name", item_up.name)
+                    .append("Code", item_up.code)
+                    .append("Amount", item_up.amount);
+            Bson updateoperation = new Document("$set", updatedvalue);
+            collection.updateOne(found,updateoperation);
+            System.out.println("User Updated");
+        }
+    }
 }
