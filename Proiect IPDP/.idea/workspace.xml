@@ -32,6 +32,7 @@
       <list>
         <option value="JavaFXApplication" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -47,11 +48,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="C:/Program Files/Java/mongo4idea/lib" />
+    <property name="last_opened_file_path" value="$APPLICATION_HOME_DIR$/build.txt" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
   <component name="RunManager" selected="Application.Main_App">
     <configuration name="Login_FX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -62,7 +63,7 @@
       </method>
     </configuration>
     <configuration name="Main_App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main_App" />
+      <option name="MAIN_CLASS_NAME" value="sample.Main_App" />
       <module name="Proiect IPDP" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-11.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
@@ -110,6 +111,12 @@
       <workItem from="1586801093108" duration="6916000" />
       <workItem from="1586808682632" duration="397000" />
       <workItem from="1586847803689" duration="5917000" />
+      <workItem from="1586857287575" duration="819000" />
+      <workItem from="1587836112590" duration="1953000" />
+      <workItem from="1587887860850" duration="1803000" />
+      <workItem from="1587890379854" duration="2263000" />
+      <workItem from="1587892857703" duration="1450000" />
+      <workItem from="1587895334200" duration="252000" />
     </task>
     <servers />
   </component>
@@ -117,10 +124,14 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="71" key="#Auto_Import" timestamp="1586717715624">
+    <state x="361" y="71" key="#Auto_Import" timestamp="1587895454236">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="71" key="#Auto_Import/0.0.1536.824@0.0.1536.824" timestamp="1586717715624" />
+    <state x="361" y="71" key="#Auto_Import/0.0.1536.824@0.0.1536.824" timestamp="1587895454236" />
+    <state x="361" y="71" key="#Inspections" timestamp="1586857837819">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="71" key="#Inspections/0.0.1536.824@0.0.1536.824" timestamp="1586857837819" />
     <state x="447" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586697992271">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -129,10 +140,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="803" y="235" key="#com.intellij.ide.macro.MacrosDialog/0.0.1536.824@0.0.1536.824" timestamp="1586696104271" />
-    <state x="1085" y="176" key="#com.intellij.ide.util.MemberChooser" timestamp="1586850650450">
+    <state x="1085" y="176" key="#com.intellij.ide.util.MemberChooser" timestamp="1587895404889">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="1085" y="176" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1586850650450" />
+    <state x="1085" y="176" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1587895404889" />
     <state x="618" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1586678889379">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -141,42 +152,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="569" y="115" key="ExecutionTargetDialog/0.0.1536.824@0.0.1536.824" timestamp="1586698034829" />
-    <state x="758" y="98" key="FileChooserDialogImpl" timestamp="1586697737565">
+    <state x="818" y="105" key="FileChooserDialogImpl" timestamp="1587889515657">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="758" y="98" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1586697737565" />
-    <state width="725" height="142" key="GridCell.Tab.0.bottom" timestamp="1586853727167">
+    <state x="818" y="105" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587889515657" />
+    <state width="1493" height="141" key="GridCell.Tab.0.bottom" timestamp="1587895586139">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="725" height="142" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586853727167" />
-    <state width="725" height="142" key="GridCell.Tab.0.center" timestamp="1586853727167">
+    <state width="1493" height="141" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587895586139" />
+    <state width="1493" height="141" key="GridCell.Tab.0.center" timestamp="1587895586139">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="725" height="142" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586853727167" />
-    <state width="725" height="142" key="GridCell.Tab.0.left" timestamp="1586853727166">
+    <state width="1493" height="141" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587895586139" />
+    <state width="1493" height="141" key="GridCell.Tab.0.left" timestamp="1587895586139">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="725" height="142" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586853727166" />
-    <state width="725" height="142" key="GridCell.Tab.0.right" timestamp="1586853727167">
+    <state width="1493" height="141" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587895586139" />
+    <state width="1493" height="141" key="GridCell.Tab.0.right" timestamp="1587895586139">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="725" height="142" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586853727167" />
-    <state x="441" y="18" width="1038" height="806" key="SettingsEditor" timestamp="1586779564044">
+    <state width="1493" height="141" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587895586139" />
+    <state x="465" y="4" width="1038" height="806" key="SettingsEditor" timestamp="1587889516805">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="441" y="18" width="1038" height="806" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1586779564044" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1586847803593">
+    <state x="465" y="4" width="1038" height="806" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1587889516805" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1587895336399">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586847803593" />
-    <state x="540" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1586703625066">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587895336399" />
+    <state x="540" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1586858002582">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="540" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1586703625066" />
-    <state x="418" y="45" key="new project wizard" timestamp="1586695380516">
+    <state x="540" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1586858002582" />
+    <state x="210" y="90" key="new project wizard" timestamp="1587887881058">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="418" y="45" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1586695380516" />
+    <state x="210" y="90" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1587887881058" />
     <state x="894" y="53" key="refactoring.ChangeSignatureDialog" timestamp="1586247290943">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
