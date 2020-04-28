@@ -24,6 +24,11 @@ public class ManagerItems {
         this.items = items;
     }
 
+    public <T> void AddSomething(T t){
+        Document d = new Document();
+        collection.insertOne(d);
+    }
+
     public void AddItem(Item item){
         Document d = new Document("Name", item.name)
                 .append("Code", item.code)
@@ -63,7 +68,7 @@ public class ManagerItems {
         }
     }
 
-    public void VerifyItemExistance(Item item){
+    public void VerifyStock(Item item){
         Document query = new Document("Name", item.name)
                 .append("Code", item.code)
                 .append("Amount", item.amount)
@@ -90,5 +95,18 @@ public class ManagerItems {
             collection.updateOne(query,updateoperation);
         }
         else System.out.println("Cand't reserve item");
+    }
+
+    public void AskForItem(Item item){
+        Document query = new Document("Name", item.name)
+                .append("Code", item.code)
+                .append("Amount", item.amount)
+                .append("Price", item.price);
+        Document found = (Document) collection.find(query).first();
+        if(found == null){
+            System.out.println("Please add this item for me!");
+            AddItem(item);
+            System.out.println("Item added!");
+        }
     }
 }
