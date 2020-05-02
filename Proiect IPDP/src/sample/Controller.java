@@ -1,19 +1,13 @@
 package sample;
 
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
+import javafx.fxml.Initializable;
 
-public class Controller {
-    CheckBox checkBox = new CheckBox();
-    PasswordField passInput = new PasswordField();
-    public void something(){
-        if (checkBox.isSelected()){
-            passInput.setPromptText(passInput.getText());
-            passInput.setText("");
+import java.net.URL;
+import java.util.ResourceBundle;
 
-        }else {
-            passInput.setText(passInput.getPromptText());
-            passInput.setPromptText("");
-        }
+public class Controller implements Initializable {
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 }

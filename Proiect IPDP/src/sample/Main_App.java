@@ -1,19 +1,22 @@
 package sample;
 
-import Classes.*;
+import Classes.Item;
+import Classes.ManagerItems;
+import Classes.ManagerUsers;
+import Classes.User;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import javafx.application.Application;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.bson.Document;
 
@@ -61,7 +64,7 @@ public class Main_App extends Application {
         //item.UpdateItem(it, it_up);
         //item.VerifyStock(it);
         //item.ReserveItem(it);
-        //launch(args);
+        launch(args);
     }
 ////////////////////////                     DATABASE                        //////////////////////////////////////////////////////////////////////////////
 
@@ -78,13 +81,17 @@ public class Main_App extends Application {
     ////////////////////////                     INTERFACE                        //////////////////////////////////////////////////////////////////////////////
     @Override
     public void start(Stage primaryStage) throws Exception {
-//////////////////////////////////////////////                         WINDOW                              ////////////////////////////////////////////////////////
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         window = primaryStage;
         window.setTitle("Login");
-        window.setMinWidth(600);
         //window.setMaximized(true);
         Image image = new Image("/icon/images.png");
         window.getIcons().add(image);
+        window.setScene(new Scene(root,600,600));
+        window.show();
+/*
+//////////////////////////////////////////////                         WINDOW                              ////////////////////////////////////////////////////////
+
 
 //////////////////////////////////////////////                         LOGIN SCENE                              ////////////////////////////////////////////////////////
 
@@ -351,6 +358,7 @@ public class Main_App extends Application {
         } else {
             AlertBox.display("Alert", "Username or password is wrong!");
         }
+*/
     }
 }
 
