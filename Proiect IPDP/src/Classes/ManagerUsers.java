@@ -1,21 +1,11 @@
 package Classes;
 
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import DB.ConnectionDB;
 
 public class ManagerUsers {
     User users;
-
-    String uri = "mongodb+srv://Alexa:alexa@mangodb-wcom9.mongodb.net/Login";
-    MongoClientURI clientURI = new MongoClientURI(uri);
-    MongoClient mongoClient = new MongoClient(clientURI);
-    MongoDatabase mongoDatabase = mongoClient.getDatabase("MongoDB");
-    MongoCollection collection = mongoDatabase.getCollection("Login");
-
 
     public ManagerUsers(User users) {
         this.users = users;
@@ -31,7 +21,7 @@ public class ManagerUsers {
                 .append("Username", user.username)
                 .append("Password", user.password)
                 .append("Mail adress", user.getMail_adress());
-        collection.insertOne(d);
+        ConnectionDB.collectionLogin.insertOne(d);
     }
 
     public void DeleteUser(User user){
@@ -41,9 +31,9 @@ public class ManagerUsers {
                 .append("Username", user.username)
                 .append("Password", user.password)
                 .append("Mail adress", user.getMail_adress());
-        Document found = (Document) collection.find(d).first();
+        Document found = (Document) ConnectionDB.collectionLogin.find(d).first();
         if(found != null){
-            collection.deleteOne(d);
+            ConnectionDB.collectionLogin.deleteOne(d);
         }
     }
 
@@ -54,7 +44,7 @@ public class ManagerUsers {
                 .append("Username", user.username)
                 .append("Password", user.password)
                 .append("Mail adress", user.getMail_adress());
-        Document found = (Document) collection.find(query).first();
+        Document found = (Document) ConnectionDB.collectionLogin.find(query).first();
 
         if(found != null){
             System.out.println("Found User");
@@ -66,7 +56,7 @@ public class ManagerUsers {
                     .append("Password", user_up.password)
                     .append("Mail adress", user_up.getMail_adress());
             Bson updateoperation = new Document("$set", updatedvalue);
-            collection.updateOne(found,updateoperation);
+            ConnectionDB.collectionLogin.updateOne(found,updateoperation);
             System.out.println("User Updated");
         }
     }

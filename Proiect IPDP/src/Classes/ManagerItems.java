@@ -1,21 +1,11 @@
 package Classes;
 
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import DB.ConnectionDB;
 
 public class ManagerItems {
     Item items;
-
-    String uri = "mongodb+srv://Alexa:alexa@mangodb-wcom9.mongodb.net/Login";
-    MongoClientURI clientURI = new MongoClientURI(uri);
-    MongoClient mongoClient = new MongoClient(clientURI);
-    MongoDatabase mongoDatabase = mongoClient.getDatabase("MongoDB");
-    MongoCollection collection = mongoDatabase.getCollection("Items");
-
 
     public ManagerItems() {
     }
@@ -26,7 +16,7 @@ public class ManagerItems {
 
     public <T> void AddSomething(T t){
         Document d = new Document();
-        collection.insertOne(d);
+        ConnectionDB.collectionItem.insertOne(d);
     }
 
     public void AddItem(Item item){
@@ -34,7 +24,7 @@ public class ManagerItems {
                 .append("Code", item.code)
                 .append("Amount", item.amount)
                 .append("Price", item.price);
-        collection.insertOne(d);
+        ConnectionDB.collectionItem.insertOne(d);
     }
 
     public void DeleteItem(Item item){
@@ -42,9 +32,9 @@ public class ManagerItems {
                 .append("Code", item.code)
                 .append("Amount", item.amount)
                 .append("Price", item.price);
-        Document found = (Document) collection.find(d).first();
+        Document found = (Document) ConnectionDB.collectionItem.find(d).first();
         if(found != null){
-            collection.deleteOne(d);
+            ConnectionDB.collectionItem.deleteOne(d);
         }
     }
 
@@ -53,7 +43,7 @@ public class ManagerItems {
                 .append("Code", item.code)
                 .append("Amount", item.amount)
                 .append("Price", item.price);
-        Document found = (Document) collection.find(query).first();
+        Document found = (Document) ConnectionDB.collectionItem.find(query).first();
 
         if(found != null){
             System.out.println("Found Item");
@@ -63,7 +53,7 @@ public class ManagerItems {
                     .append("Amount", item_up.amount)
                     .append("Price", item_up.price);
             Bson updateoperation = new Document("$set", updatedvalue);
-            collection.updateMany(found,updateoperation);
+            ConnectionDB.collectionItem.updateMany(found,updateoperation);
             System.out.println("Item Updated");
         }
     }
@@ -73,7 +63,7 @@ public class ManagerItems {
                 .append("Code", item.code)
                 .append("Amount", item.amount)
                 .append("Price", item.price);
-        Document found = (Document) collection.find(query).first();
+        Document found = (Document) ConnectionDB.collectionItem.find(query).first();
 
         if(found != null) {
             System.out.println("Found item");
@@ -87,12 +77,12 @@ public class ManagerItems {
                 .append("Code", item.code)
                 .append("Amount", item.amount)
                 .append("Price", item.price);
-        Document found = (Document) collection.find(query).first();
+        Document found = (Document) ConnectionDB.collectionItem.find(query).first();
 
         if(found != null) {
             Document updatedvalue = new Document("Ststus", "reserved");
             Bson updateoperation = new Document("$set", updatedvalue);
-            collection.updateOne(query,updateoperation);
+            ConnectionDB.collectionItem.updateOne(query,updateoperation);
         }
         else System.out.println("Cand't reserve item");
     }
@@ -102,7 +92,7 @@ public class ManagerItems {
                 .append("Code", item.code)
                 .append("Amount", item.amount)
                 .append("Price", item.price);
-        Document found = (Document) collection.find(query).first();
+        Document found = (Document) ConnectionDB.collectionItem.find(query).first();
         if(found == null){
             System.out.println("Please add this item for me!");
             AddItem(item);

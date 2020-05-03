@@ -18,22 +18,19 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class LoginAsAdminController implements Initializable {
 
     //GENERAL USE
     @FXML private Stage stage = new Stage();
-    //LOGIN SCENE
-    @FXML private TextField usernameInput = new TextField();
+
+    @FXML private TextField serialInput = new TextField();
+    @FXML private TextField idInput = new TextField();
     @FXML private PasswordField passInput = new PasswordField();
-    @FXML private Button registerButton = new Button();
-    @FXML private Button loginButton = new Button();
-    @FXML private Button login_adminButonn = new Button();
     @FXML private Button quitButton = new Button();
     @FXML private CheckBox checkBox_Login = new CheckBox();
 
-    ///KRY EVENTS
-    //LOGIN SCENE ACTIONS
 
+    //ADMIN ACTIONS
     //QUIT BUTTON ACTION
     @FXML
     private void quitButtonAction() throws IOException {
@@ -42,25 +39,26 @@ public class Controller implements Initializable {
         else stage.getScene().getWindow();
     }
 
+
     //CLEAR BUTTON ACTION
     @FXML
     private void clearButtonAction(){
-        usernameInput.clear();
+        serialInput.clear();
+        idInput.clear();
         passInput.clear();
     }
 
     //LOGIN BUTTON ACTION
-
     @FXML
     private void loginButtonAction(){
-        Document d = new Document( "Username", usernameInput.getText().trim()).append("Password", passInput.getText().trim());
-        Main_App.verifyLogin(d, ConnectionDB.collectionLogin);
+        Document d = new Document( "Login serial", serialInput.getText().trim()).append( "admin ID", idInput.getText().trim()).append("Password", passInput.getText().trim());
+        Main_App.verifyLogin(d, ConnectionDB.collectionAdmin);
     }
 
-    //LOGIN AS ADMIN BUTTON
+    //BACK BUTTON ACTION
     @FXML
-    private void login_adminButonnAction(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("LoginAsAdmin.fxml"));
+    private void backButoonAction(javafx.event.ActionEvent actionEvent) throws IOException {
+        Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Scene LoginAdminScene = new Scene(LoginAdminParent);
 
         //This line gets the Stage information
@@ -70,20 +68,7 @@ public class Controller implements Initializable {
         window.show();
     }
 
-    //REGISTER BUTTON
-    @FXML
-    private void registerButonnAction(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent RegisterParent = FXMLLoader.load(getClass().getResource("Register.fxml"));
-        Scene RegisterScene = new Scene(RegisterParent);
-
-        //This line gets the Stage information
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(RegisterScene);
-        window.show();
-    }
-
-    //CHECK BOX ACTION
+    // CHACK BOX ACTION
     @FXML
     private void checkBox_LoginAction(){
         if (checkBox_Login.isSelected()){
@@ -96,9 +81,7 @@ public class Controller implements Initializable {
         }
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 }
