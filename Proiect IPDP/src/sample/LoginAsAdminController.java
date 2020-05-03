@@ -52,7 +52,7 @@ public class LoginAsAdminController implements Initializable {
     @FXML
     private void loginButtonAction(){
         Document d = new Document( "Login serial", serialInput.getText().trim()).append( "admin ID", idInput.getText().trim()).append("Password", passInput.getText().trim());
-        Main_App.verifyLogin(d, ConnectionDB.collectionAdmin);
+        Main_App.verifyLogin(d, ConnectionDB.collectionAdmin, "Wrong Adimin ID or Login serial number or Password", "Alert!");
     }
 
     //BACK BUTTON ACTION

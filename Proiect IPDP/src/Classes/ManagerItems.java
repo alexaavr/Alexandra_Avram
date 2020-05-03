@@ -85,6 +85,8 @@ public class ManagerItems {
             ConnectionDB.collectionItem.updateOne(query,updateoperation);
         }
         else System.out.println("Cand't reserve item");
+
+        //IF ITEM RESERVED SEND IT TO ANOTHER COLLECTION
     }
 
     public void AskForItem(Item item){
@@ -98,5 +100,13 @@ public class ManagerItems {
             AddItem(item);
             System.out.println("Item added!");
         }
+    }
+
+    public void findItem(){
+     //fidn bar
+    }
+
+    public void AllItemsReserved(){
+
     }
 }

@@ -44,12 +44,12 @@ public class Main_App extends Application {
                 .append("Mail adress", u.getMail_adress());
     }
 
-    public static void verifyLogin(Document uDB, MongoCollection coll) {
+    public static boolean verifyLogin(Document uDB, MongoCollection coll, String message, String title) {
         Document found = (Document) coll.find(uDB).first();
         if (found != null) {
-            AlertBox.display("Alert", "Esti o IDIOATA, dar te-ai descurcat!!!!!");
+            return true;
         } else {
-            AlertBox.display("Alert", "Username or password is wrong!");
+            return AlertBox.display(title,message);
         }
 
     }
