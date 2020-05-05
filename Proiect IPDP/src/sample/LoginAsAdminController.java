@@ -50,9 +50,16 @@ public class LoginAsAdminController implements Initializable {
 
     //LOGIN BUTTON ACTION
     @FXML
-    private void loginButtonAction(){
+    private void loginButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
         Document d = new Document( "Login serial", serialInput.getText().trim()).append( "admin ID", idInput.getText().trim()).append("Password", passInput.getText().trim());
-        Main_App.verifyLogin(d, ConnectionDB.collectionAdmin, "Wrong Adimin ID or Login serial number or Password", "Alert!");
+        if (Main_App.verifyLogin(d, ConnectionDB.collectionAdmin, "Wrong Adimin ID or Login serial number or Password", "Alert!")) {
+            Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("AfterLoginUser.fxml"));
+            Scene LoginAdminScene = new Scene(LoginAdminParent);
+            //This line gets the Stage information
+            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            window.setScene(LoginAdminScene);
+            window.show();
+        }
     }
 
     //BACK BUTTON ACTION

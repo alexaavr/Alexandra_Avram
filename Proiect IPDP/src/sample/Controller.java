@@ -56,10 +56,8 @@ public class Controller implements Initializable {
         if (Main_App.verifyLogin(d, ConnectionDB.collectionLogin,"Wrong Username ot Password!", "Alert!")) {
             Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("AfterLoginUser.fxml"));
             Scene LoginAdminScene = new Scene(LoginAdminParent);
-
             //This line gets the Stage information
             Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
             window.setScene(LoginAdminScene);
             window.show();
         }

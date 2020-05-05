@@ -14,11 +14,6 @@ public class ManagerItems {
         this.items = items;
     }
 
-    public <T> void AddSomething(T t){
-        Document d = new Document();
-        ConnectionDB.collectionItem.insertOne(d);
-    }
-
     public void AddItem(Item item){
         Document d = new Document("Name", item.name)
                 .append("Code", item.code)
@@ -58,6 +53,7 @@ public class ManagerItems {
         }
     }
 
+    
     public void VerifyStock(Item item){
         Document query = new Document("Name", item.name)
                 .append("Code", item.code)
@@ -72,6 +68,8 @@ public class ManagerItems {
         else System.out.println("Cand't Found item");
     }
 
+
+    //USER
     public void ReserveItem(Item item){
         Document query = new Document("Name", item.name)
                 .append("Code", item.code)
@@ -89,6 +87,7 @@ public class ManagerItems {
         //IF ITEM RESERVED SEND IT TO ANOTHER COLLECTION
     }
 
+    //USER
     public void AskForItem(Item item){
         Document query = new Document("Name", item.name)
                 .append("Code", item.code)
