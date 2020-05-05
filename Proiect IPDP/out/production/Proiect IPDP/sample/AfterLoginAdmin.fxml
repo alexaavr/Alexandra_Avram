@@ -1,14 +1,229 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.AfterLoginAdminController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AfterLoginAdminController">
+   <children>
+      <SplitPane dividerPositions="0.2706766917293233" layoutX="300.0" layoutY="186.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <VBox alignment="CENTER" fillWidth="false" layoutX="60.0" layoutY="91.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <TextField promptText="Search" style="-fx-background-color: #E0E0E0;">
+                           <effect>
+                              <DropShadow />
+                           </effect></TextField>
+                        <Label text="Item Handling" textFill="#fffbfb">
+                           <font>
+                              <Font name="Verdana Bold" size="14.0" />
+                           </font>
+                           <effect>
+                              <DropShadow />
+                           </effect></Label>
+                        <TextField promptText="Name" style="-fx-background-color: #E0E0E0;">
+                           <effect>
+                              <DropShadow />
+                           </effect></TextField>
+                        <TextField promptText="Code" style="-fx-background-color: #E0E0E0;">
+                           <effect>
+                              <DropShadow />
+                           </effect></TextField>
+                        <TextField promptText="Amount" style="-fx-background-color: #E0E0E0;">
+                           <effect>
+                              <DropShadow />
+                           </effect></TextField>
+                        <TextField promptText="Price" style="-fx-background-color: #E0E0E0;">
+                           <effect>
+                              <DropShadow />
+                           </effect></TextField>
+                        <TextField promptText="Status" style="-fx-background-color: #E0E0E0;">
+                           <effect>
+                              <DropShadow />
+                           </effect></TextField>
+                        <HBox alignment="CENTER" prefHeight="42.0" prefWidth="193.0" spacing="10.0">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <Button mnemonicParsing="false" text="Add Item">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <font>
+                                    <Font name="Verdana" size="12.0" />
+                                 </font></Button>
+                              <Button mnemonicParsing="false" text="Delete Item">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <font>
+                                    <Font name="Verdana" size="12.0" />
+                                 </font></Button>
+                           </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" onAction="#UserHandleButtonAction" text="User Handling">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <font>
+                              <Font name="Verdana" size="12.0" />
+                           </font></Button>
+                        <Button mnemonicParsing="false" onAction="#singOutButtonAction" text="Sing Out">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <font>
+                              <Font name="Verdana" size="12.0" />
+                           </font></Button>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <SplitPane dividerPositions="0.5" layoutX="290.0" layoutY="54.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                  <TableColumn prefWidth="155.0" text="Name" />
+                                  <TableColumn prefWidth="90.0" text="Code" />
+                                    <TableColumn prefWidth="90.0" text="Amount" />
+                                    <TableColumn prefWidth="90.0" text="Price" />
+                                    <TableColumn prefWidth="155.0" text="Status" />
+                                </columns>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <SplitPane dividerPositions="0.4864489228630994" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="294.0" prefWidth="262.0">
+                                       <children>
+                                          <VBox alignment="CENTER" fillWidth="false" prefHeight="294.0" prefWidth="216.0" spacing="10.0" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <Label prefHeight="15.0" prefWidth="198.0" text="Update Item search by Code:" textFill="#fffbfb">
+                                                   <font>
+                                                      <Font name="Verdana Bold" size="12.0" />
+                                                   </font>
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect></Label>
+                                                <TextField prefHeight="26.0" prefWidth="200.0" promptText="Code" style="-fx-background-color: #E0E0E0;">
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect></TextField>
+                                                <Label text="New feature:" textFill="#fffbfb" translateX="-50.0">
+                                                   <font>
+                                                      <Font name="Verdana Bold" size="12.0" />
+                                                   </font>
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect></Label>
+                                                <TextField prefWidth="200.0" promptText="Name" style="-fx-background-color: #E0E0E0;">
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect></TextField>
+                                                <TextField prefWidth="200.0" promptText="Code" style="-fx-background-color: #E0E0E0;">
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect></TextField>
+                                                <TextField prefWidth="200.0" promptText="Amount" style="-fx-background-color: #E0E0E0;">
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect></TextField>
+                                                <TextField prefWidth="200.0" promptText="Status" style="-fx-background-color: #E0E0E0;">
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect></TextField>
+                                                <Button mnemonicParsing="false" text="Update Item">
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect>
+                                                   <font>
+                                                      <Font name="Verdana" size="12.0" />
+                                                   </font></Button>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="294.0" prefWidth="269.0">
+                                       <children>
+                                          <VBox alignment="CENTER" fillWidth="false" prefHeight="294.0" prefWidth="354.0" spacing="10.0" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <HBox alignment="CENTER" prefHeight="64.0" prefWidth="259.0" spacing="10.0">
+                                                   <children>
+                                                      <Label prefHeight="20.0" prefWidth="102.0" text="Verify stock: " textFill="#fffbfb">
+                                                         <font>
+                                                            <Font name="Verdana Bold" size="12.0" />
+                                                         </font>
+                                                         <effect>
+                                                            <DropShadow />
+                                                         </effect>
+                                                      </Label>
+                                                      <Button mnemonicParsing="false" text="Search" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <TextField prefHeight="26.0" prefWidth="290.0" promptText="Code" style="-fx-background-color: #E0E0E0;">
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect></TextField>
+                                                <TextArea prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #E0E0E0;">
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect></TextArea>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+         <effect>
+            <DropShadow />
+         </effect>
+      </SplitPane>
+   </children>
 </AnchorPane>
