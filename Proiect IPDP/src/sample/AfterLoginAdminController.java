@@ -45,15 +45,24 @@ public class AfterLoginAdminController implements Initializable {
     @FXML TextField searchInput = new TextField();
     @FXML TextArea text = new TextArea();
 
+    //text area add
+    @FXML TextArea text2 = new TextArea();
+
+
+    @FXML
+    private void clearButtonAction(){
+        nameInput.clear();
+        amountInput.clear();
+        codeInput.clear();
+        priceInput.clear();
+    }
     @FXML
     private void search(){
         if(searchInput.getText().equals("")) AlertBox.display("Alert", "Error: You must complete all fields!");
         else{
             item.name = searchInput.getText().trim();
-            if(i.findItem(item) == false) AlertBox.display("Alert", "Item not found!");
-            else {
-                text.setText("Your item is this: \n");
-            }
+            if(i.findItem(item) == false) text.setText("User not found!");
+            else text.setText("Your item is this: \n");
         }
     }
 
@@ -91,6 +100,7 @@ public class AfterLoginAdminController implements Initializable {
                 item.amount = Integer.parseInt(amountInput.getText().trim());
                 item.price = Integer.parseInt(priceInput.getText().trim());
                 i.DeleteItem(item);
+                text2.setText("Item deleted!");
             }catch(NumberFormatException ex){
                 AlertBox.display("Alert", "Error: "
                         + codeInput.getText().trim().toUpperCase() + " \n or \n"
@@ -112,6 +122,7 @@ public class AfterLoginAdminController implements Initializable {
                 item.amount = Integer.parseInt(amountInput.getText().trim());
                 item.price = Integer.parseInt(priceInput.getText().trim());
                 i.AddItem(item);
+                text2.setText("Item added!");
             }catch(NumberFormatException ex){
                 AlertBox.display("Alert", "Error: "
                         + codeInput.getText().trim().toUpperCase() + " \n or \n"

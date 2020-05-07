@@ -49,9 +49,10 @@ public class ManagerUsers {
     }
 
     public boolean findUser(User user){
+        boolean flag = false;
         Document d = new Document("Username", user.username);
-        if(ConnectionDB.collectionItem.find(d) == null)
-            return false;
-        else return true;
+        if(ConnectionDB.collectionItem.find(d) != null)
+            flag = true;
+        return flag;
     }
 }

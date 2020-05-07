@@ -10,17 +10,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AfterLoginAdminController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AfterLoginAdminController">
    <children>
-      <SplitPane dividerPositions="0.2706766917293233" layoutX="300.0" layoutY="186.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.3026052104208417" layoutX="300.0" layoutY="186.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <VBox alignment="CENTER" fillWidth="false" layoutX="60.0" layoutY="91.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox alignment="CENTER" fillWidth="false" layoutX="60.0" layoutY="91.0" prefHeight="200.0" prefWidth="366.0" spacing="20.0" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -32,23 +35,51 @@
                            <effect>
                               <DropShadow />
                            </effect></Label>
-                        <TextField fx:id="nameInput" promptText="Name" style="-fx-background-color: #E0E0E0;">
+                        <GridPane alignment="CENTER" hgap="10.0" prefHeight="158.0" prefWidth="297.0" vgap="5.0">
+                          <columnConstraints>
+                            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="127.39999389648438" minWidth="10.0" prefWidth="77.6" />
+                            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="221.6" minWidth="10.0" prefWidth="189.6" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <TextField fx:id="nameInput" promptText="Name" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" />
+                              <TextField fx:id="codeInput" promptText="Code" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="amountInput" promptText="Amount" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="priceInput" promptText="Price" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label text="Name:" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Code:" textFill="WHITE" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Verdana Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Amount:" textFill="WHITE" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Verdana Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Price:" textFill="WHITE" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Verdana Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
                            <effect>
                               <DropShadow />
-                           </effect></TextField>
-                        <TextField fx:id="codeInput" promptText="Code" style="-fx-background-color: #E0E0E0;">
-                           <effect>
-                              <DropShadow />
-                           </effect></TextField>
-                        <TextField fx:id="amountInput" promptText="Amount" style="-fx-background-color: #E0E0E0;">
-                           <effect>
-                              <DropShadow />
-                           </effect></TextField>
-                        <TextField fx:id="priceInput" promptText="Price" style="-fx-background-color: #E0E0E0;">
-                           <effect>
-                              <DropShadow />
-                           </effect></TextField>
-                        <HBox alignment="CENTER" prefHeight="42.0" prefWidth="193.0" spacing="10.0">
+                           </effect>
+                        </GridPane>
+                        <HBox alignment="CENTER" prefHeight="46.0" prefWidth="282.0" spacing="10.0">
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
@@ -67,6 +98,14 @@
                                  <font>
                                     <Font name="Verdana" size="12.0" />
                                  </font></Button>
+                              <Button mnemonicParsing="false" onAction="#clearButtonAction" text="Clear">
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <font>
+                                    <Font name="Verdana" size="12.0" />
+                                 </font>
+                              </Button>
                            </children>
                         </HBox>
                         <Button mnemonicParsing="false" onAction="#UserHandleButtonAction" text="User Handling">
@@ -76,13 +115,21 @@
                            <font>
                               <Font name="Verdana" size="12.0" />
                            </font></Button>
-                        <Button mnemonicParsing="false" onAction="#singOutButtonAction" text="Sing Out">
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#singOutButtonAction" text="Sing Out">
                            <effect>
                               <DropShadow />
                            </effect>
                            <font>
                               <Font name="Verdana" size="12.0" />
                            </font></Button>
+                        <TextArea fx:id="text2" prefHeight="78.0" prefWidth="240.0">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <font>
+                              <Font name="Verdana Bold" size="13.0" />
+                           </font>
+                        </TextArea>
                      </children>
                      <effect>
                         <DropShadow />
@@ -119,7 +166,7 @@
                                 <items>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="294.0" prefWidth="262.0">
                                        <children>
-                                          <VBox alignment="CENTER" fillWidth="false" prefHeight="294.0" prefWidth="216.0" spacing="10.0" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="294.0" prefWidth="216.0" spacing="10.0" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
                                                 <Label prefHeight="15.0" prefWidth="198.0" text="Update Item search by Code:" textFill="#fffbfb">
                                                    <font>
@@ -128,35 +175,61 @@
                                                    <effect>
                                                       <DropShadow />
                                                    </effect></Label>
-                                                <TextField fx:id="codeInput_to_UP" prefHeight="26.0" prefWidth="200.0" promptText="Code" style="-fx-background-color: #E0E0E0;">
-                                                   <effect>
-                                                      <DropShadow />
-                                                   </effect></TextField>
-                                                <Label text="New feature:" textFill="#fffbfb" translateX="-50.0">
-                                                   <font>
-                                                      <Font name="Verdana Bold" size="12.0" />
-                                                   </font>
-                                                   <effect>
-                                                      <DropShadow />
-                                                   </effect></Label>
-                                                <TextField fx:id="nameInputUP" prefWidth="200.0" promptText="Name" style="-fx-background-color: #E0E0E0;">
-                                                   <effect>
-                                                      <DropShadow />
-                                                   </effect></TextField>
-                                                <TextField fx:id="codeInputUP" prefWidth="200.0" promptText="Code" style="-fx-background-color: #E0E0E0;">
-                                                   <effect>
-                                                      <DropShadow />
-                                                   </effect></TextField>
-                                                <TextField fx:id="amountInputUP" prefWidth="200.0" promptText="Amount" style="-fx-background-color: #E0E0E0;">
-                                                   <effect>
-                                                      <DropShadow />
-                                                   </effect></TextField>
-                                                <TextField fx:id="priceInputUP" prefWidth="200.0" promptText="Price" style="-fx-background-color: #E0E0E0;">
+                                                <GridPane prefHeight="198.0" prefWidth="278.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="103.4" minWidth="10.0" prefWidth="92.79998779296875" />
+                                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="193.79998016357422" minWidth="10.0" prefWidth="185.60001220703123" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <TextField fx:id="nameInputUP" prefWidth="200.0" promptText="Name" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <TextField fx:id="codeInputUP" prefWidth="200.0" promptText="Code" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                      <TextField fx:id="amountInputUP" prefWidth="200.0" promptText="Amount" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                      <TextField fx:id="priceInputUP" prefWidth="200.0" promptText="Price" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                      <Label text="Name:" textFill="WHITE" GridPane.rowIndex="2">
+                                                         <font>
+                                                            <Font name="Verdana Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="Code:" textFill="WHITE" GridPane.rowIndex="3">
+                                                         <font>
+                                                            <Font name="Verdana Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="Amount:" textFill="WHITE" GridPane.rowIndex="4">
+                                                         <font>
+                                                            <Font name="Verdana Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="Price:" textFill="WHITE" GridPane.rowIndex="5">
+                                                         <font>
+                                                            <Font name="Verdana Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="New feature:" textFill="#fffbfb" GridPane.rowIndex="1">
+                                                         <font>
+                                                            <Font name="Verdana Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="Code:" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Verdana Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextField fx:id="codeInput_to_UP" prefHeight="26.0" prefWidth="174.0" promptText="Code" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" />
+                                                   </children>
                                                    <effect>
                                                       <DropShadow />
                                                    </effect>
-                                                </TextField>
-                                                <Button defaultButton="true" mnemonicParsing="false" onAction="#updateItemButtonAction" text="Update Item">
+                                                </GridPane>
+                                                <Button mnemonicParsing="false" onAction="#updateItemButtonAction" text="Update Item">
                                                    <effect>
                                                       <DropShadow />
                                                    </effect>
@@ -172,9 +245,9 @@
                                     </AnchorPane>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="294.0" prefWidth="269.0">
                                        <children>
-                                          <VBox alignment="CENTER" fillWidth="false" prefHeight="294.0" prefWidth="354.0" spacing="10.0" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="294.0" prefWidth="354.0" spacing="10.0" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
-                                                <HBox alignment="CENTER" prefHeight="64.0" prefWidth="259.0" spacing="10.0">
+                                                <HBox alignment="CENTER" prefHeight="30.0" prefWidth="259.0" spacing="10.0">
                                                    <children>
                                                       <Label prefHeight="20.0" prefWidth="102.0" text="Verify stock: " textFill="#fffbfb">
                                                          <font>
@@ -190,14 +263,17 @@
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                    </padding>
                                                 </HBox>
-                                                <TextField fx:id="searchInput" prefHeight="26.0" prefWidth="290.0" promptText="Name" style="-fx-background-color: #E0E0E0;">
+                                                <TextField fx:id="searchInput" prefHeight="25.0" prefWidth="290.0" promptText="Name" style="-fx-background-color: #E0E0E0;">
                                                    <effect>
                                                       <DropShadow />
                                                    </effect></TextField>
-                                                <TextArea fx:id="text" prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #E0E0E0;">
+                                                <TextArea fx:id="text" prefHeight="135.0" prefWidth="290.0" style="-fx-background-color: #E0E0E0;">
                                                    <effect>
                                                       <DropShadow />
-                                                   </effect></TextArea>
+                                                   </effect>
+                                                   <font>
+                                                      <Font name="Verdana Bold" size="13.0" />
+                                                   </font></TextArea>
                                              </children>
                                              <padding>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -30,6 +31,31 @@ public class UserHandleController implements Initializable {
 
     //search
     @FXML TextField searchInput = new TextField();
+    @FXML
+    TextArea text = new TextArea();
+
+    @FXML
+    private void clearButtonAction(){
+        usernameInput.clear();
+        passwordInput.clear();
+        lastnameInput.clear();
+        firstnameInput.clear();
+        mailInput.clear();
+        ageInput.clear();
+    }
+
+    @FXML
+    private void search(){
+        if(searchInput.getText().equals("")) AlertBox.display("Alert", "Error: You must complete all fields!");
+        else{
+            user.username = searchInput.getText().trim();
+            if(u.findUser(user) == true) text.setText("User found!");
+            else text.setText("User not found! \n");
+        }
+    }
+
+
+    ////////    NU MERGE FUCKING FIND
 
     @FXML
     private void updateUserButtonAction(){
@@ -141,6 +167,5 @@ public class UserHandleController implements Initializable {
     }
 }
 
-////   ADAUGA LABELS LA INTERFETELE DE DUPA LOGIN CA UITI CE UNDE E SCRIS
 //// ABSTRACTION FACTORY PATTERN
 ///TABLEVIEW UL VIETII
