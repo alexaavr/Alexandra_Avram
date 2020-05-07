@@ -60,7 +60,4 @@ public class ManagerUsers {
             System.out.println("User Updated");
         }
     }
-
-
-    // delete account
 }

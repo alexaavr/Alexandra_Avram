@@ -28,8 +28,6 @@ public class RegisterController implements Initializable {
     @FXML private TextField mailInput = new TextField();
     @FXML private TextField ageInput = new TextField();
     @FXML private PasswordField passInput = new PasswordField();
-    @FXML private Button registerButton = new Button();
-
     @FXML private Button quitButton = new Button();
     @FXML private CheckBox checkBox_Register = new CheckBox();
 
@@ -84,37 +82,41 @@ public class RegisterController implements Initializable {
 
     //REGISTER BUTTON ACTION
     @FXML
-    private void registerButtonAction(javafx.event.ActionEvent actionEvent){
-        Exception e = null;
-        try {
+    private void registerButtonAction(javafx.event.ActionEvent actionEvent)
+    {
+        if(usernameInput.getText().equals("") || passInput.getText().equals("")|| mailInput.getText().equals("") || firstnameInput.getText().equals("")
+        || lastnameInput.getText().equals("") || ageInput.getText().equals("")) AlertBox.display("Alert", "Error: To register you must complete all fields!");
+        else{
             User u = new User();
-            u.username = usernameInput.getText().trim();
-            u.password = passInput.getText().trim();
-            //password requires///////REZOLVA ASTA CA NU MERGE BINE
-            if (passInput.getText().toString().length() < 8)  AlertBox.display("Alert", "Error: Password must contain at least 8 characters!");
-            u.setMail_adress(mailInput.getText().trim());
-            if (Main_App.isValid(u.getMail_adress()) != true)  {
-                AlertBox.display("Alert", "Error: Incorrect mail address!");
+            if (Main_App.isValid(passInput.getText()) == false) AlertBox.display("Alert", "Error: Password must contain: \n " +
+                                                                                                        "-at least 8 characters;\n" +
+                                                                                                        "-at least an Uppercase;\n " +
+                                                                                                        "-at least an Lowercase;\n " +
+                                                                                                        "-at least a special character!");
+            else if (Main_App.isValidMail(mailInput.getText().trim()) == false) AlertBox.display("Alert", "Error: Incorrect mail address!");
+                else{
+                    try {
+                        u.username = usernameInput.getText().trim();
+                        u.password = passInput.getText().trim();
+                        u.setMail_adress(mailInput.getText().trim());
+                        u.setFirstName(firstnameInput.getText().trim());
+                        u.setLastName(lastnameInput.getText().trim());
+                        u.setAge((Integer.parseInt(ageInput.getText().trim())));
+                        ConnectionDB.collectionLogin.insertOne(Main_App.toDocument(u));
 
-            }
-            u.setFirstName(firstnameInput.getText().trim());
-            u.setLastName(lastnameInput.getText().trim());
-            u.setAge((Integer.parseInt(ageInput.getText().trim())));
-            ConnectionDB.collectionLogin.insertOne(Main_App.toDocument(u));
+                        AlertBox.display("Congratulations", "You registered successfully");
+                        Parent Parent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+                        Scene Scene = new Scene(Parent);
 
-            AlertBox.display("Congratulations", "ou registered successfully");
-            Parent Parent = FXMLLoader.load(getClass().getResource("sample.fxml"));
-            Scene Scene = new Scene(Parent);
+                        //This line gets the Stage information
+                        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
-            //This line gets the Stage information
-            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
-            window.setScene(Scene);
-            window.show();
-
-        }
-        catch(NumberFormatException | IOException ex){
-            AlertBox.display("Alert", "Error: " + ageInput.getText().trim().toUpperCase() + " is not a number!");
+                        window.setScene(Scene);
+                        window.show();
+                    }catch(NumberFormatException | IOException ex){
+                        AlertBox.display("Alert", "Error: " + ageInput.getText().trim().toUpperCase() + " is not a number!");
+                    }
+                }
         }
     }
 

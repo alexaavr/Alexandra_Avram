@@ -12,5 +12,5 @@ public class ConnectionDB {
     public static MongoDatabase mongoDatabase = mongoClient.getDatabase("MongoDB");
     public static MongoCollection collectionLogin = mongoDatabase.getCollection("Login");
     public static MongoCollection collectionAdmin = mongoDatabase.getCollection("Admin");
-    public static MongoCollection collectionItem = mongoDatabase.getCollection("Item");
+    public static MongoCollection collectionItem = mongoDatabase.getCollection("Items");
 }

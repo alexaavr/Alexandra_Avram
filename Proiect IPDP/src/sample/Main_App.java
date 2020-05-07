@@ -27,7 +27,7 @@ public class Main_App extends Application {
         ManagerItems item = new ManagerItems();
         ManagerUsers us = new ManagerUsers();
         //item.AddItem(it_up);
-        item.AskForItem(it_up);
+        //item.AskForItem(it_up);
         //item.DeleteItem(it_up);
         //item.UpdateItem(it, it_up);
         //item.VerifyStock(it);
@@ -54,7 +54,7 @@ public class Main_App extends Application {
 
     }
 
-    public static boolean isValid(String email)
+    public static boolean isValidMail(String email)
     {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
                 "[a-zA-Z0-9_+&*-]+)*@" +
@@ -65,6 +65,21 @@ public class Main_App extends Application {
         if (email == null)
             return false;
         return pat.matcher(email).matches();
+    }
+
+    public static boolean isValid(String passwordhere) {
+
+        Pattern specailCharPatten = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Pattern UpperCasePatten = Pattern.compile("[A-Z ]");
+        Pattern lowerCasePatten = Pattern.compile("[a-z ]");
+        Pattern digitCasePatten = Pattern.compile("[0-9 ]");
+        boolean flag = true;
+        if (passwordhere.length() < 8 || !(specailCharPatten.matcher(passwordhere).find())
+                || !(UpperCasePatten.matcher(passwordhere).find()) || !(lowerCasePatten.matcher(passwordhere).find())
+                || !(digitCasePatten.matcher(passwordhere).find()))
+            flag = false;
+
+        return flag;
     }
 
     @Override

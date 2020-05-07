@@ -1,5 +1,6 @@
 package sample;
 
+import Classes.ManagerUsers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +14,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class UserHandle implements Initializable {
+    ManagerUsers u = new ManagerUsers();
+
+
+
+    @FXML
+    private void AddUserButtonAction(){
+
+    }
 
     @FXML
     private void ItemHandlingButton(javafx.event.ActionEvent actionEvent) throws IOException {

@@ -25,9 +25,6 @@ public class Controller implements Initializable {
     //LOGIN SCENE
     @FXML private TextField usernameInput = new TextField();
     @FXML private PasswordField passInput = new PasswordField();
-    @FXML private Button registerButton = new Button();
-    @FXML private Button loginButton = new Button();
-    @FXML private Button login_adminButonn = new Button();
     @FXML private Button quitButton = new Button();
     @FXML private CheckBox checkBox_Login = new CheckBox();
 
@@ -52,14 +49,17 @@ public class Controller implements Initializable {
 
     @FXML
     private void loginButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
-        Document d = new Document( "Username", usernameInput.getText().trim()).append("Password", passInput.getText().trim());
-        if (Main_App.verifyLogin(d, ConnectionDB.collectionLogin,"Wrong Username ot Password!", "Alert!")) {
-            Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("AfterLoginUser.fxml"));
-            Scene LoginAdminScene = new Scene(LoginAdminParent);
-            //This line gets the Stage information
-            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            window.setScene(LoginAdminScene);
-            window.show();
+        if(usernameInput.getText().equals("") || passInput.getText().equals("")) AlertBox.display("Alert", "Error: To login you must complete all fields!");
+        else{
+            Document d = new Document( "Username", usernameInput.getText().trim()).append("Password", passInput.getText().trim());
+            if (Main_App.verifyLogin(d, ConnectionDB.collectionLogin,"Wrong Username or Password!", "Alert!")) {
+                Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("AfterLoginUser.fxml"));
+                Scene LoginAdminScene = new Scene(LoginAdminParent);
+                //This line gets the Stage information
+                Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                window.setScene(LoginAdminScene);
+                window.show();
+            }
         }
     }
 
