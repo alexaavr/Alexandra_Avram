@@ -1,9 +1,5 @@
 package sample;
 
-import Classes.Item;
-import Classes.ManagerItems;
-import Classes.ManagerUsers;
-import Classes.User;
 import com.mongodb.client.MongoCollection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -22,26 +18,7 @@ public class Main_App extends Application {
 
     public static void main(String[] args) {
         System.out.println("Database Connected");
-        Item it = new Item("Something", 121124, 1314, 14);
-        Item it_up = new Item("Da", 1214, 131, 300, "");
-        ManagerItems item = new ManagerItems();
-        ManagerUsers us = new ManagerUsers();
-        //item.AddItem(it_up);
-        //item.AskForItem(it_up);
-        //item.DeleteItem(it_up);
-        //item.UpdateItem(it, it_up);
-        //item.VerifyStock(it);
-        //item.ReserveItem(it);
         launch(args);
-    }
-
-    static final Document toDocument(User u) {
-        return new Document("First Name", u.getFirstName())
-                .append("Last Name", u.getLastName())
-                .append("Age", u.getAge())
-                .append("Username", u.username)
-                .append("Password", u.password)
-                .append("Mail adress", u.getMail_adress());
     }
 
     public static boolean verifyLogin(Document uDB, MongoCollection coll, String message, String title) {
@@ -81,6 +58,8 @@ public class Main_App extends Application {
 
         return flag;
     }
+
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {

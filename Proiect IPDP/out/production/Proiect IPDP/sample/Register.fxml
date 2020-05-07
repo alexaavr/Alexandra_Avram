@@ -65,10 +65,6 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="passInput" style="-fx-background-color: #ffdddd;" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <effect>
-                        <InnerShadow />
-                     </effect></PasswordField>
                   <TextField fx:id="firstnameInput" style="-fx-background-color: #ffdddd;" GridPane.columnIndex="1">
                      <effect>
                         <InnerShadow />
@@ -81,6 +77,10 @@
                      <effect>
                         <InnerShadow />
                      </effect></TextField>
+                  <PasswordField fx:id="passInput" style="-fx-background-color: #ffdddd;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <effect>
+                        <InnerShadow />
+                     </effect></PasswordField>
                   <TextField fx:id="mailInput" style="-fx-background-color: #ffdddd;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <effect>
                         <InnerShadow />
@@ -96,7 +96,7 @@
             </GridPane>
             <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="258.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#registerButtonAction" style="-fx-background-color: #ffdddd;" text="Register">
+                  <Button defaultButton="true" mnemonicParsing="false" onAction="#registerButtonAction" style="-fx-background-color: #ffdddd;" text="Register">
                      <effect>
                         <InnerShadow />
                      </effect></Button>
@@ -108,7 +108,7 @@
                      <effect>
                         <InnerShadow />
                      </effect></Button>
-                  <Button fx:id="quitButton" mnemonicParsing="false" onAction="#quitButtonAction" style="-fx-background-color: #ffdddd;" text="Quit">
+                  <Button fx:id="quitButton" cancelButton="true" mnemonicParsing="false" onAction="#quitButtonAction" style="-fx-background-color: #ffdddd;" text="Quit">
                      <effect>
                         <InnerShadow />
                      </effect></Button>

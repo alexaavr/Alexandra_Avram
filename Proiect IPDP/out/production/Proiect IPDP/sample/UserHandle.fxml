@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UserHandle">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UserHandleController">
     <children>
         <SplitPane dividerPositions="0.2706766917293233" layoutX="300.0" layoutY="186.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
@@ -24,10 +24,6 @@
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </padding>
                             <children>
-                                <TextField promptText="Search" style="-fx-background-color: #E0E0E0;">
-                                    <effect>
-                                        <DropShadow />
-                                    </effect></TextField>
                                 <Label text="User Handling" textFill="#fffbfb">
                                     <font>
                                         <Font name="Verdana Bold" size="14.0" />
@@ -35,28 +31,29 @@
                                     <effect>
                                         <DropShadow />
                                     </effect></Label>
-                                <TextField promptText="Username" style="-fx-background-color: #E0E0E0;">
+                                <TextField fx:id="usernameInput" promptText="Username" style="-fx-background-color: #E0E0E0;">
                                     <effect>
                                         <DropShadow />
-                                    </effect></TextField>
-                        <TextField promptText="Password" style="-fx-background-color: #E0E0E0;">
+                                    </effect>
+                        </TextField>
+                        <TextField fx:id="passwordInput" promptText="Password" style="-fx-background-color: #E0E0E0;">
                            <effect>
                               <DropShadow />
                            </effect>
                         </TextField>
-                                <TextField promptText="Firstname" style="-fx-background-color: #E0E0E0;">
+                                <TextField fx:id="firstnameInput" promptText="Firstname" style="-fx-background-color: #E0E0E0;">
                                     <effect>
                                         <DropShadow />
                                     </effect></TextField>
-                                <TextField promptText="Lastname" style="-fx-background-color: #E0E0E0;">
+                                <TextField fx:id="lastnameInput" promptText="Lastname" style="-fx-background-color: #E0E0E0;">
                                     <effect>
                                         <DropShadow />
                                     </effect></TextField>
-                                <TextField promptText="Mail address" style="-fx-background-color: #E0E0E0;">
+                                <TextField fx:id="mailInput" promptText="Mail address" style="-fx-background-color: #E0E0E0;">
                                     <effect>
                                         <DropShadow />
                                     </effect></TextField>
-                                <TextField promptText="Age" style="-fx-background-color: #E0E0E0;">
+                                <TextField fx:id="ageInput" promptText="Age" style="-fx-background-color: #E0E0E0;">
                                     <effect>
                                         <DropShadow />
                                     </effect></TextField>
@@ -65,14 +62,14 @@
                                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                     </padding>
                                     <children>
-                                        <Button mnemonicParsing="false" text="Add User">
+                                        <Button mnemonicParsing="false" onAction="#addUserButtonAction" text="Add User">
                                             <effect>
                                                 <DropShadow />
                                             </effect>
                                             <font>
                                                 <Font name="Verdana" size="12.0" />
                                             </font></Button>
-                                        <Button mnemonicParsing="false" text="Delete User">
+                                        <Button mnemonicParsing="false" onAction="#deleteUserButtonAction" text="Delete User">
                                             <effect>
                                                 <DropShadow />
                                             </effect>
@@ -81,7 +78,11 @@
                                             </font></Button>
                                     </children>
                                 </HBox>
-                        <Button mnemonicParsing="false" text="Update User">
+                                <TextField fx:id="searchInput" promptText="Search" style="-fx-background-color: #E0E0E0;">
+                                    <effect>
+                                        <DropShadow />
+                                    </effect></TextField>
+                        <Button mnemonicParsing="false" onAction="#updateUserButtonAction" text="Update User">
                            <effect>
                               <DropShadow />
                            </effect>
@@ -110,9 +111,9 @@
                         </VBox>
                     </children>
                 </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="468.0">
                <children>
-                          <TableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <TableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="309.0" prefWidth="579.0" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="289.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                               <columns>
                                   <TableColumn prefWidth="155.0" text="Name" />
                                   <TableColumn prefWidth="90.0" text="Code" />

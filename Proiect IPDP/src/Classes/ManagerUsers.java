@@ -5,11 +5,6 @@ import org.bson.conversions.Bson;
 import DB.ConnectionDB;
 
 public class ManagerUsers {
-    User users;
-
-    public ManagerUsers(User users) {
-        this.users = users;
-    }
 
     public ManagerUsers() {
     }
@@ -38,17 +33,10 @@ public class ManagerUsers {
     }
 
     public void UpdateUser(User user, User user_up){
-        Document query = new Document("First Name", user.getFirstName())
-                .append("Last Name", user.getLastName())
-                .append("Age", user.getAge())
-                .append("Username", user.username)
-                .append("Password", user.password)
-                .append("Mail adress", user.getMail_adress());
+        Document query = new Document("Username", user.username);
         Document found = (Document) ConnectionDB.collectionLogin.find(query).first();
 
         if(found != null){
-            System.out.println("Found User");
-
             Bson updatedvalue = new Document("First Name", user_up.getFirstName())
                     .append("Last Name", user_up.getLastName())
                     .append("Age", user_up.getAge())
@@ -57,7 +45,13 @@ public class ManagerUsers {
                     .append("Mail adress", user_up.getMail_adress());
             Bson updateoperation = new Document("$set", updatedvalue);
             ConnectionDB.collectionLogin.updateOne(found,updateoperation);
-            System.out.println("User Updated");
         }
+    }
+
+    public boolean findUser(User user){
+        Document d = new Document("Username", user.username);
+        if(ConnectionDB.collectionItem.find(d) == null)
+            return false;
+        else return true;
     }
 }

@@ -13,4 +13,5 @@ public class ConnectionDB {
     public static MongoCollection collectionLogin = mongoDatabase.getCollection("Login");
     public static MongoCollection collectionAdmin = mongoDatabase.getCollection("Admin");
     public static MongoCollection collectionItem = mongoDatabase.getCollection("Items");
+
 }

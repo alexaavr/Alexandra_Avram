@@ -1,6 +1,6 @@
 package sample;
+import Classes.ManagerUsers;
 import Classes.User;
-import DB.ConnectionDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -88,6 +88,7 @@ public class RegisterController implements Initializable {
         || lastnameInput.getText().equals("") || ageInput.getText().equals("")) AlertBox.display("Alert", "Error: To register you must complete all fields!");
         else{
             User u = new User();
+            ManagerUsers user = new ManagerUsers();
             if (Main_App.isValid(passInput.getText()) == false) AlertBox.display("Alert", "Error: Password must contain: \n " +
                                                                                                         "-at least 8 characters;\n" +
                                                                                                         "-at least an Uppercase;\n " +
@@ -102,7 +103,7 @@ public class RegisterController implements Initializable {
                         u.setFirstName(firstnameInput.getText().trim());
                         u.setLastName(lastnameInput.getText().trim());
                         u.setAge((Integer.parseInt(ageInput.getText().trim())));
-                        ConnectionDB.collectionLogin.insertOne(Main_App.toDocument(u));
+                        user.AddUser(u);
 
                         AlertBox.display("Congratulations", "You registered successfully");
                         Parent Parent = FXMLLoader.load(getClass().getResource("sample.fxml"));

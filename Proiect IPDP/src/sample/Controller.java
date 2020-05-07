@@ -26,6 +26,7 @@ public class Controller implements Initializable {
     @FXML private TextField usernameInput = new TextField();
     @FXML private PasswordField passInput = new PasswordField();
     @FXML private Button quitButton = new Button();
+    @FXML private Button loginButton = new Button();
     @FXML private CheckBox checkBox_Login = new CheckBox();
 
     //LOGIN SCENE ACTIONS
@@ -62,6 +63,7 @@ public class Controller implements Initializable {
             }
         }
     }
+
 
     //LOGIN AS ADMIN BUTTON
     @FXML

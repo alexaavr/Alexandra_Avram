@@ -1,17 +1,11 @@
 package Classes;
 
+import DB.ConnectionDB;
 import org.bson.Document;
 import org.bson.conversions.Bson;
-import DB.ConnectionDB;
 
 public class ManagerItems {
-    Item items;
-
     public ManagerItems() {
-    }
-
-    public ManagerItems(Item items) {
-        this.items = items;
     }
 
     public void AddItem(Item item){
@@ -34,78 +28,23 @@ public class ManagerItems {
     }
 
     public void UpdateItem(Item item, Item item_up){
-        Document query = new Document("Name", item.name)
-                .append("Code", item.code)
-                .append("Amount", item.amount)
-                .append("Price", item.price);
+        Document query = new Document("Code", item.code);
         Document found = (Document) ConnectionDB.collectionItem.find(query).first();
 
         if(found != null){
-            System.out.println("Found Item");
-
             Bson updatedvalue = new Document("Name", item_up.name)
                     .append("Code", item_up.code)
                     .append("Amount", item_up.amount)
                     .append("Price", item_up.price);
             Bson updateoperation = new Document("$set", updatedvalue);
             ConnectionDB.collectionItem.updateMany(found,updateoperation);
-            System.out.println("Item Updated");
         }
     }
 
-    
-    public void VerifyStock(Item item){
-        Document query = new Document("Name", item.name)
-                .append("Code", item.code)
-                .append("Amount", item.amount)
-                .append("Price", item.price);
-        Document found = (Document) ConnectionDB.collectionItem.find(query).first();
-
-        if(found != null) {
-            System.out.println("Found item");
-            System.out.println(item.toString());
-        }
-        else System.out.println("Cand't Found item");
-    }
-
-
-    //USER
-    public void ReserveItem(Item item){
-        Document query = new Document("Name", item.name)
-                .append("Code", item.code)
-                .append("Amount", item.amount)
-                .append("Price", item.price);
-        Document found = (Document) ConnectionDB.collectionItem.find(query).first();
-
-        if(found != null) {
-            Document updatedvalue = new Document("Ststus", "reserved");
-            Bson updateoperation = new Document("$set", updatedvalue);
-            ConnectionDB.collectionItem.updateOne(query,updateoperation);
-        }
-        else System.out.println("Cand't reserve item");
-
-        //IF ITEM RESERVED SEND IT TO ANOTHER COLLECTION
-    }
-
-    //USER
-    public void AskForItem(Item item){
-        Document query = new Document("Name", item.name)
-                .append("Code", item.code)
-                .append("Amount", item.amount)
-                .append("Price", item.price);
-        Document found = (Document) ConnectionDB.collectionItem.find(query).first();
-        if(found == null){
-            System.out.println("Please add this item for me!");
-            AddItem(item);
-            System.out.println("Item added!");
-        }
-    }
-
-    public void findItem(){
-     //fidn bar
-    }
-
-    public void AllItemsReserved(){
-
+    public boolean findItem(Item item){
+        Document d = new Document("Name", item.name);
+        if(ConnectionDB.collectionItem.find(d) == null)
+            return false;
+        else return true;
     }
 }
