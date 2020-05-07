@@ -12,7 +12,10 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -42,14 +45,14 @@
                                                    <effect>
                                                       <DropShadow />
                                                    </effect></Label>
-                                                <TextField promptText="Code">
+                                                <TextField fx:id="searchInput" promptText="Name">
                                                    <effect>
                                                       <DropShadow />
                                                    </effect>
                                                    <font>
                                                       <Font name="Verdana" size="12.0" />
                                                    </font></TextField>
-                                                <Button mnemonicParsing="false" text="Search">
+                                                <Button defaultButton="true" mnemonicParsing="false" onAction="#search" text="Search">
                                                    <effect>
                                                       <DropShadow />
                                                    </effect>
@@ -61,7 +64,7 @@
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                              </padding>
                                           </VBox>
-                                          <TextArea prefHeight="186.0" prefWidth="495.0">
+                                          <TextArea fx:id="text" prefHeight="186.0" prefWidth="495.0">
                                              <effect>
                                                 <DropShadow />
                                              </effect></TextArea>
@@ -73,65 +76,88 @@
                               <Font name="Verdana" size="12.0" />
                            </font>
                       </TitledPane>
-                      <TitledPane animated="false" text="Ask for certain item or reserve it">
+                      <TitledPane animated="false" text="Update item">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
                                     <HBox alignment="CENTER" layoutX="147.0" layoutY="36.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #800020;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <children>
-                                          <VBox prefHeight="178.0" prefWidth="322.0" spacing="10.0" style="-fx-background-color: #800020;">
-                                             <children>
-                                                <Label text="What item do you want to ask for?" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="Verdana Bold" size="12.0" />
-                                                   </font>
-                                                   <effect>
-                                                      <DropShadow />
-                                                   </effect></Label>
-                                                <TextField promptText="Name">
-                                                   <effect>
-                                                      <DropShadow />
-                                                   </effect>
-                                                   <font>
-                                                      <Font name="Verdana" size="12.0" />
-                                                   </font></TextField>
-                                                <TextField promptText="Code">
-                                                   <effect>
-                                                      <DropShadow />
-                                                   </effect>
-                                                   <font>
-                                                      <Font name="Verdana" size="12.0" />
-                                                   </font></TextField>
-                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #800020;">
-                                                   <children>
-                                                      <Button mnemonicParsing="false" text="Send">
-                                                         <effect>
-                                                            <DropShadow />
-                                                         </effect>
-                                                         <font>
-                                                            <Font name="Verdana Bold" size="12.0" />
-                                                         </font></Button>
-                                                   </children>
-                                                   <padding>
-                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                   </padding>
-                                                </HBox>
-                                             </children>
-                                             <padding>
-                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                             </padding>
-                                          </VBox>
-                                          <TextArea prefHeight="178.0" prefWidth="538.0">
-                                             <effect>
-                                                <DropShadow />
-                                             </effect></TextArea>
-                                       </children>
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                        <padding>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </padding>
+                                       <children>
+                                          <GridPane alignment="CENTER" hgap="10.0" prefHeight="165.0" prefWidth="617.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="43.60001220703124" minHeight="10.0" prefHeight="20.39999999999999" valignment="BOTTOM" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="81.19998779296876" minHeight="10.0" prefHeight="76.4" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label text="Name:" textFill="#f5e9e9" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Verdana Bold" size="14.0" />
+                                                   </font></Label>
+                                                <Label text="Code:" textFill="#f5e9e9" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Verdana Bold" size="14.0" />
+                                                   </font></Label>
+                                                <Label text="Amount:" textFill="#f5e9e9" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Verdana Bold" size="14.0" />
+                                                   </font></Label>
+                                                <Label text="Price:" textFill="#f5e9e9" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Verdana Bold" size="14.0" />
+                                                   </font></Label>
+                                                <TextField fx:id="nameInputUP" promptText="Name" GridPane.rowIndex="2" />
+                                                <TextField fx:id="codeInputUP" promptText="Code" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <TextField fx:id="amountInputUP" promptText="Amount" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                <TextField fx:id="priceInputUP" promptText="Price" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                <Label text="Update:" textFill="#f5e9e9">
+                                                   <font>
+                                                      <Font name="Verdana Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button mnemonicParsing="false" onAction="#updateItemButtonAction" text="Update" GridPane.columnIndex="4">
+                                                   <font>
+                                                      <Font name="Verdana Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#clearButtonAction" text="Clear" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font name="Verdana Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                                                <TextField fx:id="codeInput_to_UP" promptText="Code" GridPane.columnIndex="1" />
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </padding>
+                                             <HBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </HBox.margin>
+                                             <effect>
+                                                <DropShadow />
+                                             </effect>
+                                          </GridPane>
+                                          <TextArea fx:id="text2" prefHeight="200.0" prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </padding>
+                                             <font>
+                                                <Font name="Verdana Bold" size="12.0" />
+                                             </font>
+                                          </TextArea>
+                                       </children>
                                     </HBox>
                                  </children></AnchorPane>
                         </content>
@@ -145,7 +171,7 @@
                                  <children>
                                     <VBox alignment="CENTER" layoutX="312.0" layoutY="9.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #800020;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <Button mnemonicParsing="false" text="Delete account">
+                                          <Button mnemonicParsing="false" onAction="#deleteAccountButton" text="Delete account">
                                              <effect>
                                                 <DropShadow />
                                              </effect>
@@ -182,7 +208,6 @@
                            <TableColumn prefWidth="90.0" text="Code" />
                            <TableColumn prefWidth="90.0" text="Amount" />
                            <TableColumn prefWidth="90.0" text="Price" />
-                           <TableColumn prefWidth="155.0" text="Status" />
                        </columns>
                        <effect>
                            <DropShadow />

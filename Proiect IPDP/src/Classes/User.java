@@ -24,4 +24,16 @@ public class User extends Person {
     public void setMail_adress(String mail_adress) {
         this.mail_adress = mail_adress;
     }
+
+    @Override
+    public String toString() {
+        return "User{ \n" +
+                "Firstname = " + getFirstName() + "\n" +
+                "Lastname = " + getLastName() + "\n" +
+                "Username = " + username + '\n' +
+                "Password = " + password + '\n' +
+                "Mail address = " + mail_adress + '\n' +
+                "Age = " + getAge() + "\n" +
+                '}';
+    }
 }

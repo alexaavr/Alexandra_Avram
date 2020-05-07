@@ -1,8 +1,8 @@
 package Classes;
 
+import DB.ConnectionDB;
 import org.bson.Document;
 import org.bson.conversions.Bson;
-import DB.ConnectionDB;
 
 public class ManagerUsers {
 
@@ -51,8 +51,22 @@ public class ManagerUsers {
     public boolean findUser(User user){
         boolean flag = false;
         Document d = new Document("Username", user.username);
-        if(ConnectionDB.collectionItem.find(d) != null)
+        if(ConnectionDB.collectionLogin.find(d).first() != null)
             flag = true;
         return flag;
+    }
+
+    public String displayUser(User user){
+        Document d = new Document("Username", user.username);
+        Document found = (Document) ConnectionDB.collectionLogin.find(d).first();
+        if(found != null){
+            user.username = found.get("Username").toString();
+            user.password = found.get("Password").toString();
+            user.setMail_adress(found.get("Mail adress").toString());
+            user.setFirstName(found.get("First Name").toString());
+            user.setLastName(found.get("Last Name").toString());
+            user.setAge(Integer.parseInt(found.get("Age").toString()));
+        }
+        return user.toString();
     }
 }

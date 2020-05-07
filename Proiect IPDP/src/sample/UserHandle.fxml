@@ -19,7 +19,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UserHandleController">
     <children>
-        <SplitPane dividerPositions="0.37675350701402804" layoutX="300.0" layoutY="186.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <SplitPane dividerPositions="0.35070140280561124" layoutX="300.0" layoutY="186.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                     <children>
@@ -185,12 +185,12 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" fillHeight="false" spacing="10.0" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <HBox alignment="CENTER" fillHeight="false" spacing="10.0" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <GridPane alignment="CENTER" prefHeight="251.0" prefWidth="454.0">
+                                    <GridPane alignment="CENTER" prefHeight="274.0" prefWidth="422.0">
                                       <columnConstraints>
-                                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="230.39998779296874" minWidth="10.0" prefWidth="161.59998779296876" />
-                                        <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" maxWidth="204.00001220703126" minWidth="-Infinity" prefWidth="156.80000000000004" />
+                                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="230.39998779296874" minWidth="10.0" prefWidth="143.39996337890625" />
+                                        <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" maxWidth="224.0000244140625" minWidth="-Infinity" prefWidth="169.59999999999997" />
                                           <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
                                       </columnConstraints>
                                       <rowConstraints>
@@ -209,7 +209,7 @@
                                                           <DropShadow />
                                                       </effect>
                                           </TextField>
-                                          <Label text="Search after username:" textFill="WHITE">
+                                          <Label text="Search username:" textFill="WHITE">
                                              <font>
                                                 <Font name="Verdana Bold" size="12.0" />
                                              </font>
@@ -316,13 +316,16 @@
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </padding>
                                     </GridPane>
-                                    <TextArea fx:id="text" prefHeight="251.0" prefWidth="116.0">
+                                    <TextArea fx:id="text" prefHeight="251.0" prefWidth="179.0">
                                        <effect>
                                           <DropShadow />
                                        </effect>
                                        <font>
                                           <Font name="Verdana Bold" size="10.0" />
                                        </font>
+                                       <padding>
+                                          <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                       </padding>
                                     </TextArea>
                                  </children>
                                  <padding>
@@ -335,11 +338,13 @@
                            <children>
                                       <TableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="284.0" prefWidth="619.0" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                           <columns>
-                                              <TableColumn prefWidth="155.0" text="Name" />
-                                              <TableColumn prefWidth="90.0" text="Code" />
-                                              <TableColumn prefWidth="90.0" text="Amount" />
-                                              <TableColumn prefWidth="90.0" text="Price" />
-                                              <TableColumn prefWidth="155.0" text="Status" />
+                                              <TableColumn prefWidth="155.0" text="Username" />
+                                              <TableColumn prefWidth="90.0" text="Password" />
+                                              <TableColumn prefWidth="90.0" text="Firstname" />
+                                              <TableColumn prefWidth="90.0" text="Lastname" />
+                                              <TableColumn prefWidth="155.0" text="Mail address" />
+                                              <TableColumn prefWidth="155.0" text="Age" />
+
                                           </columns>
                                           <effect>
                                               <DropShadow />

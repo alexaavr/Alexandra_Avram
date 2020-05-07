@@ -61,8 +61,8 @@ public class AfterLoginAdminController implements Initializable {
         if(searchInput.getText().equals("")) AlertBox.display("Alert", "Error: You must complete all fields!");
         else{
             item.name = searchInput.getText().trim();
-            if(i.findItem(item) == false) text.setText("User not found!");
-            else text.setText("Your item is this: \n");
+            if(i.findItem(item) == false) text.setText("Item not found!");
+            else text.setText("Your item is this: \n" + i.displayItem(item));
         }
     }
 
@@ -81,9 +81,10 @@ public class AfterLoginAdminController implements Initializable {
                 i.UpdateItem(itemToUP, item);
             }catch(NumberFormatException ex){
                 AlertBox.display("Alert", "Error: "
-                        + codeInput.getText().trim().toUpperCase() + " \n or \n"
-                        + amountInput.getText().trim().toUpperCase()
-                        + "\n or \n" + priceInput.getText().trim().toUpperCase()
+                        + codeInput_to_UP.getText().trim().toUpperCase() + " \n or \n"
+                        + codeInputUP.getText().trim().toUpperCase() + " \n or \n"
+                        + amountInputUP.getText().trim().toUpperCase()
+                        + "\n or \n" + priceInputUP.getText().trim().toUpperCase()
                         + " is not a number!");
             }
         }

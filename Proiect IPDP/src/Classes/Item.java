@@ -15,4 +15,14 @@ public class Item {
 
     public Item() {
     }
+
+    @Override
+    public String toString() {
+        return "Item{ \n" +
+                "Name = " + name + '\n' +
+                "Code = " + code + '\n' +
+                "Amount = " + amount + '\n' +
+                "Price = " + price +
+                '}';
+    }
 }

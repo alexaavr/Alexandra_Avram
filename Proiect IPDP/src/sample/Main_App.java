@@ -18,7 +18,12 @@ public class Main_App extends Application {
 
     public static void main(String[] args) {
         System.out.println("Database Connected");
+/*        ManagerUsers u = new ManagerUsers();
+        User user = new User();
+        user.username ="Alexa";
+        u.displayUser(user);*/
         launch(args);
+
     }
 
     public static boolean verifyLogin(Document uDB, MongoCollection coll, String message, String title) {
