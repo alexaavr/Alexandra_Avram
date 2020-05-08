@@ -1,6 +1,8 @@
 package sample;
 import Classes.Item;
 import Classes.ManagerItems;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,12 +25,6 @@ public class AfterLoginAdminController implements Initializable {
     Item itemToUP = new Item();
     ManagerItems i = new ManagerItems();
 
-    @FXML TableView tableview = new TableView();
-    @FXML TableColumn collName = new TableColumn();
-    @FXML TableColumn collCode = new TableColumn();
-    @FXML TableColumn collAmount = new TableColumn();
-    @FXML TableColumn collPrice = new TableColumn();
-    @FXML TableColumn collStatus = new TableColumn();
     @FXML TextField nameInput = new TextField();
     @FXML TextField codeInput = new TextField();
     @FXML TextField amountInput = new TextField();
@@ -48,7 +44,7 @@ public class AfterLoginAdminController implements Initializable {
     //text area add
     @FXML TextArea text2 = new TextArea();
 
-
+    //CLEAR ITEM HANDLING
     @FXML
     private void clearButtonAction(){
         nameInput.clear();
@@ -56,6 +52,8 @@ public class AfterLoginAdminController implements Initializable {
         codeInput.clear();
         priceInput.clear();
     }
+
+    //SEARCH VERIFY STOCK
     @FXML
     private void search(){
         if(searchInput.getText().equals("")) AlertBox.display("Alert", "Error: You must complete all fields!");
@@ -66,6 +64,7 @@ public class AfterLoginAdminController implements Initializable {
         }
     }
 
+    //UPDATE
     @FXML
     private void updateItemButtonAction(){
         if(nameInputUP.getText().equals("") || codeInputUP.getText().equals("")|| amountInputUP.getText().equals("") || priceInputUP.getText().equals("")
@@ -90,6 +89,8 @@ public class AfterLoginAdminController implements Initializable {
         }
     }
 
+
+    //DELETE
     @FXML
     private void deleteItemButtonAction(){
         if(nameInput.getText().equals("") || codeInput.getText().equals("")|| amountInput.getText().equals("") || priceInput.getText().equals(""))
@@ -112,6 +113,8 @@ public class AfterLoginAdminController implements Initializable {
         }
     }
 
+
+    //ADD
     @FXML
     private void addItemButtonAction(){
         if(nameInput.getText().equals("") || codeInput.getText().equals("")|| amountInput.getText().equals("") || priceInput.getText().equals(""))
@@ -134,6 +137,7 @@ public class AfterLoginAdminController implements Initializable {
         }
     }
 
+    //USER HANDLE
     @FXML
     private void UserHandleButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
             Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("UserHandle.fxml"));
@@ -145,6 +149,8 @@ public class AfterLoginAdminController implements Initializable {
             window.show();
     }
 
+
+    //SINGOUT
     @FXML
     private void singOutButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
         if(ConfirmBox.display("Alert!", " Are you sure you want to sing out?") == true) {
@@ -159,8 +165,28 @@ public class AfterLoginAdminController implements Initializable {
         }
     }
 
+
+    //TableView
+    @FXML TableView<Item> tableView;
+    @FXML TableColumn<Item, String> nameColl;
+    @FXML TableColumn<Item, Integer> codeColl;
+    @FXML TableColumn<Item, Integer> amountColl;
+    @FXML TableColumn<Item, Integer> priceColl;
+
+    //TABLEVIEW
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("Altcv");
+        tableView.getItems().setAll(getItems());
+    }
 
+    public ObservableList<Item> getItems(){
+        ObservableList<Item> items = FXCollections.observableArrayList();
+        items.add(new Item("Cartofi", 12312,1212,3131));
+        items.add(new Item("Cartofi", 12312,1212,3131));
+        items.add(new Item("Cartofi", 12312,1212,3131));
+        items.add(new Item("Cartofi", 12312,1212,3131));
+        System.out.println("CVDADADADD");
+        return items;
     }
 }

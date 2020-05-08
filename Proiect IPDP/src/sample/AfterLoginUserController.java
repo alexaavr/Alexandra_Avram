@@ -2,12 +2,18 @@ package sample;
 
 import Classes.Item;
 import Classes.ManagerItems;
+import Classes.ManagerUsers;
+import Classes.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -17,10 +23,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AfterLoginUserController implements Initializable {
-    @FXML TextField nameInput = new TextField();
-    @FXML TextField codeInput = new TextField();
-    @FXML TextField amountInput = new TextField();
-    @FXML TextField priceInput = new TextField();
+
+    ManagerUsers u = new ManagerUsers();
+    User user = new User();
+
+    @FXML TextField usernameInput = new TextField();
+    @FXML TextField passwordInput = new TextField();
+    @FXML TextField firstnameInput = new TextField();
+    @FXML TextField lastnameInput = new TextField();
+    @FXML TextField mailInput = new TextField();
+    @FXML TextField ageInput = new TextField();
+
 
     //Update
     @FXML TextField nameInputUP = new TextField();
@@ -97,18 +110,51 @@ public class AfterLoginUserController implements Initializable {
 
     @FXML
     private void deleteAccountButton(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("deleteAccount.fxml"));
-        Scene LoginAdminScene = new Scene(LoginAdminParent);
+        if(usernameInput.getText().equals("") || passwordInput.getText().equals("")|| mailInput.getText().equals("") || firstnameInput.getText().equals("")
+                || lastnameInput.getText().equals("") || ageInput.getText().equals("")) AlertBox.display("Alert", "Error: To delete account you must complete all fields!");
+        else{
+            try {
+                user.username = usernameInput.getText().trim();
+                user.password = passwordInput.getText().trim();
+                user.setMail_adress(mailInput.getText().trim());
+                user.setFirstName(firstnameInput.getText().trim());
+                user.setLastName(lastnameInput.getText().trim());
+                user.setAge((Integer.parseInt(ageInput.getText().trim())));
+                if(ConfirmBox.display("Alert", "Are you shure you want to delet yout account?") == true) {
+                    u.DeleteUser(user);
+                    AlertBox.display("Alert", "Account deleted!");
+                    Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+                    Scene LoginAdminScene = new Scene(LoginAdminParent);
 
-        //This line gets the Stage information
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+                    //This line gets the Stage information
+                    Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
-        window.setScene(LoginAdminScene);
-        window.show();
+                    window.setScene(LoginAdminScene);
+                    window.show();
+                }
+            }catch(NumberFormatException ex){
+                AlertBox.display("Alert", "Error: " + ageInput.getText().trim().toUpperCase() + " is not a number!");
+            }
+        }
+    } /////////////////FA IN ASA FEL INCAT CONTUL CURENT SA SE STEARGA
+
+    //TableView
+    @FXML TableView tableView = new TableView();
+    @FXML TableColumn<Item, String> nameColl;
+    @FXML TableColumn<Item, Integer> codeColl;
+    @FXML TableColumn<Item, Integer> amountColl;
+    @FXML TableColumn<Item, Integer> priceColl;
+
+    //TABLEVIEW
+    public ObservableList<Item> getItems(){
+        ObservableList<Item> items = FXCollections.observableArrayList();
+        items.addAll(new Item("Cartofi", 152312,1212,316731), new Item("Ceapa", 12365712,124212,3131),
+                new Item("Ardei", 12312,122112,311231));
+        return items;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        tableView.setItems(getItems());
     }
 }

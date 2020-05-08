@@ -2,12 +2,16 @@ package sample;
 
 import Classes.ManagerUsers;
 import Classes.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -160,10 +164,25 @@ public class UserHandleController implements Initializable {
         window.show();
     }
 
+    //TABLE VIEW
+    @FXML
+    TableView tableView = new TableView();
+    @FXML TableColumn<User, String> userColl;
+    @FXML TableColumn<User, String> passColl;
+    @FXML TableColumn<User, String> lastColl;
+    @FXML TableColumn<User, String> firstColl;
+    @FXML TableColumn<User, Integer> ageColl;
+    @FXML TableColumn<User, String> mailColl;
+
+    public ObservableList<User> getItems(){
+        ObservableList<User> users = FXCollections.observableArrayList();
+        users.add(new User("Cartofi","CArtofi", 14, "Cartofi ","Cartofi", "Cartofi"));
+        return users;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        tableView.setItems(getItems());
     }
 }
 
