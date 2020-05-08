@@ -7,6 +7,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -17,7 +18,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.RegisterController">
    <children>
-      <VBox alignment="CENTER" fillWidth="false" layoutX="252.0" layoutY="52.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" style="-fx-background-color: #8A3324;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" fillWidth="false" layoutX="252.0" layoutY="52.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" style="-fx-background-color: #36454F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="257.0" prefWidth="482.0">
               <columnConstraints>
@@ -34,95 +35,131 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <CheckBox fx:id="checkBox_Register" contentDisplay="CENTER" mnemonicParsing="false" onAction="#checkBox_RegisterAction" text="Show/Hide" textFill="#ffdddd" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <Label text="FirstName:" textFill="#ffdddd">
+                  <CheckBox fx:id="checkBox_Register" contentDisplay="CENTER" mnemonicParsing="false" onAction="#checkBox_RegisterAction" text="Show/Hide" textFill="#f7e7ce" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font></CheckBox>
+                  <Label text="FirstName:" textFill="#f7e7ce">
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label text="LastName:" textFill="#ffdddd" GridPane.rowIndex="1">
+                  <Label text="LastName:" textFill="#f7e7ce" GridPane.rowIndex="1">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="Verdana Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label text="UserName:" textFill="#ffdddd" GridPane.rowIndex="2">
+                  <Label text="UserName:" textFill="#f7e7ce" GridPane.rowIndex="2">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="Verdana Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label text="Password:" textFill="#ffdddd" GridPane.rowIndex="3">
+                  <Label text="Password:" textFill="#f7e7ce" GridPane.rowIndex="3">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="Verdana Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label text="Mail adress:" textFill="#ffdddd" GridPane.rowIndex="4">
+                  <Label text="Mail adress:" textFill="#f7e7ce" GridPane.rowIndex="4">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="Verdana Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label text="Age:" textFill="#ffdddd" GridPane.rowIndex="5">
+                  <Label text="Age:" textFill="#f7e7ce" GridPane.rowIndex="5">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="Verdana Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="firstnameInput" style="-fx-background-color: #ffdddd;" GridPane.columnIndex="1">
+                  <TextField fx:id="firstnameInput" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1">
                      <effect>
                         <InnerShadow />
-                     </effect></TextField>
-                  <TextField fx:id="lastnameInput" style="-fx-background-color: #ffdddd;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     </effect>
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font></TextField>
+                  <TextField fx:id="lastnameInput" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <effect>
                         <InnerShadow />
-                     </effect></TextField>
-                  <TextField fx:id="usernameInput" style="-fx-background-color: #ffdddd;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     </effect>
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font></TextField>
+                  <TextField fx:id="usernameInput" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <effect>
                         <InnerShadow />
-                     </effect></TextField>
-                  <PasswordField fx:id="passInput" style="-fx-background-color: #ffdddd;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     </effect>
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font></TextField>
+                  <PasswordField fx:id="passInput" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <effect>
                         <InnerShadow />
-                     </effect></PasswordField>
-                  <TextField fx:id="mailInput" style="-fx-background-color: #ffdddd;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     </effect>
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font></PasswordField>
+                  <TextField fx:id="mailInput" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <effect>
                         <InnerShadow />
-                     </effect></TextField>
-                  <TextField fx:id="ageInput" style="-fx-background-color: #ffdddd;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     </effect>
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font></TextField>
+                  <TextField fx:id="ageInput" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <effect>
                         <InnerShadow />
-                     </effect></TextField>
+                     </effect>
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font></TextField>
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </GridPane>
-            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="258.0" spacing="10.0">
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="306.0" spacing="10.0">
                <children>
-                  <Button defaultButton="true" mnemonicParsing="false" onAction="#registerButtonAction" style="-fx-background-color: #ffdddd;" text="Register">
+                  <Button defaultButton="true" mnemonicParsing="false" onAction="#registerButtonAction" style="-fx-background-color: #F7E7CE;" text="Register">
                      <effect>
                         <InnerShadow />
-                     </effect></Button>
-                  <Button mnemonicParsing="false" onAction="#clearButtonAction" style="-fx-background-color: #ffdddd;" text="Clear">
+                     </effect>
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" onAction="#clearButtonAction" style="-fx-background-color: #F7E7CE;" text="Clear">
                      <effect>
                         <InnerShadow />
-                     </effect></Button>
-                  <Button mnemonicParsing="false" onAction="#backButonnAction" style="-fx-background-color: #ffdddd;" text="Back">
+                     </effect>
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" onAction="#backButonnAction" style="-fx-background-color: #F7E7CE;" text="Back">
                      <effect>
                         <InnerShadow />
-                     </effect></Button>
-                  <Button fx:id="quitButton" cancelButton="true" mnemonicParsing="false" onAction="#quitButtonAction" style="-fx-background-color: #ffdddd;" text="Quit">
+                     </effect>
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="quitButton" cancelButton="true" mnemonicParsing="false" onAction="#quitButtonAction" style="-fx-background-color: #F7E7CE;" text="Quit">
                      <effect>
                         <InnerShadow />
-                     </effect></Button>
+                     </effect>
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font></Button>
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
+               <effect>
+                  <Reflection />
+               </effect>
             </HBox>
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
          <effect>
-            <InnerShadow blurType="GAUSSIAN" choke="0.88" height="78.2" radius="35.620000000000005" width="66.28" />
+            <InnerShadow blurType="GAUSSIAN" choke="0.5" height="130.0" radius="64.5" width="130.0" />
          </effect>
       </VBox>
    </children>

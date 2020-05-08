@@ -7,6 +7,8 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -17,13 +19,13 @@
 
 <AnchorPane fx:id="LoginAPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #36454F;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <VBox fx:id="LoginVBox" alignment="CENTER" fillWidth="false" layoutX="191.0" layoutY="173.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="LoginVBox" alignment="CENTER" fillWidth="false" layoutX="-14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <GridPane fx:id="grid" alignment="CENTER" prefHeight="170.0" prefWidth="437.0">
+            <GridPane fx:id="grid" alignment="CENTER" prefHeight="170.0" prefWidth="460.0">
               <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="115.20001220703125" minWidth="10.0" prefWidth="115.20001220703125" />
-                <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="232.20001220703122" minWidth="10.0" prefWidth="168.60005187988278" />
-                  <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="232.20001220703122" minWidth="10.0" prefWidth="78.99994812011721" />
+                <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="123.20001220703125" minWidth="10.0" prefWidth="115.9999786376953" />
+                <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="314.3999755859375" minWidth="10.0" prefWidth="221.6000213623047" />
+                  <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="232.20001220703122" minWidth="10.0" prefWidth="111.19997558593747" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -32,12 +34,12 @@
                <children>
                   <Label text="Username:" textAlignment="CENTER" textFill="#f7e7ce">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="Verdana Bold" size="12.0" />
                      </font>
                   </Label>
                   <Label text="Password:" textAlignment="CENTER" textFill="#f7e7ce" GridPane.rowIndex="1">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="Verdana Bold" size="12.0" />
                      </font>
                   </Label>
                   <TextField fx:id="usernameInput" prefWidth="205.0" promptText="Username" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1">
@@ -112,6 +114,9 @@
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
+               <effect>
+                  <Reflection />
+               </effect>
             </HBox>
          </children>
          <padding>
@@ -123,6 +128,6 @@
       </VBox>
    </children>
    <effect>
-      <DropShadow />
+      <InnerShadow blurType="GAUSSIAN" choke="0.5" height="130.0" radius="64.5" width="130.0" />
    </effect>
 </AnchorPane>

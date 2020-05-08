@@ -17,11 +17,8 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginAsAdminController">
-   <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
    <children>
-      <VBox alignment="CENTER" layoutX="282.0" layoutY="174.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" style="-fx-background-color: #2F4F4F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutX="282.0" layoutY="174.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" style="-fx-background-color: #36454F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="510.0">
               <columnConstraints>
@@ -35,46 +32,58 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Login serial number:" textFill="WHITE">
+                  <Label text="Login serial number:" textFill="#f7e7ce">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="Verdana Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label text="Admin ID:" textFill="WHITE" GridPane.rowIndex="1">
+                  <Label text="Admin ID:" textFill="#f7e7ce" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="Verdana Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label text="Password:" textFill="WHITE" GridPane.rowIndex="2">
+                  <Label text="Password:" textFill="#f7e7ce" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="Verdana Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="serialInput" promptText="Login serial number" style="-fx-background-color: #F5F5F5;" GridPane.columnIndex="1">
+                  <TextField fx:id="serialInput" promptText="Login serial number" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font>
                   </TextField>
-                  <TextField fx:id="idInput" promptText="Admin ID" style="-fx-background-color: #F5F5F5;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="idInput" promptText="Admin ID" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font>
                   </TextField>
-                  <PasswordField fx:id="passInput" promptText="Password" style="-fx-background-color: #F5F5F5;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <PasswordField fx:id="passInput" promptText="Password" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font>
                   </PasswordField>
-                  <CheckBox fx:id="checkBox_Login" mnemonicParsing="false" onAction="#checkBox_LoginAction" text="Show/Hide" textFill="WHITESMOKE" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <CheckBox fx:id="checkBox_Login" mnemonicParsing="false" onAction="#checkBox_LoginAction" text="Show/Hide" textFill="#f7e7ce" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font></CheckBox>
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -82,10 +91,22 @@
             </GridPane>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button defaultButton="true" mnemonicParsing="false" onAction="#loginButtonAction" style="-fx-background-color: #F5F5F5;" text="Login" />
-                  <Button mnemonicParsing="false" onAction="#clearButtonAction" style="-fx-background-color: #F5F5F5;" text="Clear" />
-                  <Button mnemonicParsing="false" onAction="#backButoonAction" style="-fx-background-color: #F5F5F5;" text="Back" />
-                  <Button fx:id="quitButton" cancelButton="true" mnemonicParsing="false" onAction="#quitButtonAction" style="-fx-background-color: #F5F5F5;" text="Quit" />
+                  <Button defaultButton="true" mnemonicParsing="false" onAction="#loginButtonAction" style="-fx-background-color: #F7E7CE;" text="Login">
+                     <font>
+                        <Font name="Verdana Bold Italic" size="12.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" onAction="#clearButtonAction" style="-fx-background-color: #F7E7CE;" text="Clear">
+                     <font>
+                        <Font name="Verdana Bold Italic" size="12.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" onAction="#backButoonAction" style="-fx-background-color: #F7E7CE;" text="Back">
+                     <font>
+                        <Font name="Verdana Bold Italic" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="quitButton" cancelButton="true" mnemonicParsing="false" onAction="#quitButtonAction" style="-fx-background-color: #F7E7CE;" text="Quit">
+                     <font>
+                        <Font name="Verdana Bold Italic" size="12.0" />
+                     </font></Button>
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -99,7 +120,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
          <effect>
-            <InnerShadow choke="0.13" height="242.64" radius="102.9425" width="171.13" />
+            <InnerShadow choke="0.5" height="130.0" radius="64.5" width="130.0" />
          </effect>
       </VBox>
    </children>

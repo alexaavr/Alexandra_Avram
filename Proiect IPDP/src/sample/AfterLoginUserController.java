@@ -4,6 +4,7 @@ import Classes.Item;
 import Classes.ManagerItems;
 import Classes.ManagerUsers;
 import Classes.User;
+import DB.ConnectionDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.bson.Document;
 
 import java.io.IOException;
 import java.net.URL;
@@ -73,6 +75,8 @@ public class AfterLoginUserController implements Initializable {
                 item.price = Integer.parseInt(priceInputUP.getText().trim());
                 i.UpdateItem(itemToUP, item);
                 text2.setText("Item updated!");
+                tableView.getItems().clear();
+                tableView.setItems(getItems());
             }catch(NumberFormatException ex){
                 AlertBox.display("Alert", "Error: "
                         + codeInput_to_UP.getText().trim().toUpperCase() + " \n or \n"
@@ -148,13 +152,20 @@ public class AfterLoginUserController implements Initializable {
     //TABLEVIEW
     public ObservableList<Item> getItems(){
         ObservableList<Item> items = FXCollections.observableArrayList();
-        items.addAll(new Item("Cartofi", 152312,1212,316731), new Item("Ceapa", 12365712,124212,3131),
-                new Item("Ardei", 12312,122112,311231));
+        while(ConnectionDB.cursorItem.hasNext())
+        {
+            Document doc = ConnectionDB.cursorItem.next();
+            String name = doc.get("Name").toString();
+            int code = Integer.parseInt(doc.get("Code").toString());
+            int amount = Integer.parseInt(doc.get("Amount").toString());
+            int price = Integer.parseInt(doc.get("Price").toString());
+            items.add(new Item(name,code,amount,price));
+        }
         return items;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tableView.setItems(getItems());
+            tableView.getItems().setAll(getItems());
     }
 }

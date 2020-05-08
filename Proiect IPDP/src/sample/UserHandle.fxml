@@ -20,16 +20,16 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UserHandleController">
     <children>
-        <SplitPane dividerPositions="0.35070140280561124" layoutX="300.0" layoutY="186.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <SplitPane dividerPositions="0.3306613226452906" layoutX="300.0" layoutY="186.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                     <children>
-                        <VBox alignment="CENTER" fillWidth="false" layoutX="60.0" layoutY="91.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox alignment="CENTER" fillWidth="false" layoutX="60.0" layoutY="91.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #36454F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <padding>
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </padding>
                             <children>
-                                <Label text="User Handling" textFill="#fffbfb">
+                                <Label text="User Handling" textFill="#f7e7ce">
                                     <font>
                                         <Font name="Verdana Bold" size="14.0" />
                                     </font>
@@ -50,37 +50,55 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                                      <TextField fx:id="usernameInput" promptText="Username" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1">
+                                      <TextField fx:id="usernameInput" promptText="Username" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1">
                                           <effect>
                                               <DropShadow />
                                           </effect>
+                                 <font>
+                                    <Font name="Verdana Bold" size="12.0" />
+                                 </font>
                               </TextField>
-                              <TextField fx:id="passwordInput" promptText="Password" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <TextField fx:id="passwordInput" promptText="Password" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <effect>
                                     <DropShadow />
                                  </effect>
+                                 <font>
+                                    <Font name="Verdana Bold" size="12.0" />
+                                 </font>
                               </TextField>
-                                      <TextField fx:id="firstnameInput" promptText="Firstname" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                      <TextField fx:id="firstnameInput" promptText="Firstname" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                           <effect>
                                               <DropShadow />
                                           </effect>
+                                 <font>
+                                    <Font name="Verdana Bold" size="12.0" />
+                                 </font>
                               </TextField>
-                                      <TextField fx:id="lastnameInput" promptText="Lastname" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                      <TextField fx:id="lastnameInput" promptText="Lastname" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                           <effect>
                                               <DropShadow />
                                           </effect>
+                                 <font>
+                                    <Font name="Verdana Bold" size="12.0" />
+                                 </font>
                               </TextField>
-                                      <TextField fx:id="mailInput" promptText="Mail address" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                      <TextField fx:id="mailInput" promptText="Mail address" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                           <effect>
                                               <DropShadow />
                                           </effect>
+                                 <font>
+                                    <Font name="Verdana Bold" size="12.0" />
+                                 </font>
                               </TextField>
-                                      <TextField fx:id="ageInput" promptText="Age" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                      <TextField fx:id="ageInput" promptText="Age" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                           <effect>
                                               <DropShadow />
                                           </effect>
+                                 <font>
+                                    <Font name="Verdana Bold" size="12.0" />
+                                 </font>
                               </TextField>
-                              <Label text="Username:" textFill="WHITE">
+                              <Label text="Username:" textFill="#f7e7ce">
                                  <font>
                                     <Font name="Verdana Bold" size="12.0" />
                                  </font>
@@ -88,7 +106,7 @@
                                     <DropShadow />
                                  </effect>
                               </Label>
-                              <Label text="Password:" textFill="WHITE" GridPane.rowIndex="1">
+                              <Label text="Password:" textFill="#f7e7ce" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Verdana Bold" size="12.0" />
                                  </font>
@@ -96,7 +114,7 @@
                                     <DropShadow />
                                  </effect>
                               </Label>
-                              <Label text="Firstname:" textFill="WHITE" GridPane.rowIndex="2">
+                              <Label text="Firstname:" textFill="#f7e7ce" GridPane.rowIndex="2">
                                  <font>
                                     <Font name="Verdana Bold" size="12.0" />
                                  </font>
@@ -104,7 +122,7 @@
                                     <DropShadow />
                                  </effect>
                               </Label>
-                              <Label text="Lastname:" textFill="WHITE" GridPane.rowIndex="3">
+                              <Label text="Lastname:" textFill="#f7e7ce" GridPane.rowIndex="3">
                                  <font>
                                     <Font name="Verdana Bold" size="12.0" />
                                  </font>
@@ -112,7 +130,7 @@
                                     <DropShadow />
                                  </effect>
                               </Label>
-                              <Label text="Mail address:" textFill="WHITE" GridPane.rowIndex="4">
+                              <Label text="Mail address:" textFill="#f7e7ce" GridPane.rowIndex="4">
                                  <font>
                                     <Font name="Verdana Bold" size="12.0" />
                                  </font>
@@ -120,7 +138,7 @@
                                     <DropShadow />
                                  </effect>
                               </Label>
-                              <Label text="Age:" textFill="WHITE" GridPane.rowIndex="5">
+                              <Label text="Age:" textFill="#f7e7ce" GridPane.rowIndex="5">
                                  <font>
                                     <Font name="Verdana Bold" size="12.0" />
                                  </font>
@@ -135,43 +153,43 @@
                                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                     </padding>
                                     <children>
-                                        <Button mnemonicParsing="false" onAction="#addUserButtonAction" text="Add User">
+                                        <Button mnemonicParsing="false" onAction="#addUserButtonAction" style="-fx-background-color: #F7E7CE;" text="Add User">
                                             <effect>
                                                 <DropShadow />
                                             </effect>
                                             <font>
-                                                <Font name="Verdana" size="12.0" />
+                                                <Font name="Verdana Bold" size="12.0" />
                                             </font></Button>
-                                        <Button mnemonicParsing="false" onAction="#deleteUserButtonAction" text="Delete User">
+                                        <Button mnemonicParsing="false" onAction="#deleteUserButtonAction" style="-fx-background-color: #F7E7CE;" text="Delete User">
                                             <effect>
                                                 <DropShadow />
                                             </effect>
                                             <font>
-                                                <Font name="Verdana" size="12.0" />
+                                                <Font name="Verdana Bold" size="12.0" />
                                             </font></Button>
-                              <Button mnemonicParsing="false" onAction="#clearButtonAction" text="Clear">
+                              <Button mnemonicParsing="false" onAction="#clearButtonAction" style="-fx-background-color: #F7E7CE;" text="Clear">
                                  <effect>
                                     <DropShadow />
                                  </effect>
                                  <font>
-                                    <Font name="Verdana" size="12.0" />
+                                    <Font name="Verdana Bold" size="12.0" />
                                  </font>
                               </Button>
                                     </children>
                                 </HBox>
-                                <Button mnemonicParsing="false" onAction="#ItemHandlingButton" text="Item Handling">
+                                <Button mnemonicParsing="false" onAction="#ItemHandlingButton" style="-fx-background-color: #F7E7CE;" text="Item Handling">
                                     <effect>
                                         <DropShadow />
                                     </effect>
                                     <font>
-                                        <Font name="Verdana" size="12.0" />
+                                        <Font name="Verdana Bold" size="12.0" />
                                     </font></Button>
-                                <Button mnemonicParsing="false" onAction="#singOutButton" text="Sing Out">
+                                <Button mnemonicParsing="false" onAction="#singOutButton" style="-fx-background-color: #F7E7CE;" text="Sing Out">
                                     <effect>
                                         <DropShadow />
                                     </effect>
                                     <font>
-                                        <Font name="Verdana" size="12.0" />
+                                        <Font name="Verdana Bold" size="12.0" />
                                     </font></Button>
                             </children>
                             <effect>
@@ -186,13 +204,13 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <HBox alignment="CENTER" fillHeight="false" spacing="10.0" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <HBox alignment="CENTER" fillHeight="false" spacing="10.0" style="-fx-background-color: #36454F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <GridPane alignment="CENTER" prefHeight="274.0" prefWidth="422.0">
+                                    <GridPane alignment="CENTER" prefHeight="274.0" prefWidth="418.0">
                                       <columnConstraints>
-                                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="230.39998779296874" minWidth="10.0" prefWidth="143.39996337890625" />
-                                        <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" maxWidth="224.0000244140625" minWidth="-Infinity" prefWidth="169.59999999999997" />
-                                          <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
+                                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="230.39998779296874" minWidth="10.0" prefWidth="135.4000244140625" />
+                                        <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" maxWidth="224.0000244140625" minWidth="-Infinity" prefWidth="184.0" />
+                                          <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" maxWidth="84.00003662109373" minWidth="-Infinity" prefWidth="82.39999999999998" />
                                       </columnConstraints>
                                       <rowConstraints>
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -205,56 +223,77 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                                  <TextField fx:id="searchInput" promptText="Search" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1">
+                                                  <TextField fx:id="searchInput" promptText="Search" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1">
                                                       <effect>
                                                           <DropShadow />
                                                       </effect>
+                                             <font>
+                                                <Font name="Verdana Bold" size="12.0" />
+                                             </font>
                                           </TextField>
-                                          <Label text="Search username:" textFill="WHITE">
+                                          <Label text="Search username:" textFill="#f7e7ce">
                                              <font>
                                                 <Font name="Verdana Bold" size="12.0" />
                                              </font>
                                              <effect>
                                                 <DropShadow />
                                              </effect></Label>
-                                          <TextField fx:id="usernameInput1" promptText="Username" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                          <TextField fx:id="usernameInput1" promptText="Username" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                              <effect>
                                                 <DropShadow />
                                              </effect>
+                                             <font>
+                                                <Font name="Verdana Bold" size="12.0" />
+                                             </font>
                                           </TextField>
-                                          <TextField fx:id="passwordInput1" promptText="Password" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                          <TextField fx:id="passwordInput1" promptText="Password" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                              <effect>
                                                 <DropShadow />
                                              </effect>
+                                             <font>
+                                                <Font name="Verdana Bold" size="12.0" />
+                                             </font>
                                           </TextField>
-                                          <TextField fx:id="firstnameInput1" promptText="Firstname" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                          <TextField fx:id="firstnameInput1" promptText="Firstname" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                              <effect>
                                                 <DropShadow />
                                              </effect>
+                                             <font>
+                                                <Font name="Verdana Bold" size="12.0" />
+                                             </font>
                                           </TextField>
-                                          <TextField fx:id="lastnameInput1" promptText="Lastname" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                          <TextField fx:id="lastnameInput1" promptText="Lastname" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                              <effect>
                                                 <DropShadow />
                                              </effect>
+                                             <font>
+                                                <Font name="Verdana Bold" size="12.0" />
+                                             </font>
                                           </TextField>
-                                          <TextField fx:id="mailInput1" promptText="Mail address" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                          <TextField fx:id="mailInput1" promptText="Mail address" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                              <effect>
                                                 <DropShadow />
                                              </effect>
+                                             <font>
+                                                <Font name="Verdana Bold" size="12.0" />
+                                             </font>
                                           </TextField>
-                                          <TextField fx:id="ageInput1" promptText="Age" style="-fx-background-color: #E0E0E0;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                          <TextField fx:id="ageInput1" promptText="Age" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                              <effect>
                                                 <DropShadow />
                                              </effect>
+                                             <font>
+                                                <Font name="Verdana Bold" size="12.0" />
+                                             </font>
                                           </TextField>
-                                          <Label text="Update:" textFill="WHITE" GridPane.rowIndex="1">
+                                          <Label text="Update User:" textFill="#f7e7ce" GridPane.rowIndex="1">
                                              <font>
                                                 <Font name="Verdana Bold" size="12.0" />
                                              </font>
                                              <effect>
                                                 <DropShadow />
                                              </effect></Label>
-                                          <Label text="Username:" textFill="WHITE" GridPane.rowIndex="2">
+                                          <Label text="Username:" textFill="#f7e7ce" GridPane.rowIndex="2">
                                              <font>
                                                 <Font name="Verdana Bold" size="12.0" />
                                              </font>
@@ -262,7 +301,7 @@
                                                 <DropShadow />
                                              </effect>
                                           </Label>
-                                          <Label text="Password:" textFill="WHITE" GridPane.rowIndex="3">
+                                          <Label text="Password:" textFill="#f7e7ce" GridPane.rowIndex="3">
                                              <font>
                                                 <Font name="Verdana Bold" size="12.0" />
                                              </font>
@@ -270,7 +309,7 @@
                                                 <DropShadow />
                                              </effect>
                                           </Label>
-                                          <Label text="Firstname:" textFill="WHITE" GridPane.rowIndex="4">
+                                          <Label text="Firstname:" textFill="#f7e7ce" GridPane.rowIndex="4">
                                              <font>
                                                 <Font name="Verdana Bold" size="12.0" />
                                              </font>
@@ -278,7 +317,7 @@
                                                 <DropShadow />
                                              </effect>
                                           </Label>
-                                          <Label text="Lastname:" textFill="WHITE" GridPane.rowIndex="5">
+                                          <Label text="Lastname:" textFill="#f7e7ce" GridPane.rowIndex="5">
                                              <font>
                                                 <Font name="Verdana Bold" size="12.0" />
                                              </font>
@@ -286,7 +325,7 @@
                                                 <DropShadow />
                                              </effect>
                                           </Label>
-                                          <Label text="Mail address:" textFill="WHITE" GridPane.rowIndex="6">
+                                          <Label text="Mail address:" textFill="#f7e7ce" GridPane.rowIndex="6">
                                              <font>
                                                 <Font name="Verdana Bold" size="12.0" />
                                              </font>
@@ -294,7 +333,7 @@
                                                 <DropShadow />
                                              </effect>
                                           </Label>
-                                          <Label text="Age:" textFill="WHITE" GridPane.rowIndex="7">
+                                          <Label text="Age:" textFill="#f7e7ce" GridPane.rowIndex="7">
                                              <font>
                                                 <Font name="Verdana Bold" size="12.0" />
                                              </font>
@@ -302,22 +341,28 @@
                                                 <DropShadow />
                                              </effect>
                                           </Label>
-                                          <Button mnemonicParsing="false" onAction="#search" text="Search" GridPane.columnIndex="2">
+                                          <Button mnemonicParsing="false" onAction="#search" style="-fx-background-color: #F7E7CE;" text="Search" GridPane.columnIndex="2">
                                              <effect>
                                                 <DropShadow />
                                              </effect>
+                                             <font>
+                                                <Font name="Verdana Bold" size="12.0" />
+                                             </font>
                                           </Button>
-                                          <Button mnemonicParsing="false" onAction="#updateUserButtonAction" text="Update User" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                          <Button mnemonicParsing="false" onAction="#updateUserButtonAction" style="-fx-background-color: #F7E7CE;" text="Update" GridPane.columnIndex="2" GridPane.rowIndex="4">
                                              <effect>
                                                 <DropShadow />
                                              </effect>
+                                             <font>
+                                                <Font name="Verdana Bold" size="12.0" />
+                                             </font>
                                           </Button>
                                        </children>
                                        <padding>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </padding>
                                     </GridPane>
-                                    <TextArea fx:id="text" prefHeight="251.0" prefWidth="179.0">
+                                    <TextArea fx:id="text" prefHeight="251.0" prefWidth="179.0" style="-fx-background-color: #F7E7CE;">
                                        <effect>
                                           <DropShadow />
                                        </effect>
@@ -337,7 +382,7 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                                      <TableView fx:id="tableView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="284.0" prefWidth="619.0" style="-fx-background-color: #54626F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <TableView fx:id="tableView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="284.0" prefWidth="619.0" style="-fx-background-color: #36454F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                           <columns>
                                               <TableColumn fx:id="userColl" prefWidth="155.0" text="Username">
                                                   <cellValueFactory>

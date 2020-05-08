@@ -2,6 +2,7 @@ package sample;
 
 import Classes.ManagerUsers;
 import Classes.User;
+import DB.ConnectionDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,6 +16,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.bson.Document;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -176,15 +179,24 @@ public class UserHandleController implements Initializable {
 
     public ObservableList<User> getItems(){
         ObservableList<User> users = FXCollections.observableArrayList();
-        users.add(new User("Cartofi","CArtofi", 14, "Cartofi ","Cartofi", "Cartofi"));
+        while(ConnectionDB.cursorLogin.hasNext())
+        {
+            Document doc = ConnectionDB.cursorLogin.next();
+            String username = doc.get("Username").toString();
+            String password = doc.get("Password").toString();
+            String LastName = doc.get("Last Name").toString();
+            String FirstName =  doc.get("First Name").toString();
+            String Mail_adress = doc.get("Mail adress").toString();
+            int Age = Integer.parseInt(doc.get("Age").toString());
+            users.add(new User(FirstName,LastName, Age, username, password, Mail_adress));
+        }
         return users;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         tableView.setItems(getItems());
+        tableView.refresh();
     }
 }
-
-//// ABSTRACTION FACTORY PATTERN
-///TABLEVIEW UL VIETII

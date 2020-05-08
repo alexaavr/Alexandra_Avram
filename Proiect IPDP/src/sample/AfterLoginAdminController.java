@@ -1,6 +1,7 @@
 package sample;
 import Classes.Item;
 import Classes.ManagerItems;
+import DB.ConnectionDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.bson.Document;
 
 import java.io.IOException;
 import java.net.URL;
@@ -174,19 +176,29 @@ public class AfterLoginAdminController implements Initializable {
     @FXML TableColumn<Item, Integer> priceColl;
 
     //TABLEVIEW
+
+    @FXML
+    private void refresh(){
+        tableView.getItems().clear();
+        tableView.getItems().setAll(getItems());
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Altcv");
         tableView.getItems().setAll(getItems());
+        tableView.refresh();
     }
 
     public ObservableList<Item> getItems(){
         ObservableList<Item> items = FXCollections.observableArrayList();
-        items.add(new Item("Cartofi", 12312,1212,3131));
-        items.add(new Item("Cartofi", 12312,1212,3131));
-        items.add(new Item("Cartofi", 12312,1212,3131));
-        items.add(new Item("Cartofi", 12312,1212,3131));
-        System.out.println("CVDADADADD");
+        while(ConnectionDB.cursorItem.hasNext())
+        {
+            Document doc = ConnectionDB.cursorItem.next();
+            String name = doc.get("Name").toString();
+            int code = Integer.parseInt(doc.get("Code").toString());
+            int amount = Integer.parseInt(doc.get("Amount").toString());
+            int price = Integer.parseInt(doc.get("Price").toString());
+            items.add(new Item(name,code,amount,price));
+        }
         return items;
     }
 }
