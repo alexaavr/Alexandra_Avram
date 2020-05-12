@@ -1,6 +1,7 @@
 package sample;
 
 import Classes.Item;
+import Classes.Manager2;
 import Classes.ManagerItems;
 import DB.ConnectionDB;
 import com.mongodb.client.MongoCursor;
@@ -10,7 +11,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.bson.Document;
 
@@ -20,35 +24,60 @@ import java.util.ResourceBundle;
 
 public class AfterLoginAdminController implements Initializable {
 
-    Item item = new Item();
-    Item itemToUP = new Item();
-    ManagerItems i = new ManagerItems();
+    //NECCESARY
+    private Item item = new Item();
+    private Item itemToUP = new Item();
+    private ManagerItems i = new ManagerItems();
+    private Manager2 u_it = new Manager2();
 
+    //FIRST INPUT
     @FXML
-    Button userHandle = new Button();
-
-    @FXML TextField nameInput = new TextField();
-    @FXML TextField codeInput = new TextField();
-    @FXML TextField amountInput = new TextField();
-    @FXML TextField priceInput = new TextField();
-
-    //Update
-    @FXML TextField nameInputUP = new TextField();
-    @FXML TextField codeInputUP = new TextField();
-    @FXML TextField amountInputUP = new TextField();
-    @FXML TextField priceInputUP = new TextField();
-    @FXML TextField codeInput_to_UP = new TextField();
-
-    //search
-    @FXML TextField searchInput = new TextField();
-    @FXML TextArea text = new TextArea();
-
-    //text area add
-    @FXML TextArea text2 = new TextArea();
-
-    //CLEAR ITEM HANDLING
+    private TextField nameInput = new TextField();
     @FXML
-    private void clearButtonAction(){
+    private TextField codeInput = new TextField();
+    @FXML
+    private TextField amountInput = new TextField();
+    @FXML
+    private TextField priceInput = new TextField();
+
+    //UPDATE
+    @FXML
+    private TextField nameInputUP = new TextField();
+    @FXML
+    private TextField codeInputUP = new TextField();
+    @FXML
+    private TextField amountInputUP = new TextField();
+    @FXML
+    private TextField priceInputUP = new TextField();
+    @FXML
+    private TextField codeInput_to_UP = new TextField();
+
+    //SEARCH
+    @FXML
+    private TextField searchInput = new TextField();
+    @FXML
+    private TextArea text = new TextArea();
+
+    //TEXT AREA
+    @FXML
+    private TextArea text2 = new TextArea();
+
+    //TableView
+    @FXML
+    private TableView<Item> tableView;
+    @FXML
+    private TableColumn<Item, String> nameColl;
+    @FXML
+    private TableColumn<Item, Integer> codeColl;
+    @FXML
+    private TableColumn<Item, Integer> amountColl;
+    @FXML
+    private TableColumn<Item, Integer> priceColl;
+
+
+    //CLEAR
+    @FXML
+    private void clearButtonAction() {
         nameInput.clear();
         amountInput.clear();
         codeInput.clear();
@@ -57,20 +86,20 @@ public class AfterLoginAdminController implements Initializable {
 
     //SEARCH VERIFY STOCK
     @FXML
-    private void search(){
-        if(searchInput.getText().equals("")) AlertBox.display("Alert", "Error: You must complete all fields!");
-        else{
+    private void search() {
+        if (searchInput.getText().equals("")) AlertBox.display("Alert", "Error: You must complete all fields!");
+        else {
             item.name = searchInput.getText().trim();
-            if(i.findItem(item) == false) text.setText("Item not found!");
+            if (i.findItem(item) == false) text.setText("Item not found!");
             else text.setText("Your item is this: \n" + i.displayItem(item));
         }
     }
 
     //UPDATE
     @FXML
-    private void updateItemButtonAction(){
-        if(nameInputUP.getText().equals("") || codeInputUP.getText().equals("")|| amountInputUP.getText().equals("") || priceInputUP.getText().equals("")
-        || codeInput_to_UP.getText().equals(""))
+    private void updateItemButtonAction() {
+        if (nameInputUP.getText().equals("") || codeInputUP.getText().equals("") || amountInputUP.getText().equals("") || priceInputUP.getText().equals("")
+                || codeInput_to_UP.getText().equals(""))
             AlertBox.display("Alert", "Error: You must complete all fields!");
         else {
             try {
@@ -79,8 +108,8 @@ public class AfterLoginAdminController implements Initializable {
                 item.code = Integer.parseInt(codeInputUP.getText().trim());
                 item.amount = Integer.parseInt(amountInputUP.getText().trim());
                 item.price = Integer.parseInt(priceInputUP.getText().trim());
-                i.UpdateItem(itemToUP, item);
-            }catch(NumberFormatException ex){
+                u_it.UpdateItem(itemToUP, item);
+            } catch (NumberFormatException ex) {
                 AlertBox.display("Alert", "Error: "
                         + codeInput_to_UP.getText().trim().toUpperCase() + " \n or \n"
                         + codeInputUP.getText().trim().toUpperCase() + " \n or \n"
@@ -93,8 +122,8 @@ public class AfterLoginAdminController implements Initializable {
 
     //DELETE
     @FXML
-    private void deleteItemButtonAction(){
-        if(nameInput.getText().equals("") || codeInput.getText().equals("")|| amountInput.getText().equals("") || priceInput.getText().equals(""))
+    private void deleteItemButtonAction() {
+        if (nameInput.getText().equals("") || codeInput.getText().equals("") || amountInput.getText().equals("") || priceInput.getText().equals(""))
             AlertBox.display("Alert", "Error: You must complete all fields!");
         else {
             try {
@@ -106,7 +135,7 @@ public class AfterLoginAdminController implements Initializable {
                 text2.setText("Item deleted!");
                 tableView.getItems().clear();
                 tableView.setItems(getItems());
-            }catch(NumberFormatException ex){
+            } catch (NumberFormatException ex) {
                 AlertBox.display("Alert", "Error: "
                         + codeInput.getText().trim().toUpperCase() + " \n or \n"
                         + amountInput.getText().trim().toUpperCase()
@@ -118,8 +147,8 @@ public class AfterLoginAdminController implements Initializable {
 
     //ADD
     @FXML
-    private void addItemButtonAction(){
-        if(nameInput.getText().equals("") || codeInput.getText().equals("")|| amountInput.getText().equals("") || priceInput.getText().equals(""))
+    private void addItemButtonAction() {
+        if (nameInput.getText().equals("") || codeInput.getText().equals("") || amountInput.getText().equals("") || priceInput.getText().equals(""))
             AlertBox.display("Alert", "Error: You must complete all fields!");
         else {
             try {
@@ -131,7 +160,7 @@ public class AfterLoginAdminController implements Initializable {
                 text2.setText("Item added!");
                 tableView.getItems().clear();
                 tableView.setItems(getItems());
-            }catch(NumberFormatException ex){
+            } catch (NumberFormatException ex) {
                 AlertBox.display("Alert", "Error: "
                         + codeInput.getText().trim().toUpperCase() + " \n or \n"
                         + amountInput.getText().trim().toUpperCase()
@@ -153,33 +182,25 @@ public class AfterLoginAdminController implements Initializable {
     //SINGOUT
     @FXML
     private void singOutButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
-        if(ConfirmBox.display("Alert!", " Are you sure you want to sing out?") == true) {
+        if (ConfirmBox.display("Alert!", " Are you sure you want to sing out?") == true) {
             Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
             Main_App.window.getScene().setRoot(LoginAdminParent);
         }
     }
 
 
-    //TableView
-    @FXML  TableView<Item> tableView;
-    @FXML private TableColumn<Item, String> nameColl;
-    @FXML private TableColumn<Item, Integer> codeColl;
-    @FXML private TableColumn<Item, Integer> amountColl;
-    @FXML private TableColumn<Item, Integer> priceColl;
-
-
-    private ObservableList<Item> getItems(){
+    private ObservableList<Item> getItems() {
 
         ObservableList<Item> items = FXCollections.observableArrayList();
         MongoCursor<Document> cursorItem = ConnectionDB.collectionItem.find().iterator();
 
         while (cursorItem.hasNext()) {
-             Document doc = cursorItem.next();
-             String name = doc.get("Name").toString();
-             int code = Integer.parseInt(doc.get("Code").toString());
-             int amount = Integer.parseInt(doc.get("Amount").toString());
-             int price = Integer.parseInt(doc.get("Price").toString());
-             items.add(new Item(name, code, amount, price));
+            Document doc = cursorItem.next();
+            String name = doc.get("Name").toString();
+            int code = Integer.parseInt(doc.get("Code").toString());
+            int amount = Integer.parseInt(doc.get("Amount").toString());
+            int price = Integer.parseInt(doc.get("Price").toString());
+            items.add(new Item(name, code, amount, price));
         }
 
         return items;

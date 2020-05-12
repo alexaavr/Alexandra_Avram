@@ -19,16 +19,20 @@ import java.util.ResourceBundle;
 public class LoginAsAdminController implements Initializable {
 
     //GENERAL USE
-    @FXML private Stage stage = new Stage();
+    @FXML
+    private Stage stage = new Stage();
 
-    @FXML private TextField serialInput = new TextField();
-    @FXML private TextField idInput = new TextField();
-    @FXML private PasswordField passInput = new PasswordField();
-    @FXML private Button quitButton = new Button();
-    @FXML private CheckBox checkBox_Login = new CheckBox();
+    @FXML
+    private TextField serialInput = new TextField();
+    @FXML
+    private TextField idInput = new TextField();
+    @FXML
+    private PasswordField passInput = new PasswordField();
+    @FXML
+    private Button quitButton = new Button();
+    @FXML
+    private CheckBox checkBox_Login = new CheckBox();
 
-
-    //ADMIN ACTIONS
     //QUIT BUTTON ACTION
     @FXML
     private void quitButtonAction() throws IOException {
@@ -37,10 +41,9 @@ public class LoginAsAdminController implements Initializable {
         else stage.getScene().getWindow();
     }
 
-
     //CLEAR BUTTON ACTION
     @FXML
-    private void clearButtonAction(){
+    private void clearButtonAction() {
         serialInput.clear();
         idInput.clear();
         passInput.clear();
@@ -49,9 +52,10 @@ public class LoginAsAdminController implements Initializable {
     //LOGIN BUTTON ACTION
     @FXML
     private void loginButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
-        if(serialInput.getText().equals("") || idInput.getText().equals("") || passInput.getText().equals("")) AlertBox.display("Alert", "Error: To login you must complete all fields!");
-        else{
-            Document d = new Document( "Login serial", serialInput.getText().trim()).append( "admin ID", idInput.getText().trim()).append("Password", passInput.getText().trim());
+        if (serialInput.getText().equals("") || idInput.getText().equals("") || passInput.getText().equals(""))
+            AlertBox.display("Alert", "Error: To login you must complete all fields!");
+        else {
+            Document d = new Document("Login serial", serialInput.getText().trim()).append("admin ID", idInput.getText().trim()).append("Password", passInput.getText().trim());
             if (Main_App.verifyLogin(d, ConnectionDB.collectionAdmin, "Wrong Adimin ID or Login serial number or Password", "Alert!")) {
                 Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("AfterLoginAdmin.fxml"));
                 Main_App.window.getScene().setRoot(LoginAdminParent);
@@ -68,12 +72,12 @@ public class LoginAsAdminController implements Initializable {
 
     // CHACK BOX ACTION
     @FXML
-    private void checkBox_LoginAction(){
-        if (checkBox_Login.isSelected()){
+    private void checkBox_LoginAction() {
+        if (checkBox_Login.isSelected()) {
             passInput.setPromptText(passInput.getText());
             passInput.setText("");
 
-        }else {
+        } else {
             passInput.setText(passInput.getPromptText());
             passInput.setPromptText("");
         }

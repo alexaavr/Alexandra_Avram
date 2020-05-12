@@ -19,15 +19,19 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     //GENERAL USE
-    @FXML private Stage stage = new Stage();
+    @FXML
+    private Stage stage = new Stage();
     //LOGIN SCENE
-    @FXML private TextField usernameInput = new TextField();
-    @FXML private PasswordField passInput = new PasswordField();
-    @FXML private Button quitButton = new Button();
-    @FXML private Button loginButton = new Button();
-    @FXML private CheckBox checkBox_Login = new CheckBox();
-
-    //LOGIN SCENE ACTIONS
+    @FXML
+    private TextField usernameInput = new TextField();
+    @FXML
+    private PasswordField passInput = new PasswordField();
+    @FXML
+    private Button quitButton = new Button();
+    @FXML
+    private Button loginButton = new Button();
+    @FXML
+    private CheckBox checkBox_Login = new CheckBox();
 
     //QUIT BUTTON ACTION
     @FXML
@@ -39,7 +43,7 @@ public class Controller implements Initializable {
 
     //CLEAR BUTTON ACTION
     @FXML
-    private void clearButtonAction(){
+    private void clearButtonAction() {
         usernameInput.clear();
         passInput.clear();
     }
@@ -48,10 +52,11 @@ public class Controller implements Initializable {
 
     @FXML
     private void loginButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
-        if(usernameInput.getText().equals("") || passInput.getText().equals("")) AlertBox.display("Alert", "Error: To login you must complete all fields!");
-        else{
-            Document d = new Document( "Username", usernameInput.getText().trim()).append("Password", passInput.getText().trim());
-            if (Main_App.verifyLogin(d, ConnectionDB.collectionLogin,"Wrong Username or Password!", "Alert!")) {
+        if (usernameInput.getText().equals("") || passInput.getText().equals(""))
+            AlertBox.display("Alert", "Error: To login you must complete all fields!");
+        else {
+            Document d = new Document("Username", usernameInput.getText().trim()).append("Password", passInput.getText().trim());
+            if (Main_App.verifyLogin(d, ConnectionDB.collectionLogin, "Wrong Username or Password!", "Alert!")) {
                 Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("AfterLoginUser.fxml"));
                 Main_App.window.getScene().setRoot(LoginAdminParent);
             }
@@ -75,12 +80,12 @@ public class Controller implements Initializable {
 
     //CHECK BOX ACTION
     @FXML
-    private void checkBox_LoginAction(){
-        if (checkBox_Login.isSelected()){
+    private void checkBox_LoginAction() {
+        if (checkBox_Login.isSelected()) {
             passInput.setPromptText(passInput.getText());
             passInput.setText("");
 
-        }else {
+        } else {
             passInput.setText(passInput.getPromptText());
             passInput.setPromptText("");
         }

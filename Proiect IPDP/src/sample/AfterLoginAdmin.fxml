@@ -120,7 +120,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <Button fx:id="userHandle" mnemonicParsing="false" onAction="#UserHandleButtonAction" style="-fx-background-color: #F7E7CE;" text="User Handling">
+                        <Button mnemonicParsing="false" onAction="#UserHandleButtonAction" style="-fx-background-color: #F7E7CE;" text="User Handling">
                            <effect>
                               <DropShadow />
                            </effect>

@@ -34,12 +34,12 @@ public class ConfirmBox {
         layout.setVgap(8);
         layout.setHgap(10);
         layout.setAlignment(Pos.CENTER);
-        layout.setBackground(new Background(new BackgroundFill(Color.rgb(32,32,32), CornerRadii.EMPTY, Insets.EMPTY)));
+        layout.setBackground(new Background(new BackgroundFill(Color.rgb(32, 32, 32), CornerRadii.EMPTY, Insets.EMPTY)));
 
         //label
         Label label = new Label();
         label.setText(message);
-        label.setTextFill(Color.rgb(192,192,192));
+        label.setTextFill(Color.rgb(192, 192, 192));
         GridPane.setConstraints(label, 0, 0);
 
         //Create two buttons

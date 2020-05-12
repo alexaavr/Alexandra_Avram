@@ -83,7 +83,7 @@
                                  </children></AnchorPane>
                         </content>
                            <font>
-                              <Font name="Verdana" size="12.0" />
+                              <Font name="Verdana Bold Italic" size="12.0" />
                            </font>
                       </TitledPane>
                       <TitledPane animated="false" text="Update item" textFill="#f7e7ce">
@@ -187,7 +187,7 @@
                                  </children></AnchorPane>
                         </content>
                            <font>
-                              <Font name="Verdana" size="12.0" />
+                              <Font name="Verdana Bold Italic" size="12.0" />
                            </font>
                       </TitledPane>
                       <TitledPane animated="false" text="Delete account or Sing out" textFill="#f7e7ce">
@@ -309,7 +309,7 @@
                                  </children></AnchorPane>
                         </content>
                            <font>
-                              <Font name="Verdana" size="12.0" />
+                              <Font name="Verdana Bold Italic" size="12.0" />
                            </font>
                       </TitledPane>
                     </panes>

@@ -26,14 +26,12 @@ public class Main_App extends Application {
         if (found != null) {
             return true;
         } else {
-            return AlertBox.display(title,message);
+            return AlertBox.display(title, message);
         }
-
     }
 
-    public static boolean isValidMail(String email)
-    {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+    public static boolean isValidMail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
                 "[a-zA-Z0-9_+&*-]+)*@" +
                 "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
                 "A-Z]{2,7}$";
@@ -64,7 +62,6 @@ public class Main_App extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         window = primaryStage;
         window.setTitle("InventoryApp");
-        //window.setMaximized(true);
         Image image = new Image("/icon/images.png");
         window.getIcons().add(image);
 
@@ -75,7 +72,7 @@ public class Main_App extends Application {
         });
 
         //scene
-        Scene scene = new Scene(root,1000,600);
+        Scene scene = new Scene(root, 1000, 600);
         window.setScene(scene);
         window.show();
     }

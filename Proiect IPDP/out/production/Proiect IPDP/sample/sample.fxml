@@ -46,11 +46,17 @@
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font>
                   </TextField>
                   <PasswordField fx:id="passInput" prefWidth="205.0" promptText="Password" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font>
                   </PasswordField>
                   <CheckBox fx:id="checkBox_Login" mnemonicParsing="false" onAction="#checkBox_LoginAction" prefHeight="38.0" prefWidth="109.0" text="Show/Hide" textFill="#f7e7ce" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>

@@ -4,12 +4,23 @@ import DB.ConnectionDB;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
-public class ManagerUsers {
+interface IManagerUsers {
+    void AddUser(User user);
+
+    void UpdateUser(User user, User user_up);
+
+    boolean findUser(User user);
+
+    String displayUser(User user);
+}
+
+public class ManagerUsers implements IManagerUsers {
 
     public ManagerUsers() {
     }
 
-    public void AddUser(User user){
+    @Override
+    public void AddUser(User user) {
         Document d = new Document("First Name", user.getFirstName())
                 .append("Last Name", user.getLastName())
                 .append("Age", user.getAge())
@@ -19,24 +30,12 @@ public class ManagerUsers {
         ConnectionDB.collectionLogin.insertOne(d);
     }
 
-    public void DeleteUser(User user){
-        Document d = new Document("First Name", user.getFirstName())
-                .append("Last Name", user.getLastName())
-                .append("Age", user.getAge())
-                .append("Username", user.username)
-                .append("Password", user.password)
-                .append("Mail adress", user.getMail_adress());
-        Document found = (Document) ConnectionDB.collectionLogin.find(d).first();
-        if(found != null){
-            ConnectionDB.collectionLogin.deleteOne(d);
-        }
-    }
-
-    public void UpdateUser(User user, User user_up){
+    @Override
+    public void UpdateUser(User user, User user_up) {
         Document query = new Document("Username", user.username);
         Document found = (Document) ConnectionDB.collectionLogin.find(query).first();
 
-        if(found != null){
+        if (found != null) {
             Bson updatedvalue = new Document("First Name", user_up.getFirstName())
                     .append("Last Name", user_up.getLastName())
                     .append("Age", user_up.getAge())
@@ -44,22 +43,24 @@ public class ManagerUsers {
                     .append("Password", user_up.password)
                     .append("Mail adress", user_up.getMail_adress());
             Bson updateoperation = new Document("$set", updatedvalue);
-            ConnectionDB.collectionLogin.updateOne(found,updateoperation);
+            ConnectionDB.collectionLogin.updateOne(found, updateoperation);
         }
     }
 
-    public boolean findUser(User user){
+    @Override
+    public boolean findUser(User user) {
         boolean flag = false;
         Document d = new Document("Username", user.username);
-        if(ConnectionDB.collectionLogin.find(d).first() != null)
+        if (ConnectionDB.collectionLogin.find(d).first() != null)
             flag = true;
         return flag;
     }
 
-    public String displayUser(User user){
+    @Override
+    public String displayUser(User user) {
         Document d = new Document("Username", user.username);
         Document found = (Document) ConnectionDB.collectionLogin.find(d).first();
-        if(found != null){
+        if (found != null) {
             user.username = found.get("Username").toString();
             user.password = found.get("Password").toString();
             user.setMail_adress(found.get("Mail adress").toString());
