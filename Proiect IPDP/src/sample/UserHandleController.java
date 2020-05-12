@@ -19,24 +19,23 @@ import java.util.ResourceBundle;
 
 public class UserHandleController implements Initializable {
 
-    User user = new User();
-    User user_UP = new User();
-    ManagerUsers u = new ManagerUsers();
+    private User user = new User();
+    private User user_UP = new User();
+    private ManagerUsers u = new ManagerUsers();
 
-    @FXML
-    Button itemHnadle = new Button();
-
-    @FXML TextField usernameInput = new TextField();
-    @FXML TextField passwordInput = new TextField();
-    @FXML TextField firstnameInput = new TextField();
-    @FXML TextField lastnameInput = new TextField();
-    @FXML TextField mailInput = new TextField();
-    @FXML TextField ageInput = new TextField();
+    @FXML private TextField usernameInput = new TextField();
+    @FXML private TextField passwordInput = new TextField();
+    @FXML private TextField firstnameInput = new TextField();
+    @FXML private TextField lastnameInput = new TextField();
+    @FXML private TextField mailInput = new TextField();
+    @FXML private TextField ageInput = new TextField();
 
     //search
-    @FXML TextField searchInput = new TextField();
-    @FXML
-    TextArea text = new TextArea();
+    @FXML private TextField searchInput = new TextField();
+    @FXML private TextArea text = new TextArea();
+
+    //TABLE VIEW
+    @FXML private TableView tableView = new TableView();
 
     @FXML
     private void clearButtonAction(){
@@ -113,9 +112,9 @@ public class UserHandleController implements Initializable {
                     user.setLastName(lastnameInput.getText().trim());
                     user.setAge((Integer.parseInt(ageInput.getText().trim())));
                     u.AddUser(user);
+                    AlertBox.display("Alert", "User addead!");
                     tableView.getItems().clear();
                     tableView.setItems(getItems());
-                    AlertBox.display("Alert", "User addead!");
                 }catch(NumberFormatException ex){
                     AlertBox.display("Alert", "Error: " + ageInput.getText().trim().toUpperCase() + " is not a number!");
                 }
@@ -136,9 +135,9 @@ public class UserHandleController implements Initializable {
                     user.setLastName(lastnameInput.getText().trim());
                     user.setAge((Integer.parseInt(ageInput.getText().trim())));
                     u.DeleteUser(user);
+                    AlertBox.display("Alert", "User deleted!");
                     tableView.getItems().clear();
                     tableView.setItems(getItems());
-                    AlertBox.display("Alert", "User deleted!");
                 }catch(NumberFormatException ex){
                     AlertBox.display("Alert", "Error: " + ageInput.getText().trim().toUpperCase() + " is not a number!");
                 }
@@ -161,9 +160,6 @@ public class UserHandleController implements Initializable {
         Parent pane = loader.load();
         Main_App.window.getScene().setRoot(pane);
     }
-
-    //TABLE VIEW
-    @FXML private TableView tableView = new TableView();
 
     private ObservableList<User> getItems(){
 

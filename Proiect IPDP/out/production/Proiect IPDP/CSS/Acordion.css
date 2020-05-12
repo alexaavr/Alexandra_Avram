@@ -1,0 +1,7 @@
+.accordion .titled-pane > *.content{
+    -fx-background-color: #F7E7CE;
+}
+
+.title{
+    -fx-background-color: #36454F;
+}

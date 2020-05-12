@@ -33,6 +33,7 @@
         <option value="JavaFXApplication" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -49,6 +50,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$APPLICATION_HOME_DIR$/build.txt" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -166,6 +168,8 @@
       <workItem from="1589266113024" duration="3591000" />
       <workItem from="1589270320885" duration="505000" />
       <workItem from="1589271546251" duration="4740000" />
+      <workItem from="1589278090474" duration="3540000" />
+      <workItem from="1589281682526" duration="78000" />
     </task>
     <servers />
   </component>
@@ -209,30 +213,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="315" y="250" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588495462983" />
-    <state width="1493" height="182" key="GridCell.Tab.0.bottom" timestamp="1589276291024">
+    <state width="1493" height="182" key="GridCell.Tab.0.bottom" timestamp="1589281668969">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="182" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589276291024" />
-    <state width="1493" height="182" key="GridCell.Tab.0.center" timestamp="1589276291024">
+    <state width="1493" height="182" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589281668969" />
+    <state width="1493" height="182" key="GridCell.Tab.0.center" timestamp="1589281668969">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="182" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589276291024" />
-    <state width="1493" height="182" key="GridCell.Tab.0.left" timestamp="1589276291024">
+    <state width="1493" height="182" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589281668969" />
+    <state width="1493" height="182" key="GridCell.Tab.0.left" timestamp="1589281668969">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="182" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589276291024" />
-    <state width="1493" height="182" key="GridCell.Tab.0.right" timestamp="1589276291024">
+    <state width="1493" height="182" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589281668969" />
+    <state width="1493" height="182" key="GridCell.Tab.0.right" timestamp="1589281668969">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="182" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589276291024" />
+    <state width="1493" height="182" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589281668969" />
     <state x="112" y="11" width="1038" height="806" key="SettingsEditor" timestamp="1588495527302">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="112" y="11" width="1038" height="806" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588495527302" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1589271546101">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1589281683667">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1589271546101" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1589281683667" />
     <state x="540" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1586858002582">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
