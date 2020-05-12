@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 public class Main_App extends Application {
 
-    Stage window;
+    public static Stage window;
 
     public static void main(String[] args) {
         System.out.println("Database Connected");
@@ -75,9 +75,8 @@ public class Main_App extends Application {
         });
 
         //scene
-        Scene scene = new Scene(root,600,600);
-
-        window.setScene(scene );
+        Scene scene = new Scene(root,1000,600);
+        window.setScene(scene);
         window.show();
     }
 

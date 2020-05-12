@@ -177,7 +177,7 @@
                               </Button>
                                     </children>
                                 </HBox>
-                                <Button mnemonicParsing="false" onAction="#ItemHandlingButton" style="-fx-background-color: #F7E7CE;" text="Item Handling">
+                                <Button fx:id="itemHnadle" mnemonicParsing="false" onAction="#ItemHandlingButton" style="-fx-background-color: #F7E7CE;" text="Item Handling">
                                     <effect>
                                         <DropShadow />
                                     </effect>

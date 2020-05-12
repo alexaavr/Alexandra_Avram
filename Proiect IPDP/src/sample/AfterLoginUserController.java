@@ -5,19 +5,17 @@ import Classes.ManagerItems;
 import Classes.ManagerUsers;
 import Classes.User;
 import DB.ConnectionDB;
+import com.mongodb.client.MongoCursor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import org.bson.Document;
 
 import java.io.IOException;
@@ -101,14 +99,8 @@ public class AfterLoginUserController implements Initializable {
     @FXML
     private void singOutButton(javafx.event.ActionEvent actionEvent) throws IOException {
         if(ConfirmBox.display("Alert!", " Are you sure you want to sing out?") == true) {
-            Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
-            Scene LoginAdminScene = new Scene(LoginAdminParent);
-
-            //This line gets the Stage information
-            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
-            window.setScene(LoginAdminScene);
-            window.show();
+            Parent pane = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            Main_App.window.getScene().setRoot(pane);
         }
     }
 
@@ -128,13 +120,7 @@ public class AfterLoginUserController implements Initializable {
                     u.DeleteUser(user);
                     AlertBox.display("Alert", "Account deleted!");
                     Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
-                    Scene LoginAdminScene = new Scene(LoginAdminParent);
-
-                    //This line gets the Stage information
-                    Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
-                    window.setScene(LoginAdminScene);
-                    window.show();
+                    Main_App.window.getScene().setRoot(LoginAdminParent);
                 }
             }catch(NumberFormatException ex){
                 AlertBox.display("Alert", "Error: " + ageInput.getText().trim().toUpperCase() + " is not a number!");
@@ -143,29 +129,33 @@ public class AfterLoginUserController implements Initializable {
     } /////////////////FA IN ASA FEL INCAT CONTUL CURENT SA SE STEARGA
 
     //TableView
-    @FXML TableView tableView = new TableView();
-    @FXML TableColumn<Item, String> nameColl;
-    @FXML TableColumn<Item, Integer> codeColl;
-    @FXML TableColumn<Item, Integer> amountColl;
-    @FXML TableColumn<Item, Integer> priceColl;
+    @FXML private TableView tableView;
+    @FXML private TableColumn<Item, String> nameColl;
+    @FXML private TableColumn<Item, Integer> codeColl;
+    @FXML private TableColumn<Item, Integer> amountColl;
+    @FXML private TableColumn<Item, Integer> priceColl;
 
     //TABLEVIEW
-    public ObservableList<Item> getItems(){
+    private ObservableList<Item> getItems(){
+
         ObservableList<Item> items = FXCollections.observableArrayList();
-        while(ConnectionDB.cursorItem.hasNext())
+        MongoCursor<Document> cursorItem = ConnectionDB.collectionItem.find().iterator();
+
+        while(cursorItem.hasNext())
         {
-            Document doc = ConnectionDB.cursorItem.next();
+            Document doc = cursorItem.next();
             String name = doc.get("Name").toString();
             int code = Integer.parseInt(doc.get("Code").toString());
             int amount = Integer.parseInt(doc.get("Amount").toString());
             int price = Integer.parseInt(doc.get("Price").toString());
             items.add(new Item(name,code,amount,price));
         }
+
         return items;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-            tableView.getItems().setAll(getItems());
+            tableView.setItems(getItems());
     }
 }

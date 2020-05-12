@@ -4,9 +4,7 @@ import DB.ConnectionDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
@@ -56,11 +54,7 @@ public class LoginAsAdminController implements Initializable {
             Document d = new Document( "Login serial", serialInput.getText().trim()).append( "admin ID", idInput.getText().trim()).append("Password", passInput.getText().trim());
             if (Main_App.verifyLogin(d, ConnectionDB.collectionAdmin, "Wrong Adimin ID or Login serial number or Password", "Alert!")) {
                 Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("AfterLoginAdmin.fxml"));
-                Scene LoginAdminScene = new Scene(LoginAdminParent);
-                //This line gets the Stage information
-                Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                window.setScene(LoginAdminScene);
-                window.show();
+                Main_App.window.getScene().setRoot(LoginAdminParent);
             }
         }
     }
@@ -69,13 +63,7 @@ public class LoginAsAdminController implements Initializable {
     @FXML
     private void backButoonAction(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Scene LoginAdminScene = new Scene(LoginAdminParent);
-
-        //This line gets the Stage information
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(LoginAdminScene);
-        window.show();
+        Main_App.window.getScene().setRoot(LoginAdminParent);
     }
 
     // CHACK BOX ACTION

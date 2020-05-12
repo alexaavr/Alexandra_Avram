@@ -4,9 +4,7 @@ import DB.ConnectionDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
@@ -55,11 +53,7 @@ public class Controller implements Initializable {
             Document d = new Document( "Username", usernameInput.getText().trim()).append("Password", passInput.getText().trim());
             if (Main_App.verifyLogin(d, ConnectionDB.collectionLogin,"Wrong Username or Password!", "Alert!")) {
                 Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("AfterLoginUser.fxml"));
-                Scene LoginAdminScene = new Scene(LoginAdminParent);
-                //This line gets the Stage information
-                Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                window.setScene(LoginAdminScene);
-                window.show();
+                Main_App.window.getScene().setRoot(LoginAdminParent);
             }
         }
     }
@@ -69,26 +63,14 @@ public class Controller implements Initializable {
     @FXML
     private void login_adminButonnAction(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("LoginAsAdmin.fxml"));
-        Scene LoginAdminScene = new Scene(LoginAdminParent);
-
-        //This line gets the Stage information
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(LoginAdminScene);
-        window.show();
+        Main_App.window.getScene().setRoot(LoginAdminParent);
     }
 
     //REGISTER BUTTON
     @FXML
     private void registerButonnAction(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent RegisterParent = FXMLLoader.load(getClass().getResource("Register.fxml"));
-        Scene RegisterScene = new Scene(RegisterParent);
-
-        //This line gets the Stage information
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(RegisterScene);
-        window.show();
+        Parent pane = FXMLLoader.load(getClass().getResource("Register.fxml"));
+        Main_App.window.getScene().setRoot(pane);
     }
 
     //CHECK BOX ACTION

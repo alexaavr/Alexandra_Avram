@@ -1,20 +1,17 @@
 package sample;
+
 import Classes.Item;
 import Classes.ManagerItems;
 import DB.ConnectionDB;
+import com.mongodb.client.MongoCursor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.bson.Document;
 
 import java.io.IOException;
@@ -26,6 +23,9 @@ public class AfterLoginAdminController implements Initializable {
     Item item = new Item();
     Item itemToUP = new Item();
     ManagerItems i = new ManagerItems();
+
+    @FXML
+    Button userHandle = new Button();
 
     @FXML TextField nameInput = new TextField();
     @FXML TextField codeInput = new TextField();
@@ -91,7 +91,6 @@ public class AfterLoginAdminController implements Initializable {
         }
     }
 
-
     //DELETE
     @FXML
     private void deleteItemButtonAction(){
@@ -105,6 +104,8 @@ public class AfterLoginAdminController implements Initializable {
                 item.price = Integer.parseInt(priceInput.getText().trim());
                 i.DeleteItem(item);
                 text2.setText("Item deleted!");
+                tableView.getItems().clear();
+                tableView.setItems(getItems());
             }catch(NumberFormatException ex){
                 AlertBox.display("Alert", "Error: "
                         + codeInput.getText().trim().toUpperCase() + " \n or \n"
@@ -114,7 +115,6 @@ public class AfterLoginAdminController implements Initializable {
             }
         }
     }
-
 
     //ADD
     @FXML
@@ -129,6 +129,8 @@ public class AfterLoginAdminController implements Initializable {
                 item.price = Integer.parseInt(priceInput.getText().trim());
                 i.AddItem(item);
                 text2.setText("Item added!");
+                tableView.getItems().clear();
+                tableView.setItems(getItems());
             }catch(NumberFormatException ex){
                 AlertBox.display("Alert", "Error: "
                         + codeInput.getText().trim().toUpperCase() + " \n or \n"
@@ -142,63 +144,53 @@ public class AfterLoginAdminController implements Initializable {
     //USER HANDLE
     @FXML
     private void UserHandleButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
-            Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("UserHandle.fxml"));
-            Scene LoginAdminScene = new Scene(LoginAdminParent);
-            //This line gets the Stage information
-            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
-            window.setScene(LoginAdminScene);
-            window.show();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("UserHandle.fxml"));
+        Parent pane = loader.load();
+        Main_App.window.getScene().setRoot(pane);
     }
-
 
     //SINGOUT
     @FXML
     private void singOutButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
         if(ConfirmBox.display("Alert!", " Are you sure you want to sing out?") == true) {
             Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
-            Scene LoginAdminScene = new Scene(LoginAdminParent);
-
-            //This line gets the Stage information
-            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
-            window.setScene(LoginAdminScene);
-            window.show();
+            Main_App.window.getScene().setRoot(LoginAdminParent);
         }
     }
 
 
     //TableView
-    @FXML TableView<Item> tableView;
-    @FXML TableColumn<Item, String> nameColl;
-    @FXML TableColumn<Item, Integer> codeColl;
-    @FXML TableColumn<Item, Integer> amountColl;
-    @FXML TableColumn<Item, Integer> priceColl;
+    @FXML  TableView<Item> tableView;
+    @FXML private TableColumn<Item, String> nameColl;
+    @FXML private TableColumn<Item, Integer> codeColl;
+    @FXML private TableColumn<Item, Integer> amountColl;
+    @FXML private TableColumn<Item, Integer> priceColl;
 
-    //TABLEVIEW
 
-    @FXML
-    private void refresh(){
-        tableView.getItems().clear();
-        tableView.getItems().setAll(getItems());
+    private ObservableList<Item> getItems(){
+
+        ObservableList<Item> items = FXCollections.observableArrayList();
+        MongoCursor<Document> cursorItem = ConnectionDB.collectionItem.find().iterator();
+
+        while (cursorItem.hasNext()) {
+             Document doc = cursorItem.next();
+             String name = doc.get("Name").toString();
+             int code = Integer.parseInt(doc.get("Code").toString());
+             int amount = Integer.parseInt(doc.get("Amount").toString());
+             int price = Integer.parseInt(doc.get("Price").toString());
+             items.add(new Item(name, code, amount, price));
+        }
+
+        return items;
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tableView.getItems().setAll(getItems());
-        tableView.refresh();
-    }
-
-    public ObservableList<Item> getItems(){
-        ObservableList<Item> items = FXCollections.observableArrayList();
-        while(ConnectionDB.cursorItem.hasNext())
-        {
-            Document doc = ConnectionDB.cursorItem.next();
-            String name = doc.get("Name").toString();
-            int code = Integer.parseInt(doc.get("Code").toString());
-            int amount = Integer.parseInt(doc.get("Amount").toString());
-            int price = Integer.parseInt(doc.get("Price").toString());
-            items.add(new Item(name,code,amount,price));
-        }
-        return items;
+        nameColl.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
+        codeColl.setCellValueFactory(new PropertyValueFactory<Item, Integer>("code"));
+        amountColl.setCellValueFactory(new PropertyValueFactory<Item, Integer>("amount"));
+        priceColl.setCellValueFactory(new PropertyValueFactory<Item, Integer>("price"));
+        tableView.setItems(getItems());
     }
 }

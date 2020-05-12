@@ -4,9 +4,7 @@ import Classes.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
@@ -71,13 +69,7 @@ public class RegisterController implements Initializable {
     @FXML
     private void backButonnAction(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent RegisterParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Scene RegisterScene = new Scene(RegisterParent);
-
-        //This line gets the Stage information
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(RegisterScene);
-        window.show();
+        Main_App.window.getScene().setRoot(RegisterParent);
     }
 
     //REGISTER BUTTON ACTION
@@ -107,13 +99,7 @@ public class RegisterController implements Initializable {
 
                         AlertBox.display("Congratulations", "You registered successfully");
                         Parent Parent = FXMLLoader.load(getClass().getResource("sample.fxml"));
-                        Scene Scene = new Scene(Parent);
-
-                        //This line gets the Stage information
-                        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
-                        window.setScene(Scene);
-                        window.show();
+                        Main_App.window.getScene().setRoot(Parent);
                     }catch(NumberFormatException | IOException ex){
                         AlertBox.display("Alert", "Error: " + ageInput.getText().trim().toUpperCase() + " is not a number!");
                     }

@@ -8,7 +8,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -18,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AfterLoginAdminController">
+<AnchorPane fx:id="content" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AfterLoginAdminController">
    <children>
       <SplitPane dividerPositions="0.3026052104208417" layoutX="300.0" layoutY="186.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -121,7 +120,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <Button mnemonicParsing="false" onAction="#UserHandleButtonAction" style="-fx-background-color: #F7E7CE;" text="User Handling">
+                        <Button fx:id="userHandle" mnemonicParsing="false" onAction="#UserHandleButtonAction" style="-fx-background-color: #F7E7CE;" text="User Handling">
                            <effect>
                               <DropShadow />
                            </effect>
@@ -155,31 +154,19 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <SplitPane dividerPositions="0.5" layoutX="290.0" layoutY="54.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" style="-fx-background-image: #F7E7CE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.5" layoutX="290.0" layoutY="54.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
                               <TableView fx:id="tableView" editable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #36454F;" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columns>
                                   <TableColumn fx:id="nameColl" prefWidth="155.0" text="Name">
-                                      <cellValueFactory>
-                                          <PropertyValueFactory property="name" />
-                                      </cellValueFactory>
                                   </TableColumn>
                                   <TableColumn fx:id="codeColl" prefWidth="90.0" text="Code">
-                                      <cellValueFactory>
-                                          <PropertyValueFactory property="code" />
-                                      </cellValueFactory>
                                   </TableColumn>
                                     <TableColumn fx:id="amountColl" prefWidth="90.0" text="Amount">
-                                        <cellValueFactory>
-                                            <PropertyValueFactory property="amount" />
-                                        </cellValueFactory>
                                     </TableColumn>
                                     <TableColumn fx:id="priceColl" prefWidth="90.0" text="Price">
-                                        <cellValueFactory>
-                                            <PropertyValueFactory property="price" />
-                                        </cellValueFactory>
                                     </TableColumn>
                                 </columns>
                                  <effect>
@@ -216,7 +203,6 @@
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -273,14 +259,6 @@
                                                             <Font name="Verdana Bold" size="12.0" />
                                                          </font></TextField>
                                                       <Button mnemonicParsing="false" onAction="#updateItemButtonAction" style="-fx-background-color: #F7E7CE;" text="Update Item" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                                                         <effect>
-                                                            <DropShadow />
-                                                         </effect>
-                                                         <font>
-                                                            <Font name="Verdana Bold" size="12.0" />
-                                                         </font>
-                                                      </Button>
-                                                      <Button mnemonicParsing="false" onAction="#refresh" style="-fx-background-color: #F7E7CE;" text="Refresh table" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                                          <effect>
                                                             <DropShadow />
                                                          </effect>
