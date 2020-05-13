@@ -1,6 +1,7 @@
 package sample;
 
 import Classes.AdminManager;
+import Classes.DuplicateFunc;
 import Classes.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -88,22 +89,17 @@ public class RegisterController implements Initializable {
                 || lastnameInput.getText().equals("") || ageInput.getText().equals(""))
             AlertBox.display("Alert", "Error: To register you must complete all fields!");
         else {
-            if (!Main_App.isValid(passInput.getText()))
+            if (!DuplicateFunc.isValid(passInput.getText()))
                 AlertBox.display("Alert", "Error: Password must contain: \n " +
                         "-at least 8 characters;\n" +
                         "-at least an Uppercase;\n " +
                         "-at least an Lowercase;\n " +
                         "-at least a special character!");
-            else if (!Main_App.isValidMail(mailInput.getText().trim()))
+            else if (!DuplicateFunc.isValidMail(mailInput.getText().trim()))
                 AlertBox.display("Alert", "Error: Incorrect mail address!");
             else {
                 try {
-                    u.username = usernameInput.getText().trim();
-                    u.password = passInput.getText().trim();
-                    u.setMail_adress(mailInput.getText().trim());
-                    u.setFirstName(firstnameInput.getText().trim());
-                    u.setLastName(lastnameInput.getText().trim());
-                    u.setAge((Integer.parseInt(ageInput.getText().trim())));
+                    AfterLoginUserController.UserAction(u, usernameInput, passInput, mailInput, firstnameInput, lastnameInput, ageInput);
                     am.AddUser(u);
 
                     AlertBox.display("Congratulations", "You registered successfully");

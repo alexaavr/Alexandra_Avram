@@ -23,7 +23,7 @@ public class AlertBox {
         //Block events to other windows
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
-        window.setWidth(300);
+        window.setWidth(400);
         window.setHeight(200);
         Image image = new Image("/icon/alert-icon-picture-15464016804kg8n-1024x839.jpg");
         window.getIcons().add(image);

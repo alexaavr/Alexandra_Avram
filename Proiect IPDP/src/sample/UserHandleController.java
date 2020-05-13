@@ -1,12 +1,9 @@
 package sample;
 
 import Classes.AdminManager;
-import Classes.ManagerDuplicate;
+import Classes.DuplicateFunc;
 import Classes.User;
 import DB.ConnectionDB;
-import com.mongodb.client.MongoCursor;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,7 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import org.bson.Document;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,7 +22,7 @@ public class UserHandleController implements Initializable {
     private User user = new User();
     private User user_UP = new User();
     private AdminManager am = new AdminManager();
-    private ManagerDuplicate u_it = new ManagerDuplicate();
+    private DuplicateFunc t = new DuplicateFunc();
 
     @FXML
     private TextField usernameInput = new TextField();
@@ -40,6 +36,19 @@ public class UserHandleController implements Initializable {
     private TextField mailInput = new TextField();
     @FXML
     private TextField ageInput = new TextField();
+
+    @FXML
+    private TextField usernameInput1 = new TextField();
+    @FXML
+    private TextField passwordInput1 = new TextField();
+    @FXML
+    private TextField firstnameInput1 = new TextField();
+    @FXML
+    private TextField lastnameInput1 = new TextField();
+    @FXML
+    private TextField mailInput1 = new TextField();
+    @FXML
+    private TextField ageInput1 = new TextField();
 
     //search
     @FXML
@@ -76,34 +85,29 @@ public class UserHandleController implements Initializable {
     //UPDATE
     @FXML
     private void updateUserButtonAction() {
-        if (usernameInput.getText().equals("") || passwordInput.getText().equals("") || mailInput.getText().equals("") || firstnameInput.getText().equals("")
-                || lastnameInput.getText().equals("") || ageInput.getText().equals("")
+        if (usernameInput1.getText().equals("") || passwordInput1.getText().equals("") || mailInput1.getText().equals("") || firstnameInput1.getText().equals("")
+                || lastnameInput1.getText().equals("") || ageInput1.getText().equals("")
                 || searchInput.getText().equals(""))
-            AlertBox.display("Alert", "Error: To register you must complete all fields!");
+            AlertBox.display("Alert", "Error: To update user you must complete all fields!");
         else {
-            if (!Main_App.isValid(passwordInput.getText()))
+            if (!DuplicateFunc.isValid(passwordInput1.getText()))
                 AlertBox.display("Alert", "Error: Password must contain: \n " +
                         "-at least 8 characters;\n" +
                         "-at least an Uppercase;\n " +
                         "-at least an Lowercase;\n " +
                         "-at least a special character!");
-            else if (!Main_App.isValidMail(mailInput.getText().trim()))
+            else if (!DuplicateFunc.isValidMail(mailInput1.getText().trim()))
                 AlertBox.display("Alert", "Error: Incorrect mail address!");
             else {
                 try {
                     user_UP.username = searchInput.getText().trim();
-                    user.username = usernameInput.getText().trim();
-                    user.password = passwordInput.getText().trim();
-                    user.setMail_adress(mailInput.getText().trim());
-                    user.setFirstName(firstnameInput.getText().trim());
-                    user.setLastName(lastnameInput.getText().trim());
-                    user.setAge((Integer.parseInt(ageInput.getText().trim())));
+                    AfterLoginUserController.UserAction(user, usernameInput1, passwordInput1, mailInput1, firstnameInput1, lastnameInput1, ageInput1);
                     am.UpdateUser(user_UP, user);
                     tableView.getItems().clear();
-                    tableView.setItems(getItems());
+                    tableView.setItems(t.getUsers(ConnectionDB.collectionLogin));
                     AlertBox.display("Alert", "User updated!");
                 } catch (NumberFormatException ex) {
-                    AlertBox.display("Alert", "Error: " + ageInput.getText().trim().toUpperCase() + " is not a number!");
+                    AlertBox.display("Alert", "Error: " + ageInput1.getText().trim().toUpperCase() + " is not a number!");
                 }
             }
         }
@@ -116,25 +120,20 @@ public class UserHandleController implements Initializable {
                 || lastnameInput.getText().equals("") || ageInput.getText().equals(""))
             AlertBox.display("Alert", "Error: To register you must complete all fields!");
         else {
-            if (!Main_App.isValid(passwordInput.getText()))
+            if (!DuplicateFunc.isValid(passwordInput.getText()))
                 AlertBox.display("Alert", "Error: Password must contain: \n " +
                         "-at least 8 characters;\n" +
                         "-at least an Uppercase;\n " +
                         "-at least an Lowercase;\n " +
                         "-at least a special character!");
-            else if (!Main_App.isValidMail(mailInput.getText().trim()))
+            else if (!DuplicateFunc.isValidMail(mailInput.getText().trim()))
                 AlertBox.display("Alert", "Error: Incorrect mail address!");
             else {
                 try {
-                    user.username = usernameInput.getText().trim();
-                    user.password = passwordInput.getText().trim();
-                    user.setMail_adress(mailInput.getText().trim());
-                    user.setFirstName(firstnameInput.getText().trim());
-                    user.setLastName(lastnameInput.getText().trim());
-                    user.setAge((Integer.parseInt(ageInput.getText().trim())));
+                    AfterLoginUserController.UserAction(user, usernameInput, passwordInput, mailInput, firstnameInput, lastnameInput, ageInput);
                     am.AddUser(user);
                     tableView.getItems().clear();
-                    tableView.setItems(getItems());
+                    tableView.setItems(t.getUsers(ConnectionDB.collectionLogin));
                     AlertBox.display("Alert", "User addead!");
                 } catch (NumberFormatException ex) {
                     AlertBox.display("Alert", "Error: " + ageInput.getText().trim().toUpperCase() + " is not a number!");
@@ -151,15 +150,10 @@ public class UserHandleController implements Initializable {
             AlertBox.display("Alert", "Error: To register you must complete all fields!");
         else {
             try {
-                user.username = usernameInput.getText().trim();
-                user.password = passwordInput.getText().trim();
-                user.setMail_adress(mailInput.getText().trim());
-                user.setFirstName(firstnameInput.getText().trim());
-                user.setLastName(lastnameInput.getText().trim());
-                user.setAge((Integer.parseInt(ageInput.getText().trim())));
-                u_it.DeleteUser(user);
+                AfterLoginUserController.UserAction(user, usernameInput, passwordInput, mailInput, firstnameInput, lastnameInput, ageInput);
+                am.DeleteUser(user);
                 tableView.getItems().clear();
-                tableView.setItems(getItems());
+                tableView.setItems(t.getUsers(ConnectionDB.collectionLogin));
                 AlertBox.display("Alert", "User deleted!");
             } catch (NumberFormatException ex) {
                 AlertBox.display("Alert", "Error: " + ageInput.getText().trim().toUpperCase() + " is not a number!");
@@ -185,28 +179,8 @@ public class UserHandleController implements Initializable {
         Main_App.window.getScene().setRoot(pane);
     }
 
-    //TABLEVIEW
-    private ObservableList<User> getItems() {
-
-        ObservableList<User> users = FXCollections.observableArrayList();
-        MongoCursor<Document> cursorLogin = ConnectionDB.collectionLogin.find().iterator();
-
-        while (cursorLogin.hasNext()) {
-            Document doc = cursorLogin.next();
-            String username = doc.get("Username").toString();
-            String password = doc.get("Password").toString();
-            String LastName = doc.get("Last Name").toString();
-            String FirstName = doc.get("First Name").toString();
-            String Mail_adress = doc.get("Mail adress").toString();
-            int Age = Integer.parseInt(doc.get("Age").toString());
-            users.add(new User(FirstName, LastName, Age, username, password, Mail_adress));
-        }
-
-        return users;
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tableView.setItems(getItems());
+        tableView.setItems(t.getUsers(ConnectionDB.collectionLogin));
     }
 }

@@ -3,6 +3,7 @@ package sample;
 import Classes.AdminManager;
 import Classes.DuplicateFunc;
 import Classes.Item;
+import Classes.UserManager;
 import DB.ConnectionDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +26,7 @@ public class AfterLoginAdminController implements Initializable {
     private Item itemToUP = new Item();
     private AdminManager am = new AdminManager();
     private DuplicateFunc t = new DuplicateFunc();
+    private UserManager um = new UserManager();
 
     //FIRST INPUT
     @FXML
@@ -94,26 +96,39 @@ public class AfterLoginAdminController implements Initializable {
     //UPDATE
     @FXML
     private void updateItemButtonAction() {
-        if (nameInputUP.getText().equals("") || codeInputUP.getText().equals("") || amountInputUP.getText().equals("") || priceInputUP.getText().equals("")
-                || codeInput_to_UP.getText().equals(""))
-            AlertBox.display("Alert", "Error: You must complete all fields!");
+        if (codeInput_to_UP.getText().equals("")) AlertBox.display("Alert", "You must complete the name field!");
         else {
             try {
                 itemToUP.code = Integer.parseInt(codeInput_to_UP.getText().trim());
-                item.name = nameInputUP.getText().trim();
-                item.code = Integer.parseInt(codeInputUP.getText().trim());
-                item.amount = Integer.parseInt(amountInputUP.getText().trim());
-                item.price = Integer.parseInt(priceInputUP.getText().trim());
-                am.UpdateItem(itemToUP, item);
+                if (!um.findItembyCode(itemToUP))
+                    AlertBox.display("Alert", "Item dosen't exist!");
+                else {
+                    if (nameInputUP.getText().equals("") || codeInputUP.getText().equals("") || amountInputUP.getText().equals("") || priceInputUP.getText().equals(""))
+                        AlertBox.display("Alert", "Error: You must complete all fields!");
+                    else {
+                        ItemAction(item, nameInputUP, codeInputUP, amountInputUP, priceInputUP);
+                        am.UpdateItem(itemToUP, item);
+                        text2.setText("Item updated!");
+                        tableView.getItems().clear();
+                        tableView.setItems(t.getItems(ConnectionDB.collectionItem));
+                    }
+                }
             } catch (NumberFormatException ex) {
                 AlertBox.display("Alert", "Error: "
-                        + codeInput_to_UP.getText().trim().toUpperCase() + " \n or \n"
+                        + codeInput_to_UP.getText().trim().toUpperCase() + "\n or \n"
                         + codeInputUP.getText().trim().toUpperCase() + " \n or \n"
                         + amountInputUP.getText().trim().toUpperCase()
                         + "\n or \n" + priceInputUP.getText().trim().toUpperCase()
                         + " is not a number!");
             }
         }
+    }
+
+    private void ItemAction(Item item, TextField nameInputUP, TextField codeInputUP, TextField amountInputUP, TextField priceInputUP) {
+        item.name = nameInputUP.getText().trim();
+        item.code = Integer.parseInt(codeInputUP.getText().trim());
+        item.amount = Integer.parseInt(amountInputUP.getText().trim());
+        item.price = Integer.parseInt(priceInputUP.getText().trim());
     }
 
     //DELETE
@@ -123,10 +138,7 @@ public class AfterLoginAdminController implements Initializable {
             AlertBox.display("Alert", "Error: You must complete all fields!");
         else {
             try {
-                item.name = nameInput.getText().trim();
-                item.code = Integer.parseInt(codeInput.getText().trim());
-                item.amount = Integer.parseInt(amountInput.getText().trim());
-                item.price = Integer.parseInt(priceInput.getText().trim());
+                ItemAction(item, nameInput, codeInput, amountInput, priceInput);
                 am.DeleteItem(item);
                 text2.setText("Item deleted!");
                 tableView.getItems().clear();
@@ -148,10 +160,7 @@ public class AfterLoginAdminController implements Initializable {
             AlertBox.display("Alert", "Error: You must complete all fields!");
         else {
             try {
-                item.name = nameInput.getText().trim();
-                item.code = Integer.parseInt(codeInput.getText().trim());
-                item.amount = Integer.parseInt(amountInput.getText().trim());
-                item.price = Integer.parseInt(priceInput.getText().trim());
+                ItemAction(item, nameInput, codeInput, amountInput, priceInput);
                 am.AddItem(item);
                 text2.setText("Item added!");
                 tableView.getItems().clear();
@@ -183,24 +192,6 @@ public class AfterLoginAdminController implements Initializable {
             Main_App.window.getScene().setRoot(LoginAdminParent);
         }
     }
-
-
-   /* private ObservableList<Item> getItems() {
-
-        ObservableList<Item> items = FXCollections.observableArrayList();
-        MongoCursor<Document> cursorItem = ConnectionDB.collectionItem.find().iterator();
-
-        while (cursorItem.hasNext()) {
-            Document doc = cursorItem.next();
-            String name = doc.get("Name").toString();
-            int code = Integer.parseInt(doc.get("Code").toString());
-            int amount = Integer.parseInt(doc.get("Amount").toString());
-            int price = Integer.parseInt(doc.get("Price").toString());
-            items.add(new Item(name, code, amount, price));
-        }
-
-        return items;
-    }*/
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

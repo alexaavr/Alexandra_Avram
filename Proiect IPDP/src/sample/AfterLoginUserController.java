@@ -1,9 +1,6 @@
 package sample;
 
-import Classes.DuplicateFunc;
-import Classes.Item;
-import Classes.User;
-import Classes.UserManager;
+import Classes.*;
 import DB.ConnectionDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +21,7 @@ public class AfterLoginUserController implements Initializable {
     private Item item = new Item();
     private Item itemToUP = new Item();
     private UserManager um = new UserManager();
+    private AdminManager am = new AdminManager();
     private DuplicateFunc t = new DuplicateFunc();
 
     //TEXT
@@ -65,6 +63,15 @@ public class AfterLoginUserController implements Initializable {
     @FXML
     private TableView<Item> tableView;
 
+    static void UserAction(User user, TextField usernameInput, TextField passwordInput, TextField mailInput, TextField firstnameInput, TextField lastnameInput, TextField ageInput) {
+        user.username = usernameInput.getText().trim();
+        user.password = passwordInput.getText().trim();
+        user.setMail_adress(mailInput.getText().trim());
+        user.setFirstName(firstnameInput.getText().trim());
+        user.setLastName(lastnameInput.getText().trim());
+        user.setAge((Integer.parseInt(ageInput.getText().trim())));
+    }
+
     //CLEAR
     @FXML
     private void clearButtonAction() {
@@ -77,20 +84,26 @@ public class AfterLoginUserController implements Initializable {
     //UPDATE
     @FXML
     private void updateItemButtonAction() {
-        if (nameInputUP.getText().equals("") || codeInputUP.getText().equals("") || amountInputUP.getText().equals("") || priceInputUP.getText().equals("")
-                || codeInput_to_UP.getText().equals(""))
-            AlertBox.display("Alert", "Error: You must complete all fields!");
+        if (codeInput_to_UP.getText().equals(""))
+            AlertBox.display("Alert", "Error: You must complete the code to update!");
         else {
             try {
                 itemToUP.code = Integer.parseInt(codeInput_to_UP.getText().trim());
-                item.name = nameInputUP.getText().trim();
-                item.code = Integer.parseInt(codeInputUP.getText().trim());
-                item.amount = Integer.parseInt(amountInputUP.getText().trim());
-                item.price = Integer.parseInt(priceInputUP.getText().trim());
-                um.UpdateItem(itemToUP, item);
-                text2.setText("Item updated!");
-                tableView.getItems().clear();
-                tableView.setItems(t.getItems(ConnectionDB.collectionItem));
+                if (!um.findItembyCode(itemToUP)) AlertBox.display("Alert", "Item not found!");
+                else {
+                    if (nameInputUP.getText().equals("") || codeInputUP.getText().equals("") || amountInputUP.getText().equals("") || priceInputUP.getText().equals(""))
+                        AlertBox.display("Alert", "Error: You must complete all fields!");
+                    else {
+                        item.name = nameInputUP.getText().trim();
+                        item.code = Integer.parseInt(codeInputUP.getText().trim());
+                        item.amount = Integer.parseInt(amountInputUP.getText().trim());
+                        item.price = Integer.parseInt(priceInputUP.getText().trim());
+                        um.UpdateItem(itemToUP, item);
+                        text2.setText("Item updated!");
+                        tableView.getItems().clear();
+                        tableView.setItems(t.getItems(ConnectionDB.collectionItem));
+                    }
+                }
             } catch (NumberFormatException ex) {
                 AlertBox.display("Alert", "Error: "
                         + codeInput_to_UP.getText().trim().toUpperCase() + " \n or \n"
@@ -130,41 +143,24 @@ public class AfterLoginUserController implements Initializable {
             AlertBox.display("Alert", "Error: To delete account you must complete all fields!");
         else {
             try {
-                user.username = usernameInput.getText().trim();
-                user.password = passwordInput.getText().trim();
-                user.setMail_adress(mailInput.getText().trim());
-                user.setFirstName(firstnameInput.getText().trim());
-                user.setLastName(lastnameInput.getText().trim());
-                user.setAge((Integer.parseInt(ageInput.getText().trim())));
-                if (ConfirmBox.display("Alert", "Are you shure you want to delet yout account?")) {
-                    um.DeleteUser(user);
-                    AlertBox.display("Alert", "Account deleted!");
-                    Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
-                    Main_App.window.getScene().setRoot(LoginAdminParent);
-                }
+                UserAction(user, usernameInput, passwordInput, mailInput, firstnameInput, lastnameInput, ageInput);
+                if (DuplicateFunc.isValidMail(mailInput.getText().trim())) {
+                    if (am.findUser(user)) {
+                        if (ConfirmBox.display("Alert", "Are you shure you want to delet yout account?")) {
+                            um.DeleteUser(user);
+                            AlertBox.display("Alert", "Account deleted!");
+                            Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+                            Main_App.window.getScene().setRoot(LoginAdminParent);
+                        }
+                    } else {
+                        AlertBox.display("Alert", "Account doesn't exist!");
+                    }
+                } else AlertBox.display("Alert", " Wrong mail address!");
             } catch (NumberFormatException ex) {
                 AlertBox.display("Alert", "Error: " + ageInput.getText().trim().toUpperCase() + " is not a number!");
             }
         }
     }
-
-    //TABLEVIEW
-    /*private ObservableList<Item> getItems() {
-
-        ObservableList<Item> items = FXCollections.observableArrayList();
-        MongoCursor<Document> cursorItem = ConnectionDB.collectionItem.find().iterator();
-
-        while (cursorItem.hasNext()) {
-            Document doc = cursorItem.next();
-            String name = doc.get("Name").toString();
-            int code = Integer.parseInt(doc.get("Code").toString());
-            int amount = Integer.parseInt(doc.get("Amount").toString());
-            int price = Integer.parseInt(doc.get("Price").toString());
-            items.add(new Item(name, code, amount, price));
-        }
-
-        return items;
-    }*/
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

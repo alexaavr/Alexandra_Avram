@@ -4,6 +4,8 @@ import DB.ConnectionDB;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
+import static Classes.UserManager.getString;
+
 interface IAdmin {
     void AddItem(Item item);
 
@@ -62,15 +64,7 @@ public class AdminManager implements IAdmin {
 
     @Override
     public String displayItem(Item item) {
-        Document d = new Document("Name", item.name);
-        Document found = (Document) ConnectionDB.collectionItem.find(d).first();
-        if (found != null) {
-            item.name = found.get("Name").toString();
-            item.code = Integer.parseInt(found.get("Code").toString());
-            item.amount = Integer.parseInt(found.get("Amount").toString());
-            item.price = Integer.parseInt(found.get("Price").toString());
-        }
-        return item.toString();
+        return getString(item);
     }
 
     @Override

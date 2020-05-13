@@ -1,5 +1,6 @@
 package sample;
 
+import Classes.DuplicateFunc;
 import DB.ConnectionDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,7 +55,7 @@ public class Controller implements Initializable {
             AlertBox.display("Alert", "Error: To login you must complete all fields!");
         else {
             Document d = new Document("Username", usernameInput.getText().trim()).append("Password", passInput.getText().trim());
-            if (Main_App.verifyLogin(d, ConnectionDB.collectionLogin, "Wrong Username or Password!", "Alert!")) {
+            if (DuplicateFunc.verifyLogin(d, ConnectionDB.collectionLogin, "Wrong Username or Password!", "Alert!")) {
                 Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("AfterLoginUser.fxml"));
                 Main_App.window.getScene().setRoot(LoginAdminParent);
             }
