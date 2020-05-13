@@ -21,8 +21,8 @@ public class Main_App extends Application {
         launch(args);
     }
 
-    public static boolean verifyLogin(Document uDB, MongoCollection coll, String message, String title) {
-        Document found = (Document) coll.find(uDB).first();
+    public static boolean verifyLogin(Document uDB, MongoCollection<Document> coll, String message, String title) {
+        Document found = coll.find(uDB).first();
         if (found != null) {
             return true;
         } else {

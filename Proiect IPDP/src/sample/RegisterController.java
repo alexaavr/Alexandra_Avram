@@ -1,6 +1,6 @@
 package sample;
 
-import Classes.ManagerUsers;
+import Classes.AdminManager;
 import Classes.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +21,9 @@ public class RegisterController implements Initializable {
     //GENERAL USE
     @FXML
     private Stage stage = new Stage();
+    private User u = new User();
+    private AdminManager am = new AdminManager();
+
     //LOGIN SCENE
     @FXML
     private TextField usernameInput = new TextField();
@@ -73,27 +76,25 @@ public class RegisterController implements Initializable {
 
     //BACK BUTTON ACTION
     @FXML
-    private void backButonnAction(javafx.event.ActionEvent actionEvent) throws IOException {
+    private void backButonnAction() throws IOException {
         Parent RegisterParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Main_App.window.getScene().setRoot(RegisterParent);
     }
 
     //REGISTER BUTTON ACTION
     @FXML
-    private void registerButtonAction(javafx.event.ActionEvent actionEvent) {
+    private void registerButtonAction() {
         if (usernameInput.getText().equals("") || passInput.getText().equals("") || mailInput.getText().equals("") || firstnameInput.getText().equals("")
                 || lastnameInput.getText().equals("") || ageInput.getText().equals(""))
             AlertBox.display("Alert", "Error: To register you must complete all fields!");
         else {
-            User u = new User();
-            ManagerUsers user = new ManagerUsers();
-            if (Main_App.isValid(passInput.getText()) == false)
+            if (!Main_App.isValid(passInput.getText()))
                 AlertBox.display("Alert", "Error: Password must contain: \n " +
                         "-at least 8 characters;\n" +
                         "-at least an Uppercase;\n " +
                         "-at least an Lowercase;\n " +
                         "-at least a special character!");
-            else if (Main_App.isValidMail(mailInput.getText().trim()) == false)
+            else if (!Main_App.isValidMail(mailInput.getText().trim()))
                 AlertBox.display("Alert", "Error: Incorrect mail address!");
             else {
                 try {
@@ -103,7 +104,7 @@ public class RegisterController implements Initializable {
                     u.setFirstName(firstnameInput.getText().trim());
                     u.setLastName(lastnameInput.getText().trim());
                     u.setAge((Integer.parseInt(ageInput.getText().trim())));
-                    user.AddUser(u);
+                    am.AddUser(u);
 
                     AlertBox.display("Congratulations", "You registered successfully");
                     Parent Parent = FXMLLoader.load(getClass().getResource("sample.fxml"));

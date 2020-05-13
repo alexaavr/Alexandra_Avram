@@ -1,13 +1,10 @@
 package sample;
 
+import Classes.DuplicateFunc;
 import Classes.Item;
-import Classes.Manager2;
-import Classes.ManagerItems;
 import Classes.User;
+import Classes.UserManager;
 import DB.ConnectionDB;
-import com.mongodb.client.MongoCursor;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import org.bson.Document;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,10 +21,10 @@ public class AfterLoginUserController implements Initializable {
 
     //NECESSARY
     private User user = new User();
-    private Manager2 u_it = new Manager2();
     private Item item = new Item();
     private Item itemToUP = new Item();
-    private ManagerItems i = new ManagerItems();
+    private UserManager um = new UserManager();
+    private DuplicateFunc t = new DuplicateFunc();
 
     //TEXT
     @FXML
@@ -67,7 +63,7 @@ public class AfterLoginUserController implements Initializable {
 
     //TableView
     @FXML
-    private TableView tableView;
+    private TableView<Item> tableView;
 
     //CLEAR
     @FXML
@@ -91,10 +87,10 @@ public class AfterLoginUserController implements Initializable {
                 item.code = Integer.parseInt(codeInputUP.getText().trim());
                 item.amount = Integer.parseInt(amountInputUP.getText().trim());
                 item.price = Integer.parseInt(priceInputUP.getText().trim());
-                u_it.UpdateItem(itemToUP, item);
+                um.UpdateItem(itemToUP, item);
                 text2.setText("Item updated!");
                 tableView.getItems().clear();
-                tableView.setItems(getItems());
+                tableView.setItems(t.getItems(ConnectionDB.collectionItem));
             } catch (NumberFormatException ex) {
                 AlertBox.display("Alert", "Error: "
                         + codeInput_to_UP.getText().trim().toUpperCase() + " \n or \n"
@@ -112,15 +108,15 @@ public class AfterLoginUserController implements Initializable {
         if (searchInput.getText().equals("")) AlertBox.display("Alert", "Error: You must complete all fields!");
         else {
             item.name = searchInput.getText().trim();
-            if (i.findItem(item) == false) text.setText("Item not found!");
-            else text.setText("Your item is this: \n" + i.displayItem(item));
+            if (!um.findItem(item)) text.setText("Item not found!");
+            else text.setText("Your item is this: \n" + um.displayItem(item));
         }
     }
 
     //SINGOUT
     @FXML
-    private void singOutButton(javafx.event.ActionEvent actionEvent) throws IOException {
-        if (ConfirmBox.display("Alert!", " Are you sure you want to sing out?") == true) {
+    private void singOutButton() throws IOException {
+        if (ConfirmBox.display("Alert!", " Are you sure you want to sing out?")) {
             Parent pane = FXMLLoader.load(getClass().getResource("sample.fxml"));
             Main_App.window.getScene().setRoot(pane);
         }
@@ -128,7 +124,7 @@ public class AfterLoginUserController implements Initializable {
 
     //DELETE
     @FXML
-    private void deleteAccountButton(javafx.event.ActionEvent actionEvent) throws IOException {
+    private void deleteAccountButton() throws IOException {
         if (usernameInput.getText().equals("") || passwordInput.getText().equals("") || mailInput.getText().equals("") || firstnameInput.getText().equals("")
                 || lastnameInput.getText().equals("") || ageInput.getText().equals(""))
             AlertBox.display("Alert", "Error: To delete account you must complete all fields!");
@@ -140,8 +136,8 @@ public class AfterLoginUserController implements Initializable {
                 user.setFirstName(firstnameInput.getText().trim());
                 user.setLastName(lastnameInput.getText().trim());
                 user.setAge((Integer.parseInt(ageInput.getText().trim())));
-                if (ConfirmBox.display("Alert", "Are you shure you want to delet yout account?") == true) {
-                    u_it.DeleteUser(user);
+                if (ConfirmBox.display("Alert", "Are you shure you want to delet yout account?")) {
+                    um.DeleteUser(user);
                     AlertBox.display("Alert", "Account deleted!");
                     Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
                     Main_App.window.getScene().setRoot(LoginAdminParent);
@@ -153,7 +149,7 @@ public class AfterLoginUserController implements Initializable {
     }
 
     //TABLEVIEW
-    private ObservableList<Item> getItems() {
+    /*private ObservableList<Item> getItems() {
 
         ObservableList<Item> items = FXCollections.observableArrayList();
         MongoCursor<Document> cursorItem = ConnectionDB.collectionItem.find().iterator();
@@ -168,10 +164,10 @@ public class AfterLoginUserController implements Initializable {
         }
 
         return items;
-    }
+    }*/
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tableView.setItems(getItems());
+        tableView.setItems(t.getItems(ConnectionDB.collectionItem));
     }
 }

@@ -1,7 +1,7 @@
 package sample;
 
-import Classes.Manager2;
-import Classes.ManagerUsers;
+import Classes.AdminManager;
+import Classes.ManagerDuplicate;
 import Classes.User;
 import DB.ConnectionDB;
 import com.mongodb.client.MongoCursor;
@@ -25,8 +25,8 @@ public class UserHandleController implements Initializable {
     //NECESSARY
     private User user = new User();
     private User user_UP = new User();
-    private ManagerUsers u = new ManagerUsers();
-    private Manager2 u_it = new Manager2();
+    private AdminManager am = new AdminManager();
+    private ManagerDuplicate u_it = new ManagerDuplicate();
 
     @FXML
     private TextField usernameInput = new TextField();
@@ -49,7 +49,7 @@ public class UserHandleController implements Initializable {
 
     //TABLE VIEW
     @FXML
-    private TableView tableView = new TableView();
+    private TableView<User> tableView;
 
     //CLEAR
     @FXML
@@ -68,7 +68,7 @@ public class UserHandleController implements Initializable {
         if (searchInput.getText().equals("")) AlertBox.display("Alert", "Error: You must complete all fields!");
         else {
             user.username = searchInput.getText().trim();
-            if (u.findUser(user) == true) text.setText("User found! \n" + u.displayUser(user));
+            if (am.findUser(user)) text.setText("User found! \n" + am.displayUser(user));
             else text.setText("User not found! \n");
         }
     }
@@ -81,13 +81,13 @@ public class UserHandleController implements Initializable {
                 || searchInput.getText().equals(""))
             AlertBox.display("Alert", "Error: To register you must complete all fields!");
         else {
-            if (Main_App.isValid(passwordInput.getText()) == false)
+            if (!Main_App.isValid(passwordInput.getText()))
                 AlertBox.display("Alert", "Error: Password must contain: \n " +
                         "-at least 8 characters;\n" +
                         "-at least an Uppercase;\n " +
                         "-at least an Lowercase;\n " +
                         "-at least a special character!");
-            else if (Main_App.isValidMail(mailInput.getText().trim()) == false)
+            else if (!Main_App.isValidMail(mailInput.getText().trim()))
                 AlertBox.display("Alert", "Error: Incorrect mail address!");
             else {
                 try {
@@ -98,7 +98,7 @@ public class UserHandleController implements Initializable {
                     user.setFirstName(firstnameInput.getText().trim());
                     user.setLastName(lastnameInput.getText().trim());
                     user.setAge((Integer.parseInt(ageInput.getText().trim())));
-                    u.UpdateUser(user_UP, user);
+                    am.UpdateUser(user_UP, user);
                     tableView.getItems().clear();
                     tableView.setItems(getItems());
                     AlertBox.display("Alert", "User updated!");
@@ -116,13 +116,13 @@ public class UserHandleController implements Initializable {
                 || lastnameInput.getText().equals("") || ageInput.getText().equals(""))
             AlertBox.display("Alert", "Error: To register you must complete all fields!");
         else {
-            if (Main_App.isValid(passwordInput.getText()) == false)
+            if (!Main_App.isValid(passwordInput.getText()))
                 AlertBox.display("Alert", "Error: Password must contain: \n " +
                         "-at least 8 characters;\n" +
                         "-at least an Uppercase;\n " +
                         "-at least an Lowercase;\n " +
                         "-at least a special character!");
-            else if (Main_App.isValidMail(mailInput.getText().trim()) == false)
+            else if (!Main_App.isValidMail(mailInput.getText().trim()))
                 AlertBox.display("Alert", "Error: Incorrect mail address!");
             else {
                 try {
@@ -132,7 +132,7 @@ public class UserHandleController implements Initializable {
                     user.setFirstName(firstnameInput.getText().trim());
                     user.setLastName(lastnameInput.getText().trim());
                     user.setAge((Integer.parseInt(ageInput.getText().trim())));
-                    u.AddUser(user);
+                    am.AddUser(user);
                     tableView.getItems().clear();
                     tableView.setItems(getItems());
                     AlertBox.display("Alert", "User addead!");
@@ -169,7 +169,7 @@ public class UserHandleController implements Initializable {
 
     //CHANGE TO ITEM SCENE
     @FXML
-    private void ItemHandlingButton(javafx.event.ActionEvent actionEvent) throws IOException {
+    private void ItemHandlingButton() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("AfterLoginAdmin.fxml"));
         Parent pane = loader.load();
@@ -178,7 +178,7 @@ public class UserHandleController implements Initializable {
 
     //SINGOUT
     @FXML
-    private void singOutButton(javafx.event.ActionEvent actionEvent) throws IOException {
+    private void singOutButton() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("sample.fxml"));
         Parent pane = loader.load();

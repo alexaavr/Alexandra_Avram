@@ -1,139 +1,149 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.effect.Reflection?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane fx:id="LoginAPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #36454F;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <children>
-      <VBox fx:id="LoginVBox" alignment="CENTER" fillWidth="false" layoutX="-14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <GridPane fx:id="grid" alignment="CENTER" prefHeight="170.0" prefWidth="460.0">
-              <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="123.20001220703125" minWidth="10.0" prefWidth="115.9999786376953" />
-                <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="314.3999755859375" minWidth="10.0" prefWidth="221.6000213623047" />
-                  <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="232.20001220703122" minWidth="10.0" prefWidth="111.19997558593747" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label text="Username:" textAlignment="CENTER" textFill="#f7e7ce">
-                     <font>
-                        <Font name="Verdana Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label text="Password:" textAlignment="CENTER" textFill="#f7e7ce" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Verdana Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="usernameInput" prefWidth="205.0" promptText="Username" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <font>
-                        <Font name="Verdana Bold" size="12.0" />
-                     </font>
-                  </TextField>
-                  <PasswordField fx:id="passInput" prefWidth="205.0" promptText="Password" style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <font>
-                        <Font name="Verdana Bold" size="12.0" />
-                     </font>
-                  </PasswordField>
-                  <CheckBox fx:id="checkBox_Login" mnemonicParsing="false" onAction="#checkBox_LoginAction" prefHeight="38.0" prefWidth="109.0" text="Show/Hide" textFill="#f7e7ce" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </CheckBox>
-               </children>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </GridPane>
-            <HBox fx:id="LoginHBox" spacing="10.0">
-               <children>
-                  <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerButonnAction" style="-fx-background-color: #F7E7CE;" text="Register" textFill="#36454f">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold Italic" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="loginButton" defaultButton="true" mnemonicParsing="false" onAction="#loginButtonAction" style="-fx-background-color: #F7E7CE;" text="Login" textFill="#36454f">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold Italic" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="login_adminButton" mnemonicParsing="false" onAction="#login_adminButonnAction" style="-fx-background-color: #F7E7CE;" text="Login as Admin" textFill="#36454f">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold Italic" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clearButtonAction" style="-fx-background-color: #F7E7CE;" text="Clear" textFill="#36454f">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold Italic" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="quitButton" cancelButton="true" mnemonicParsing="false" onAction="#quitButtonAction" style="-fx-background-color: #F7E7CE;" text="Quit" textFill="#36454f">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold Italic" size="12.0" />
-                     </font>
-                  </Button>
-               </children>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-               <effect>
-                  <Reflection />
-               </effect>
-            </HBox>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-         <effect>
-            <DropShadow />
-         </effect>
-      </VBox>
-   </children>
-   <effect>
-      <InnerShadow blurType="GAUSSIAN" choke="0.5" height="130.0" radius="64.5" width="130.0" />
-   </effect>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="LoginAPane" prefHeight="600.0" prefWidth="800.0"
+            style="-fx-background-color: #36454F;" xmlns="http://javafx.com/javafx/11.0.1"
+            fx:controller="sample.Controller">
+    <children>
+        <VBox fx:id="LoginVBox" alignment="CENTER" fillWidth="false" layoutX="-14.0" maxHeight="-Infinity"
+              maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0"
+              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+              AnchorPane.topAnchor="0.0">
+            <children>
+                <GridPane fx:id="grid" alignment="CENTER" prefHeight="170.0" prefWidth="460.0">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="123.20001220703125"
+                                           minWidth="10.0" prefWidth="115.9999786376953"/>
+                        <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES"
+                                           maxWidth="314.3999755859375" minWidth="10.0" prefWidth="221.6000213623047"/>
+                        <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES"
+                                           maxWidth="232.20001220703122" minWidth="10.0"
+                                           prefWidth="111.19997558593747"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <Label text="Username:" textAlignment="CENTER" textFill="#f7e7ce">
+                            <font>
+                                <Font name="Verdana Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                        <Label text="Password:" textAlignment="CENTER" textFill="#f7e7ce" GridPane.rowIndex="1">
+                            <font>
+                                <Font name="Verdana Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="usernameInput" prefWidth="205.0" promptText="Username"
+                                   style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </padding>
+                            <font>
+                                <Font name="Verdana Bold" size="12.0"/>
+                            </font>
+                        </TextField>
+                        <PasswordField fx:id="passInput" prefWidth="205.0" promptText="Password"
+                                       style="-fx-background-color: #F7E7CE;" GridPane.columnIndex="1"
+                                       GridPane.rowIndex="1">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </padding>
+                            <font>
+                                <Font name="Verdana Bold" size="12.0"/>
+                            </font>
+                        </PasswordField>
+                        <CheckBox fx:id="checkBox_Login" mnemonicParsing="false" onAction="#checkBox_LoginAction"
+                                  prefHeight="38.0" prefWidth="109.0" text="Show/Hide" textFill="#f7e7ce"
+                                  GridPane.columnIndex="2" GridPane.rowIndex="1">
+                            <font>
+                                <Font name="System Bold" size="12.0"/>
+                            </font>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </padding>
+                        </CheckBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </padding>
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                </GridPane>
+                <HBox fx:id="LoginHBox" spacing="10.0">
+                    <children>
+                        <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerButonnAction"
+                                style="-fx-background-color: #F7E7CE;" text="Register" textFill="#36454f">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </padding>
+                            <font>
+                                <Font name="System Bold Italic" size="12.0"/>
+                            </font>
+                        </Button>
+                        <Button defaultButton="true" mnemonicParsing="false" onAction="#loginButtonAction"
+                                style="-fx-background-color: #F7E7CE;" text="Login" textFill="#36454f">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </padding>
+                            <font>
+                                <Font name="System Bold Italic" size="12.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="login_adminButton" mnemonicParsing="false" onAction="#login_adminButonnAction"
+                                style="-fx-background-color: #F7E7CE;" text="Login as Admin" textFill="#36454f">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </padding>
+                            <font>
+                                <Font name="System Bold Italic" size="12.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clearButtonAction"
+                                style="-fx-background-color: #F7E7CE;" text="Clear" textFill="#36454f">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </padding>
+                            <font>
+                                <Font name="System Bold Italic" size="12.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="quitButton" cancelButton="true" mnemonicParsing="false"
+                                onAction="#quitButtonAction" style="-fx-background-color: #F7E7CE;" text="Quit"
+                                textFill="#36454f">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </padding>
+                            <font>
+                                <Font name="System Bold Italic" size="12.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </padding>
+                    <effect>
+                        <Reflection/>
+                    </effect>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </padding>
+            <effect>
+                <DropShadow/>
+            </effect>
+        </VBox>
+    </children>
+    <effect>
+        <InnerShadow blurType="GAUSSIAN" choke="0.5" height="130.0" radius="64.5" width="130.0"/>
+    </effect>
 </AnchorPane>

@@ -29,13 +29,11 @@ public class Controller implements Initializable {
     @FXML
     private Button quitButton = new Button();
     @FXML
-    private Button loginButton = new Button();
-    @FXML
     private CheckBox checkBox_Login = new CheckBox();
 
     //QUIT BUTTON ACTION
     @FXML
-    private void quitButtonAction() throws IOException {
+    private void quitButtonAction() {
         stage = (Stage) quitButton.getScene().getWindow();
         if (ConfirmBox.display("Confirm Quit", "Are you sure you want to quit?")) stage.close();
         else stage.getScene().getWindow();
@@ -51,7 +49,7 @@ public class Controller implements Initializable {
     //LOGIN BUTTON ACTION
 
     @FXML
-    private void loginButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
+    private void loginButtonAction() throws IOException {
         if (usernameInput.getText().equals("") || passInput.getText().equals(""))
             AlertBox.display("Alert", "Error: To login you must complete all fields!");
         else {
@@ -66,14 +64,14 @@ public class Controller implements Initializable {
 
     //LOGIN AS ADMIN BUTTON
     @FXML
-    private void login_adminButonnAction(javafx.event.ActionEvent actionEvent) throws IOException {
+    private void login_adminButonnAction() throws IOException {
         Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("LoginAsAdmin.fxml"));
         Main_App.window.getScene().setRoot(LoginAdminParent);
     }
 
     //REGISTER BUTTON
     @FXML
-    private void registerButonnAction(javafx.event.ActionEvent actionEvent) throws IOException {
+    private void registerButonnAction() throws IOException {
         Parent pane = FXMLLoader.load(getClass().getResource("Register.fxml"));
         Main_App.window.getScene().setRoot(pane);
     }

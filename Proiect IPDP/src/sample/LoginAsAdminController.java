@@ -35,7 +35,7 @@ public class LoginAsAdminController implements Initializable {
 
     //QUIT BUTTON ACTION
     @FXML
-    private void quitButtonAction() throws IOException {
+    private void quitButtonAction() {
         stage = (Stage) quitButton.getScene().getWindow();
         if (ConfirmBox.display("Confirm Quit", "Are you sure you want to quit?")) stage.close();
         else stage.getScene().getWindow();
@@ -51,7 +51,7 @@ public class LoginAsAdminController implements Initializable {
 
     //LOGIN BUTTON ACTION
     @FXML
-    private void loginButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
+    private void loginButtonAction() throws IOException {
         if (serialInput.getText().equals("") || idInput.getText().equals("") || passInput.getText().equals(""))
             AlertBox.display("Alert", "Error: To login you must complete all fields!");
         else {
@@ -65,7 +65,7 @@ public class LoginAsAdminController implements Initializable {
 
     //BACK BUTTON ACTION
     @FXML
-    private void backButoonAction(javafx.event.ActionEvent actionEvent) throws IOException {
+    private void backButoonAction() throws IOException {
         Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Main_App.window.getScene().setRoot(LoginAdminParent);
     }

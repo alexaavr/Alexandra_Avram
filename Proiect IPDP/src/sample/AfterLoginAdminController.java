@@ -1,12 +1,9 @@
 package sample;
 
+import Classes.AdminManager;
+import Classes.DuplicateFunc;
 import Classes.Item;
-import Classes.Manager2;
-import Classes.ManagerItems;
 import DB.ConnectionDB;
-import com.mongodb.client.MongoCursor;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,7 +13,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.bson.Document;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,8 +23,8 @@ public class AfterLoginAdminController implements Initializable {
     //NECCESARY
     private Item item = new Item();
     private Item itemToUP = new Item();
-    private ManagerItems i = new ManagerItems();
-    private Manager2 u_it = new Manager2();
+    private AdminManager am = new AdminManager();
+    private DuplicateFunc t = new DuplicateFunc();
 
     //FIRST INPUT
     @FXML
@@ -90,8 +86,8 @@ public class AfterLoginAdminController implements Initializable {
         if (searchInput.getText().equals("")) AlertBox.display("Alert", "Error: You must complete all fields!");
         else {
             item.name = searchInput.getText().trim();
-            if (i.findItem(item) == false) text.setText("Item not found!");
-            else text.setText("Your item is this: \n" + i.displayItem(item));
+            if (!am.findItem(item)) text.setText("Item not found!");
+            else text.setText("Your item is this: \n" + am.displayItem(item));
         }
     }
 
@@ -108,7 +104,7 @@ public class AfterLoginAdminController implements Initializable {
                 item.code = Integer.parseInt(codeInputUP.getText().trim());
                 item.amount = Integer.parseInt(amountInputUP.getText().trim());
                 item.price = Integer.parseInt(priceInputUP.getText().trim());
-                u_it.UpdateItem(itemToUP, item);
+                am.UpdateItem(itemToUP, item);
             } catch (NumberFormatException ex) {
                 AlertBox.display("Alert", "Error: "
                         + codeInput_to_UP.getText().trim().toUpperCase() + " \n or \n"
@@ -131,10 +127,10 @@ public class AfterLoginAdminController implements Initializable {
                 item.code = Integer.parseInt(codeInput.getText().trim());
                 item.amount = Integer.parseInt(amountInput.getText().trim());
                 item.price = Integer.parseInt(priceInput.getText().trim());
-                i.DeleteItem(item);
+                am.DeleteItem(item);
                 text2.setText("Item deleted!");
                 tableView.getItems().clear();
-                tableView.setItems(getItems());
+                tableView.setItems(t.getItems(ConnectionDB.collectionItem));
             } catch (NumberFormatException ex) {
                 AlertBox.display("Alert", "Error: "
                         + codeInput.getText().trim().toUpperCase() + " \n or \n"
@@ -156,10 +152,10 @@ public class AfterLoginAdminController implements Initializable {
                 item.code = Integer.parseInt(codeInput.getText().trim());
                 item.amount = Integer.parseInt(amountInput.getText().trim());
                 item.price = Integer.parseInt(priceInput.getText().trim());
-                i.AddItem(item);
+                am.AddItem(item);
                 text2.setText("Item added!");
                 tableView.getItems().clear();
-                tableView.setItems(getItems());
+                tableView.setItems(t.getItems(ConnectionDB.collectionItem));
             } catch (NumberFormatException ex) {
                 AlertBox.display("Alert", "Error: "
                         + codeInput.getText().trim().toUpperCase() + " \n or \n"
@@ -172,7 +168,7 @@ public class AfterLoginAdminController implements Initializable {
 
     //USER HANDLE
     @FXML
-    private void UserHandleButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
+    private void UserHandleButtonAction() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("UserHandle.fxml"));
         Parent pane = loader.load();
@@ -181,15 +177,15 @@ public class AfterLoginAdminController implements Initializable {
 
     //SINGOUT
     @FXML
-    private void singOutButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
-        if (ConfirmBox.display("Alert!", " Are you sure you want to sing out?") == true) {
+    private void singOutButtonAction() throws IOException {
+        if (ConfirmBox.display("Alert!", " Are you sure you want to sing out?")) {
             Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
             Main_App.window.getScene().setRoot(LoginAdminParent);
         }
     }
 
 
-    private ObservableList<Item> getItems() {
+   /* private ObservableList<Item> getItems() {
 
         ObservableList<Item> items = FXCollections.observableArrayList();
         MongoCursor<Document> cursorItem = ConnectionDB.collectionItem.find().iterator();
@@ -204,14 +200,14 @@ public class AfterLoginAdminController implements Initializable {
         }
 
         return items;
-    }
+    }*/
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        nameColl.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
-        codeColl.setCellValueFactory(new PropertyValueFactory<Item, Integer>("code"));
-        amountColl.setCellValueFactory(new PropertyValueFactory<Item, Integer>("amount"));
-        priceColl.setCellValueFactory(new PropertyValueFactory<Item, Integer>("price"));
-        tableView.setItems(getItems());
+        nameColl.setCellValueFactory(new PropertyValueFactory<>("name"));
+        codeColl.setCellValueFactory(new PropertyValueFactory<>("code"));
+        amountColl.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        priceColl.setCellValueFactory(new PropertyValueFactory<>("price"));
+        tableView.setItems(t.getItems(ConnectionDB.collectionItem));
     }
 }
