@@ -2,17 +2,23 @@ Descriere proiect
 
 Autori: Avram Stefania-Alexandra, Grecu Georgian-Catalin
 
-Cerinte:
+Cerinte: 
+ Dorim sa realizam o aplicatie care sa vina in ajutorul detinatorilor de orice fel de firma comerciala, aplicatie care sa ii ajute sa tina evidenta stocurilor cat si a anagajatilor pe care ii au. Ideea este una simpla, dar "Lucrurile cele mai mari nu au nevoie decât de a fi înfățișate cu simplitate."(Jean De La Bruyere)
 
-Functionare:
+Functionare: 
+ La pornirea aplicatiei este predefinita autentifica in pozitie de user (ex. un vanzator), cu posibilitatea de inregistrare, sau de autentificare drept administrator. Dupa autentificare, in functie de drepturile pe care utilizatorul le are, aplicatia prezinta:
+ 1.(dupa autentificare user) posibilitatea de a gestiona produsele carora li se tine evidenta - verificare daca exista in stoc, actualizare in caz ca ceva se schimba, posibilitatea de a sterge contul si iesirea din cont.
+  2.(dupa autentificare admin) posibilitatea de a gestiona produsele cu functiile de adaugare si stergere in plus fata de functionalitatile fata de care se bucura un simplu utilizator si un buton separat prin care se pot gestiona resursele umane (stergere, adaugare, actualizare, cautare).
 
 UX: 
+ Aplicatia poate fi folosita in orice domeniu care implica tinerea in evidenta a produselor, resurselor umane, animale, etc. Orice user care crede ca are nevoie de asa ceva poate sa o utilizeze cu cea mai mare incredere.
 
-Workflow: - autentificare - admin , user.
+Workflow: - autentificare - admin (sef), user(angajat).
 
-Integrare cu alte limbaje/ sisteme:
+Integrare cu alte limbaje/ sisteme: MongoDB
 
-Limbaje folosite: Java, ElasticSearch, Swing/FX
+Limbaje folosite: Java, JavaFX
 
-Cum face aplicatia viata mea mai buna: Ofera utilizatorilor posibilitatea de a verifica stocurile magazinului fara sa se mai deplaseze
+Cum face aplicatia viata mea mai buna: 
+ Ofera utilizatorilor posibilitatea de a verifica stocurile magazinului fara sa se mai deplaseze
  si administratorului posibilitatea de a superviza toate operatiile care se realizeaza. 
