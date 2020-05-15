@@ -8,21 +8,21 @@
     <node x="0.0" y="1248.0">sample.AlertBox</node>
     <node x="849.0" y="778.0">sample.Main_App</node>
     <node x="0.0" y="778.0">sample.RegisterController</node>
-    <node x="1042.0" y="778.0">sample.ConfirmBox</node>
     <node x="954.0" y="0.0">sample.UserHandleController</node>
+    <node x="1042.0" y="778.0">sample.ConfirmBox</node>
     <node x="283.0" y="778.0">sample.LoginAsAdminController</node>
     <node x="566.0" y="778.0">sample.Controller</node>
   </nodes>
   <notes />
   <edges />
-  <settings layout="Hierarchic Group" zoom="0.5071915215745647" x="625.5" y="650.5" />
+  <settings layout="Hierarchic Group" zoom="0.8071915215745646" x="625.5" y="453.70477413830025" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>
+    <Category>Constructors</Category>
     <Category>Methods</Category>
     <Category>Properties</Category>
     <Category>Inner Classes</Category>
-    <Category>Constructors</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
