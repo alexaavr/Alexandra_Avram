@@ -52,7 +52,7 @@ public class Controller implements Initializable {
     @FXML
     private void loginButtonAction() throws IOException {
         if (usernameInput.getText().equals("") || passInput.getText().equals(""))
-            AlertBox.display("Alert", "Error: To login you must complete all fields!");
+            AlertBox.display("Alert", "To login you must complete all fields!");
         else {
             Document d = new Document("Username", usernameInput.getText().trim()).append("Password", passInput.getText().trim());
             if (DuplicateFunc.verifyLogin(d, ConnectionDB.collectionLogin, "Wrong Username or Password!", "Alert!")) {

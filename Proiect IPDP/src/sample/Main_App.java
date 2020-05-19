@@ -13,7 +13,6 @@ public class Main_App extends Application {
     public static Stage window;
 
     public static void main(String[] args) {
-        System.out.println("Database Connected");
         launch(args);
     }
 

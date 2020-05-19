@@ -87,16 +87,16 @@ public class RegisterController implements Initializable {
     private void registerButtonAction() {
         if (usernameInput.getText().equals("") || passInput.getText().equals("") || mailInput.getText().equals("") || firstnameInput.getText().equals("")
                 || lastnameInput.getText().equals("") || ageInput.getText().equals(""))
-            AlertBox.display("Alert", "Error: To register you must complete all fields!");
+            AlertBox.display("Alert", "To register you must complete all fields!");
         else {
             if (!DuplicateFunc.isValid(passInput.getText()))
-                AlertBox.display("Alert", "Error: Password must contain: \n " +
+                AlertBox.display("Alert", "Password must contain: \n " +
                         "-at least 8 characters;\n" +
                         "-at least an Uppercase;\n " +
                         "-at least an Lowercase;\n " +
                         "-at least a special character!");
             else if (!DuplicateFunc.isValidMail(mailInput.getText().trim()))
-                AlertBox.display("Alert", "Error: Incorrect mail address!");
+                AlertBox.display("Alert", "Incorrect mail address!");
             else {
                 try {
                     AfterLoginUserController.UserAction(u, usernameInput, passInput, mailInput, firstnameInput, lastnameInput, ageInput);

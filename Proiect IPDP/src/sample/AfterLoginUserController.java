@@ -85,14 +85,14 @@ public class AfterLoginUserController implements Initializable {
     @FXML
     private void updateItemButtonAction() {
         if (codeInput_to_UP.getText().equals(""))
-            AlertBox.display("Alert", "Error: You must complete the code to update!");
+            AlertBox.display("Alert", "You must complete the code to update!");
         else {
             try {
                 itemToUP.code = Integer.parseInt(codeInput_to_UP.getText().trim());
                 if (!um.findItembyCode(itemToUP)) AlertBox.display("Alert", "Item not found!");
                 else {
                     if (nameInputUP.getText().equals("") || codeInputUP.getText().equals("") || amountInputUP.getText().equals("") || priceInputUP.getText().equals(""))
-                        AlertBox.display("Alert", "Error: You must complete all fields!");
+                        AlertBox.display("Alert", "You must complete all fields!");
                     else {
                         item.name = nameInputUP.getText().trim();
                         item.code = Integer.parseInt(codeInputUP.getText().trim());
@@ -118,11 +118,11 @@ public class AfterLoginUserController implements Initializable {
     //SEARCH
     @FXML
     private void search() {
-        if (searchInput.getText().equals("")) AlertBox.display("Alert", "Error: You must complete all fields!");
+        if (searchInput.getText().equals("")) AlertBox.display("Alert", "You must complete all fields!");
         else {
             item.name = searchInput.getText().trim();
             if (!um.findItem(item)) text.setText("Item not found!");
-            else text.setText("Your item is this: \n" + um.displayItem(item));
+            else text.setText("Your item is: \n" + um.displayItem(item));
         }
     }
 
@@ -140,13 +140,13 @@ public class AfterLoginUserController implements Initializable {
     private void deleteAccountButton() throws IOException {
         if (usernameInput.getText().equals("") || passwordInput.getText().equals("") || mailInput.getText().equals("") || firstnameInput.getText().equals("")
                 || lastnameInput.getText().equals("") || ageInput.getText().equals(""))
-            AlertBox.display("Alert", "Error: To delete account you must complete all fields!");
+            AlertBox.display("Alert", "To delete account you must complete all fields!");
         else {
             try {
                 UserAction(user, usernameInput, passwordInput, mailInput, firstnameInput, lastnameInput, ageInput);
                 if (DuplicateFunc.isValidMail(mailInput.getText().trim())) {
                     if (am.findUser(user)) {
-                        if (ConfirmBox.display("Alert", "Are you shure you want to delet yout account?")) {
+                        if (ConfirmBox.display("Alert", "Are you sure you want to delet yout account?")) {
                             um.DeleteUser(user);
                             AlertBox.display("Alert", "Account deleted!");
                             Parent LoginAdminParent = FXMLLoader.load(getClass().getResource("sample.fxml"));

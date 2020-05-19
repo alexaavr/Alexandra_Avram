@@ -85,11 +85,11 @@ public class AfterLoginAdminController implements Initializable {
     //SEARCH VERIFY STOCK
     @FXML
     private void search() {
-        if (searchInput.getText().equals("")) AlertBox.display("Alert", "Error: You must complete all fields!");
+        if (searchInput.getText().equals("")) AlertBox.display("Alert", "You must complete all fields!");
         else {
             item.name = searchInput.getText().trim();
             if (!am.findItem(item)) text.setText("Item not found!");
-            else text.setText("Your item is this: \n" + am.displayItem(item));
+            else text.setText("Your item is: \n" + am.displayItem(item));
         }
     }
 
@@ -104,7 +104,7 @@ public class AfterLoginAdminController implements Initializable {
                     AlertBox.display("Alert", "Item dosen't exist!");
                 else {
                     if (nameInputUP.getText().equals("") || codeInputUP.getText().equals("") || amountInputUP.getText().equals("") || priceInputUP.getText().equals(""))
-                        AlertBox.display("Alert", "Error: You must complete all fields!");
+                        AlertBox.display("Alert", "You must complete all fields!");
                     else {
                         ItemAction(item, nameInputUP, codeInputUP, amountInputUP, priceInputUP);
                         am.UpdateItem(itemToUP, item);
@@ -135,7 +135,7 @@ public class AfterLoginAdminController implements Initializable {
     @FXML
     private void deleteItemButtonAction() {
         if (nameInput.getText().equals("") || codeInput.getText().equals("") || amountInput.getText().equals("") || priceInput.getText().equals(""))
-            AlertBox.display("Alert", "Error: You must complete all fields!");
+            AlertBox.display("Alert", "You must complete all fields!");
         else {
             try {
                 ItemAction(item, nameInput, codeInput, amountInput, priceInput);
@@ -157,7 +157,7 @@ public class AfterLoginAdminController implements Initializable {
     @FXML
     private void addItemButtonAction() {
         if (nameInput.getText().equals("") || codeInput.getText().equals("") || amountInput.getText().equals("") || priceInput.getText().equals(""))
-            AlertBox.display("Alert", "Error: You must complete all fields!");
+            AlertBox.display("Alert", "You must complete all fields!");
         else {
             try {
                 ItemAction(item, nameInput, codeInput, amountInput, priceInput);

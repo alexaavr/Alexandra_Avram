@@ -74,7 +74,7 @@ public class UserHandleController implements Initializable {
     //SEARCH
     @FXML
     private void search() {
-        if (searchInput.getText().equals("")) AlertBox.display("Alert", "Error: You must complete all fields!");
+        if (searchInput.getText().equals("")) AlertBox.display("Alert", "You must complete all fields!");
         else {
             user.username = searchInput.getText().trim();
             if (am.findUser(user)) text.setText("User found! \n" + am.displayUser(user));
@@ -88,16 +88,16 @@ public class UserHandleController implements Initializable {
         if (usernameInput1.getText().equals("") || passwordInput1.getText().equals("") || mailInput1.getText().equals("") || firstnameInput1.getText().equals("")
                 || lastnameInput1.getText().equals("") || ageInput1.getText().equals("")
                 || searchInput.getText().equals(""))
-            AlertBox.display("Alert", "Error: To update user you must complete all fields!");
+            AlertBox.display("Alert", "To update user you must complete all fields!");
         else {
             if (!DuplicateFunc.isValid(passwordInput1.getText()))
-                AlertBox.display("Alert", "Error: Password must contain: \n " +
+                AlertBox.display("Alert", "Password must contain: \n " +
                         "-at least 8 characters;\n" +
                         "-at least an Uppercase;\n " +
                         "-at least an Lowercase;\n " +
                         "-at least a special character!");
             else if (!DuplicateFunc.isValidMail(mailInput1.getText().trim()))
-                AlertBox.display("Alert", "Error: Incorrect mail address!");
+                AlertBox.display("Alert", "Incorrect mail address!");
             else {
                 try {
                     user_UP.username = searchInput.getText().trim();
@@ -118,16 +118,16 @@ public class UserHandleController implements Initializable {
     private void addUserButtonAction() {
         if (usernameInput.getText().equals("") || passwordInput.getText().equals("") || mailInput.getText().equals("") || firstnameInput.getText().equals("")
                 || lastnameInput.getText().equals("") || ageInput.getText().equals(""))
-            AlertBox.display("Alert", "Error: To register you must complete all fields!");
+            AlertBox.display("Alert", "To register you must complete all fields!");
         else {
             if (!DuplicateFunc.isValid(passwordInput.getText()))
-                AlertBox.display("Alert", "Error: Password must contain: \n " +
+                AlertBox.display("Alert", "Password must contain: \n " +
                         "-at least 8 characters;\n" +
                         "-at least an Uppercase;\n " +
                         "-at least an Lowercase;\n " +
                         "-at least a special character!");
             else if (!DuplicateFunc.isValidMail(mailInput.getText().trim()))
-                AlertBox.display("Alert", "Error: Incorrect mail address!");
+                AlertBox.display("Alert", "Incorrect mail address!");
             else {
                 try {
                     AfterLoginUserController.UserAction(user, usernameInput, passwordInput, mailInput, firstnameInput, lastnameInput, ageInput);
@@ -147,7 +147,7 @@ public class UserHandleController implements Initializable {
     private void deleteUserButtonAction() {
         if (usernameInput.getText().equals("") || passwordInput.getText().equals("") || mailInput.getText().equals("") || firstnameInput.getText().equals("")
                 || lastnameInput.getText().equals("") || ageInput.getText().equals(""))
-            AlertBox.display("Alert", "Error: To register you must complete all fields!");
+            AlertBox.display("Alert", "To register you must complete all fields!");
         else {
             try {
                 AfterLoginUserController.UserAction(user, usernameInput, passwordInput, mailInput, firstnameInput, lastnameInput, ageInput);
