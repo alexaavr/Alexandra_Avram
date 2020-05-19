@@ -7,12 +7,13 @@ import static org.junit.Assert.assertEquals;
 
 public class AdminManagerTest {
     AdminManager am = new AdminManager();
-    Item it = new Item("Something", 123, 123, 123);
+    Item it = new Item("Something");
+    User us = new User("something wrong");
 
     @Test
     public void findItem() {
 
-        assertEquals(am.findItem(it), false);//////nu merge cum trb
+        assertEquals(am.findItem(it), false);
     }
 
     @Test
@@ -22,5 +23,6 @@ public class AdminManagerTest {
 
     @Test
     public void findUser() {
+        assertEquals(am.findUser(us), false);
     }
 }

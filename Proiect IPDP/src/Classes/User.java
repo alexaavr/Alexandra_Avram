@@ -13,6 +13,10 @@ public class User extends Person {
         this.mail_adress = mail_adress;
     }
 
+    public User(String username) {
+        this.username = username;
+    }
+
     public User() {
         super();
     }

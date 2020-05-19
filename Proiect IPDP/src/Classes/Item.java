@@ -13,6 +13,14 @@ public class Item {
         this.price = price;
     }
 
+    public Item(String name) {
+        this.name = name;
+    }
+
+    public Item(Integer code) {
+        this.code = code;
+    }
+
     public Item() {
     }
 

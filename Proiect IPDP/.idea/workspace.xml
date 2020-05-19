@@ -72,27 +72,11 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AdminManagerTest.findItem">
+  <component name="RunManager" selected="JUnit.UserManagerTest.findItembyCode">
     <configuration name="Main_App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sample.Main_App" />
       <module name="Proiect IPDP" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-11.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdminManagerTest.displayItem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Proiect IPDP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Classes.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Classes" />
-      <option name="MAIN_CLASS_NAME" value="Classes.AdminManagerTest" />
-      <option name="METHOD_NAME" value="displayItem" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -113,7 +97,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DuplicateFuncTest.isValidMail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminManagerTest.findUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Proiect IPDP" />
       <extension name="coverage">
         <pattern>
@@ -122,14 +106,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Classes" />
-      <option name="MAIN_CLASS_NAME" value="Classes.DuplicateFuncTest" />
-      <option name="METHOD_NAME" value="isValidMail" />
+      <option name="MAIN_CLASS_NAME" value="Classes.AdminManagerTest" />
+      <option name="METHOD_NAME" value="findUser" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DuplicateFuncTest.verifyLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserManagerTest.findItembyCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Proiect IPDP" />
       <extension name="coverage">
         <pattern>
@@ -138,8 +122,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Classes" />
-      <option name="MAIN_CLASS_NAME" value="Classes.DuplicateFuncTest" />
-      <option name="METHOD_NAME" value="verifyLogin" />
+      <option name="MAIN_CLASS_NAME" value="Classes.UserManagerTest" />
+      <option name="METHOD_NAME" value="findItembyCode" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserManagerTest.getString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Proiect IPDP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Classes.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Classes" />
+      <option name="MAIN_CLASS_NAME" value="Classes.UserManagerTest" />
+      <option name="METHOD_NAME" value="getString" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -147,18 +147,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main_App" />
-      <item itemvalue="JUnit.DuplicateFuncTest.verifyLogin" />
-      <item itemvalue="JUnit.DuplicateFuncTest.isValidMail" />
       <item itemvalue="JUnit.AdminManagerTest.findItem" />
-      <item itemvalue="JUnit.AdminManagerTest.displayItem" />
+      <item itemvalue="JUnit.AdminManagerTest.findUser" />
+      <item itemvalue="JUnit.UserManagerTest.getString" />
+      <item itemvalue="JUnit.UserManagerTest.findItembyCode" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserManagerTest.findItembyCode" />
+        <item itemvalue="JUnit.UserManagerTest.getString" />
         <item itemvalue="JUnit.AdminManagerTest.findItem" />
-        <item itemvalue="JUnit.AdminManagerTest.displayItem" />
+        <item itemvalue="JUnit.AdminManagerTest.findUser" />
         <item itemvalue="Application.Main_App" />
-        <item itemvalue="JUnit.DuplicateFuncTest.isValidMail" />
-        <item itemvalue="JUnit.DuplicateFuncTest.verifyLogin" />
       </list>
     </recent_temporary>
   </component>
@@ -257,6 +257,8 @@
       <workItem from="1589546949651" duration="370000" />
       <workItem from="1589547336584" duration="383000" />
       <workItem from="1589547758298" duration="992000" />
+      <workItem from="1589550190384" duration="126000" />
+      <workItem from="1589873093546" duration="1156000" />
     </task>
     <servers />
   </component>
@@ -304,22 +306,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="315" y="250" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589547599150" />
-    <state width="1493" height="231" key="GridCell.Tab.0.bottom" timestamp="1589548751161">
+    <state width="1493" height="231" key="GridCell.Tab.0.bottom" timestamp="1589874251267">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="231" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589548751161" />
-    <state width="1493" height="231" key="GridCell.Tab.0.center" timestamp="1589548751160">
+    <state width="1493" height="231" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589874251267" />
+    <state width="1493" height="231" key="GridCell.Tab.0.center" timestamp="1589874251266">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="231" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589548751160" />
-    <state width="1493" height="231" key="GridCell.Tab.0.left" timestamp="1589548751160">
+    <state width="1493" height="231" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589874251266" />
+    <state width="1493" height="231" key="GridCell.Tab.0.left" timestamp="1589874251266">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="231" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589548751160" />
-    <state width="1493" height="231" key="GridCell.Tab.0.right" timestamp="1589548751161">
+    <state width="1493" height="231" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589874251266" />
+    <state width="1493" height="231" key="GridCell.Tab.0.right" timestamp="1589874251266">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="231" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589548751161" />
+    <state width="1493" height="231" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589874251266" />
     <state x="584" y="346" key="ReplaceDuplicatesPrompt" timestamp="1589365877062">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -332,18 +334,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="331" y="160" key="caller.chooser.dialog/0.0.1536.824@0.0.1536.824" timestamp="1589366601174" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1589547758618">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1589873137290">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1589547758618" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1589873137290" />
     <state x="498" y="306" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1589547013036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="306" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.824@0.0.1536.824" timestamp="1589547013036" />
-    <state x="724" y="135" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1589548083598">
+    <state x="724" y="135" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1589873497038">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="724" y="135" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1589548083598" />
+    <state x="724" y="135" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1589873497038" />
     <state x="798" y="137" width="538" height="495" key="extract.method.dialog" timestamp="1589368623360">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
