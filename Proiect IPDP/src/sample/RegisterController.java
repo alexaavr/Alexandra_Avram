@@ -39,6 +39,8 @@ public class RegisterController implements Initializable {
     @FXML
     private PasswordField passInput = new PasswordField();
     @FXML
+    private TextField passInput_Visible= new TextField();
+    @FXML
     private Button quitButton = new Button();
     @FXML
     private CheckBox checkBox_Register = new CheckBox();
@@ -46,14 +48,7 @@ public class RegisterController implements Initializable {
     //CHECK BOX ACTION
     @FXML
     private void checkBox_RegisterAction() {
-        if (checkBox_Register.isSelected()) {
-            passInput.setPromptText(passInput.getText());
-            passInput.setText("");
-
-        } else {
-            passInput.setText(passInput.getPromptText());
-            passInput.setPromptText("");
-        }
+        LoginAsAdminController.check_box(checkBox_Register, passInput_Visible, passInput);
     }
 
     //QUIT BUTTON ACTION
@@ -114,6 +109,6 @@ public class RegisterController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        checkBox_RegisterAction();
     }
 }

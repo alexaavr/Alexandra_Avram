@@ -30,6 +30,8 @@ public class LoginAsAdminController implements Initializable {
     @FXML
     private PasswordField passInput = new PasswordField();
     @FXML
+    private TextField passInput_Visible= new TextField();
+    @FXML
     private Button quitButton = new Button();
     @FXML
     private CheckBox checkBox_Login = new CheckBox();
@@ -74,17 +76,23 @@ public class LoginAsAdminController implements Initializable {
     // CHACK BOX ACTION
     @FXML
     private void checkBox_LoginAction() {
-        if (checkBox_Login.isSelected()) {
-            passInput.setPromptText(passInput.getText());
-            passInput.setText("");
+        check_box(checkBox_Login, passInput_Visible, passInput);
+    }
 
-        } else {
-            passInput.setText(passInput.getPromptText());
-            passInput.setPromptText("");
+    public static void check_box(CheckBox checkBox_login, TextField passInput_visible, PasswordField passInput) {
+        if (checkBox_login.isSelected()) {
+            passInput_visible.setText(passInput.getText());
+            passInput_visible.setVisible(true);
+            passInput.setVisible(false);
+            return;
         }
+        passInput.setText(passInput_visible.getText());
+        passInput.setVisible(true);
+        passInput_visible.setVisible(false);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        checkBox_LoginAction();
     }
 }
