@@ -38,6 +38,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1a9xdSW4dSfIHYx4d2KmWEtwQiT" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -58,11 +61,11 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/junit-4.13.jar!/" />
+    <property name="last_opened_file_path" value="C:/Program Files/Java/junit-4.13.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -265,6 +268,7 @@
       <workItem from="1590052713816" duration="94000" />
       <workItem from="1590077514372" duration="221000" />
       <workItem from="1590505177188" duration="1785000" />
+      <workItem from="1591080887777" duration="1099000" />
     </task>
     <servers />
   </component>
@@ -308,42 +312,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="569" y="115" key="ExecutionTargetDialog/0.0.1536.824@0.0.1536.824" timestamp="1586698034829" />
-    <state x="315" y="250" key="FileChooserDialogImpl" timestamp="1589547599150">
+    <state x="315" y="250" key="FileChooserDialogImpl" timestamp="1591081985398">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="315" y="250" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589547599150" />
-    <state width="1493" height="2" key="GridCell.Tab.0.bottom" timestamp="1590506963569">
+    <state x="315" y="250" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1591081985398" />
+    <state width="1493" height="114" key="GridCell.Tab.0.bottom" timestamp="1591082362967">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="2" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590506963569" />
-    <state width="1493" height="2" key="GridCell.Tab.0.center" timestamp="1590506963569">
+    <state width="1493" height="114" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591082362967" />
+    <state width="1493" height="114" key="GridCell.Tab.0.center" timestamp="1591082362967">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="2" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590506963569" />
-    <state width="1493" height="2" key="GridCell.Tab.0.left" timestamp="1590506963569">
+    <state width="1493" height="114" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591082362967" />
+    <state width="1493" height="114" key="GridCell.Tab.0.left" timestamp="1591082362967">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="2" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590506963569" />
-    <state width="1493" height="2" key="GridCell.Tab.0.right" timestamp="1590506963569">
+    <state width="1493" height="114" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591082362967" />
+    <state width="1493" height="114" key="GridCell.Tab.0.right" timestamp="1591082362967">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="2" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590506963569" />
+    <state width="1493" height="114" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591082362967" />
     <state x="584" y="346" key="ReplaceDuplicatesPrompt" timestamp="1589365877062">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="584" y="346" key="ReplaceDuplicatesPrompt/0.0.1536.824@0.0.1536.824" timestamp="1589365877062" />
-    <state x="396" y="18" width="1038" height="806" key="SettingsEditor" timestamp="1589547602525">
+    <state x="396" y="18" width="1038" height="806" key="SettingsEditor" timestamp="1591081996121">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="396" y="18" width="1038" height="806" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1589547602525" />
+    <state x="396" y="18" width="1038" height="806" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1591081996121" />
     <state x="331" y="160" key="caller.chooser.dialog" timestamp="1589366601174">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="331" y="160" key="caller.chooser.dialog/0.0.1536.824@0.0.1536.824" timestamp="1589366601174" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1590505178654">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1591080888367">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1590505178654" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1591080888367" />
     <state x="498" y="306" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1589547013036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
